@@ -41,3 +41,18 @@
 - [`Sublime Text 3`](http://sublimetext.com/3)
 - [`Package Control`](http://packagecontrol.io)
 - [`Emmet`](http://emmet.io)
+
+##### Install Packages
+
+- AdvancedNewFile
+- Alignment
+- AutoFileName
+- ApplySyntax
+- BracketHighlighter
+- ColorPicker
+- ColorHighlighter
+- ConvertToUTF8
+- CSS Format
+- SublimeCodeIntel
+- Emmet
+- VAlign
