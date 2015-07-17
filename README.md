@@ -27,12 +27,16 @@
 
 #### 이미지 자르기 능력 향상
 
+실무자로서 이미지를 빠르게 자를 수 있는 능력이 요구된다.
+
 - `Photoshop CC` 사용자일 경우, `Generate Image Assets` 기능 활용
 - `Photoshop CS` 사용자일 경우, `Actions` 기능 활용 ─ 이미지 자르는 액션 파일 [다운로드](http://retinize.it/)
 
 -
 
 #### 도구 사용 능력 향상
+
+코딩 속도를 비약적으로 향상시키면 야근할 확률이 줄어든다.
 
 - [`Sublime Text 3`](http://sublimetext.com/3)
 - [`Package Control`](http://packagecontrol.io)
