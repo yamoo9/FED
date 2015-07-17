@@ -7,7 +7,7 @@
 
 #### STEP
 
-[PSD 다운로드](url.yamoo9.net/fedpsd)
+[PSD 다운로드](http://url.yamoo9.net/fedpsd)
 
 1. **이미지 자르기 `Image Slicing`**
 	- 고해상도 대응 `@2x, @3x, @4x`
