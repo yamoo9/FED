@@ -20,3 +20,30 @@ html.classList.add('this-is-html-element');
 var app = document.getElementById('app');
 
 console.log(app);
+
+
+
+/**
+ * --------------------------------
+ * 이벤트 설정
+ * Load 이벤트
+ * domContentLoaded 이벤트
+ * --------------------------------
+ */
+
+
+
+// 이벤트 설정 패턴
+// 대상.이벤트 = 콜백함수;
+// 웹 브라우저 창에 모든 데이터가 다운로드된다면...
+window.onload = function () {
+	// console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
+	var body = document.body;
+	var app = document.getElementById('app');
+	console.log(body, app);
+};
+
+
+// console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
+
+console.log('즉시 실행');
