@@ -31,13 +31,13 @@ console.log(app);
  * --------------------------------
  */
 
-
-
 // 이벤트 설정 패턴
 // 대상.이벤트 = 콜백함수;
 // 웹 브라우저 창에 모든 데이터가 다운로드된다면...
 window.onload = function () {
-	// console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
+	console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
+	// 로드 이벤트 후에 실행되는 아래 코드는 문서의 객체가 모두 완성되었으므로
+	// 접근이 가능합니다.
 	var body = document.body;
 	var app = document.getElementById('app');
 	console.log(body, app);
@@ -46,4 +46,4 @@ window.onload = function () {
 
 // console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
 
-console.log('즉시 실행');
+console.log('즉시 실행'); // 위 onload 내부 함수 코드보다 먼저 실행됩니다.
