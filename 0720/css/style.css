@@ -5,6 +5,15 @@
  * --------------------------------
  */
 
+html {
+	background: #34C0FF;
+	/*height: 100%;*/
+}
+
 body {
 	margin: 0;
+	background: #FC414B;
+	color: #fff;
+	/*height: 100%;*/
+	height: 50vh;
 }
