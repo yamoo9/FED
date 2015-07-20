@@ -11,7 +11,7 @@ var body = document.body; // body 변수 메모리 참조 값은 null
 
 // 콘솔 객체의 기록 메소드를 사용하여
 // 브라우저의 콘솔 패널에 내용을 기록합니다.
-console.log(html, head, body);
+// console.log(html, head, body);
 
 // <html> 요소의 클래스 속성 값으로 'hi~there'를 추가하는 방법
 html.classList.add('this-is-html-element');
@@ -19,7 +19,7 @@ html.classList.add('this-is-html-element');
 // 문서 객체 #app에 접근하고자 한다.
 var app = document.getElementById('app');
 
-console.log(app);
+// console.log(app);
 
 
 
@@ -35,15 +35,28 @@ console.log(app);
 // 대상.이벤트 = 콜백함수;
 // 웹 브라우저 창에 모든 데이터가 다운로드된다면...
 window.onload = function () {
-	console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
+	// console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
 	// 로드 이벤트 후에 실행되는 아래 코드는 문서의 객체가 모두 완성되었으므로
 	// 접근이 가능합니다.
 	var body = document.body;
 	var app = document.getElementById('app');
-	console.log(body, app);
+	// console.log(body, app);
 };
 
 
 // console.log('문서의 모든 내용은 다운로드가 완료되었습니다.');
 
-console.log('즉시 실행'); // 위 onload 내부 함수 코드보다 먼저 실행됩니다.
+// console.log('즉시 실행'); // 위 onload 내부 함수 코드보다 먼저 실행됩니다.
+
+
+console.log('index.js 코드 실행');
+
+// 로드 이벤트
+window.onload = function() {
+	console.log('load 실행');
+};
+
+// DOMContentLoaded 이벤트
+window.addEventListener('DOMContentLoaded', function() {
+	console.log('DOMContentLoaded 실행');
+});

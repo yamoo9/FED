@@ -1,3 +1,5 @@
 var body = document.body;
 
-body.style.backgroundColor = 'red';
+console.log('app.js 코드 실행');
+
+// body.style.backgroundColor = 'red';
