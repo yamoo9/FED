@@ -58,9 +58,16 @@ body {
 	transform: skew(26deg);
 }
 
-.controller a.on::before {
-	background: #721921;
+.controller a.on::before,
+.controller a.on:hover::before {
+	background: #38DED5;
 }
+
+.controller a.on:hover {
+	cursor: default;
+}
+
+
 
 .controller a:hover::before,
 .controller a:focus::before {
