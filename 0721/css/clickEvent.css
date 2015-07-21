@@ -42,10 +42,8 @@ body {
 }
 
 .controller a {
-	display: block;
 	position: relative;
-	float: left;
-	padding: .3em .8em;
+	padding: 0.3em 1.2em;
 	color: #fff;
 	text-decoration: none;
 	text-shadow: 0 0 2px rgba(0, 0, 0, 0.65);
@@ -60,7 +58,7 @@ body {
 	width: 120px;
 	height: 28px;
 	background: #FC4A54;
-	transform: skew(26deg);
+	transform: skew(-45deg);
 }
 
 .controller a.on::before,

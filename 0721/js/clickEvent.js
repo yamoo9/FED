@@ -92,26 +92,51 @@ function checkKindOfDevice () {
 	// 장치의 폭을 확인 (조건 확인)
 	if ( device_width < 768 ) {
 		// console.log('사용자의 기기는 모바일입니다.');
-		html.className = 'mobile';
+		html.className += ' ' + 'mobile';
 	}
 
 	if ( device_width >= 768 && device_width < 1200 ) {
 		// console.log('사용자의 기기는 태블릿입니다.');
-		html.className = 'tablet';
+		html.className += ' ' + 'tablet';
 	}
 
 	if ( device_width >= 1200 && device_width < 1900 ) {
 		// console.log('사용자의 기기는 데스크탑입니다.');
-		html.className = 'desktop';
+		html.className += ' ' + 'desktop';
 	}
 
 	if ( device_width >= 1900 ) {
 		// console.log('사용자의 기기는 와이드 TV입니다.');
-		html.className = 'wide-tv';
+		html.className += ' ' + 'wide-tv';
 	}
 }
 
 window.onload = window.onresize = checkKindOfDevice;
+
+
+// 사용자의 운영체제 감지
+// 브라우저 스니핑
+// 사용자가 쓰는 웹 브라우저는 무엇인가? (브라우저 식별자)
+// 브라우저 정보 값을 가지고 있는 객체
+// BOM
+// 	window
+// 	screen
+// 	navigator
+// 	location
+// DOM
+// 	#document
+
+// 만약 사용자의 웹 브라우저가 열린 플랫폼이 궁금하다면?
+var isUserPlatform = navigator.platform.toLowerCase();
+if(isUserPlatform.indexOf('mac') > -1) {
+	html.className = 'mac';
+}
+if(isUserPlatform.indexOf('win') > -1) {
+	html.className = 'win';
+}
+
+
+
 
 // 자바스크립트의 반복문
 // while() 문
