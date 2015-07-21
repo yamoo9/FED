@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta charset="UTF-8">
-	<!-- <title>DOM Script - </title> -->
+	<title>DOM Script - About Node</title>
 </head>
 <body>
 
@@ -21,36 +21,17 @@
 				<h3>article header</h3>
 				<p>운동화도 다 들리는 청춘 설레게 티셔츠, 그대 내일의 숨 죽여도 청춘의, 씩씩하게 하고 청춘아! 꽃처럼 빛나는, 않고 땀 보기만 세상을 아름다운? 해도.</p>
 			</article>
+			<article>
+				<h3>article header</h3>
+				<p>야무 한글 로렘입숨. 하고 청춘, 흐르는 다 들리는 보기만 쿵쿵대는 내일의 피어나는 가슴을 엮어가는, 청춘의 너야말로, 설레게 찬란한 꽃처럼 햇볕처럼 하루를 씩씩하게?</p>
+			</article>
 		</main>
 	</div>
 
-<script>
-// 문서 내에서 루트 요소를 찾고자 한다.
-var rootElement = document.documentElement;
-// var head = rootElement.firstChild;
-var dom0head = document.head; // HTML DOM
-var dom1head = document.getElementsByTagName('head')[0];
+	<div id="page">
+		<article></article>
+	</div>
 
-console.log('dom0head = ', dom0head);
-console.log('dom1head = ', dom1head);
-
-var body = rootElement.lastChild;
-// console.log(rootElement, head, body);
-
-var app = document.getElementById('app');
-// console.log(app);
-
-/**
- * --------------------------------
- * 노드의 유형(Node Type)
- * ElementNode   - 1
- * AttributeNode - 2
- * TextNode      - 3
- * --------------------------------
- */
-
-var app_firstChild = app.firstChild // Node Type 노드의 유형?
-// console.log(app_firstChild.nodeType); // 텍스트 노드의 유형 값은???
-</script>
+<script src="js/index.js"></script>
 </body>
 </html>
