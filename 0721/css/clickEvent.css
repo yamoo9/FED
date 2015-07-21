@@ -1,6 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,700);
+
 body {
 	margin: 0;
 	background: #000;
+	font: 700 0.875rem/1.5 Lato, Arial;
+	letter-spacing: 0.03em;
 }
 
 #wallpaper {
@@ -11,8 +15,8 @@ body {
 
 .controller {
 	position: fixed;
-	top: 20px;
-	right: 20px;
+	top: 28px;
+	right: 40px;
 }
 
 .controller::before,

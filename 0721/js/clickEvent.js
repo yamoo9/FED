@@ -58,6 +58,69 @@ var controller = document.querySelector('.controller');
 var controller_btns = document.querySelectorAll('.controller [role]');
 // console.log(controller_btns);
 
+// 자바스크립트의 조건문
+// if(), if ~ else, if else if ~ else
+// switch ~ case, default, break
+
+
+// 컵모양 정의
+// var cupShape = 'polygon';
+
+// // 만약 컵 모양을 확인
+// if ( cupShape === 'polygon' ) {
+// 	// 조건이 참이면 이 구문 수행
+// 	console.log('컵 모양은 다각형입니다.');
+// } else {
+// 	// 조건이 거짓이면 이 구문 수행
+// 	console.log('컵 모양은 '+ cupShape +'입니다.');
+// }
+
+// 사용자의 기기(Device)의 폭을 감지하여 구분하는 방법
+// var device_width = document.documentElement.clientWidth;
+// 중단점 설계
+// 모바일
+// 320px ~
+// 태블릿
+// 768px ~
+// 데스크탑
+// 1200px ~
+// 와이드 TV
+// 1900px ~
+
+function checkKindOfDevice () {
+	var device_width = document.documentElement.clientWidth;
+	// 장치의 폭을 확인 (조건 확인)
+	if ( device_width < 768 ) {
+		// console.log('사용자의 기기는 모바일입니다.');
+		html.className = 'mobile';
+	}
+
+	if ( device_width >= 768 && device_width < 1200 ) {
+		// console.log('사용자의 기기는 태블릿입니다.');
+		html.className = 'tablet';
+	}
+
+	if ( device_width >= 1200 && device_width < 1900 ) {
+		// console.log('사용자의 기기는 데스크탑입니다.');
+		html.className = 'desktop';
+	}
+
+	if ( device_width >= 1900 ) {
+		// console.log('사용자의 기기는 와이드 TV입니다.');
+		html.className = 'wide-tv';
+	}
+}
+
+window.onload = window.onresize = checkKindOfDevice;
+
+// 자바스크립트의 반복문
+// while() 문
+// do ~ while() 문
+// for() 문
+// for ~ in 문
+// forEach() 문
+
+
 controller_btns[0].onclick = function() {
 	// console.log(this.firstChild.nodeValue);
 	wallpaper.style.backgroundImage = 'url(images/wallpaper-01.jpg)';
@@ -94,6 +157,15 @@ controller_btns[2].onclick = function() {
 controller_btns[3].onclick = function() {
 	// console.log(this.firstChild.nodeValue);
 	wallpaper.style.backgroundImage = 'url(images/wallpaper-04.jpg)';
+	var activeEl = controller.querySelector('.on');
+	activeEl.className = '';
+	this.className = 'on';
+	return false;
+};
+
+controller_btns[4].onclick = function() {
+	// console.log(this.firstChild.nodeValue);
+	wallpaper.style.backgroundImage = 'url(images/wallpaper-05.jpg)';
 	var activeEl = controller.querySelector('.on');
 	activeEl.className = '';
 	this.className = 'on';
