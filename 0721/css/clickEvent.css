@@ -44,6 +44,7 @@ body {
 	padding: .3em .8em;
 	color: #fff;
 	text-decoration: none;
+	text-shadow: 0 0 2px rgba(0, 0, 0, 0.65);
 }
 
 .controller a::before {
