@@ -38,5 +38,17 @@ var articles = app.getElementsByTagName('article');
 // console.log(articles);
 
 var posts = app.getElementsByClassName('post'); // IE 9+
-console.log(posts);
+// console.log(posts);
 
+// 원하는 대상(span.target)을 찾는 코드
+var first_target = posts[0].getElementsByClassName('target')[0];
+
+// 요소노드의 첫번째 자식노드(텍스트노드)의 노드 값을 출력
+// console.log(first_target.firstChild.nodeValue);
+
+// 1. 대상 선택 (선택자로 대상을 선택하고)
+// 2. 대상 조작 (선언 구문 내에서 대상을 꾸밉니다.)
+// 3. 언제? 조작을 할 것인가?
+first_target.onmouseenter = function() {
+	first_target.className = 'first-target';
+};
