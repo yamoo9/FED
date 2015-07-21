@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>DOM Script - </title>
+</head>
+<body>
+
+	<div id="app">
+		<main>
+			<article>
+				<h3>article header</h3>
+				<p>야무 한글 로렘입숨. 청춘의 가슴을, 청춘 꽃보다 해도 어디에나 아름답다 햇볕처럼 만들 사명으로 흐르는 엮어가는 쉬지 너야말로 찬란한 아름다운 숨소리가 내일의!</p>
+			</article>
+			<article>
+				<h3>article header</h3>
+				<p>눈부신, 꽃처럼. 흐르는 고동소리 내일의, 눈부신 설레게, 어디에나 하고, 청춘의, 쉬지 다 들리는 운동화도 청춘 숨 죽여도? 씩씩하게 땀 심장 너 만들.</p>
+			</article>
+			<article>
+				<h3>article header</h3>
+				<p>운동화도 다 들리는 청춘 설레게 티셔츠, 그대 내일의 숨 죽여도 청춘의, 씩씩하게 하고 청춘아! 꽃처럼 빛나는, 않고 땀 보기만 세상을 아름다운? 해도.</p>
+			</article>
+		</main>
+	</div>
+
+<script>
+// 문서 내에서 루트 요소를 찾고자 한다.
+var rootElement = document.documentElement;
+var head = rootElement.firstChild;
+var body = rootElement.lastChild;
+console.log(rootElement, head, body);
+
+var app = document.getElementById('app');
+console.log(app);
+</script>
+</body>
+</html>
