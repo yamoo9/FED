@@ -2,3 +2,9 @@ body {
 	margin: 0;
 	background: #000;
 }
+
+#wallpaper {
+	/*height: 100vh;
+	background: url(../images/wallpaper-01.jpg) no-repeat center top;
+	background-size: cover;*/
+}
