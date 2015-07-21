@@ -4,7 +4,69 @@ body {
 }
 
 #wallpaper {
-	/*height: 100vh;
+	height: 100vh;
 	background: url(../images/wallpaper-01.jpg) no-repeat center top;
-	background-size: cover;*/
+	background-size: cover;
+}
+
+.controller {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+}
+
+.controller::before,
+.controller::after {
+	content: "";
+	display: table;
+}
+
+.controller::after {
+	clear: both;
+}
+
+.controller ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+.controller li {
+	float: left;
+	margin-right: 2px;
+}
+
+.controller a {
+	display: block;
+	position: relative;
+	float: left;
+	padding: .3em .8em;
+	color: #fff;
+	text-decoration: none;
+}
+
+.controller a::before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 120px;
+	height: 28px;
+	background: #FC4A54;
+	transform: skew(26deg);
+}
+
+.controller a.on::before {
+	background: #721921;
+}
+
+.controller a:hover::before,
+.controller a:focus::before {
+	background: #991425;
+}
+
+.controller a:focus {
+	outline: none;
 }

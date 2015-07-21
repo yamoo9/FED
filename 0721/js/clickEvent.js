@@ -30,10 +30,11 @@ var viewportHeight = html.clientHeight;
 // document.onclick = wallpaperInit;
 
 // 함수 실행
-wallpaperInit();
+// wallpaperInit();
 
 // 월페이퍼 초기화
 function wallpaperInit() {
 	// console.log('document clicked');
 	wallpaper.style.cssText = 'height: ' + viewportHeight + 'px; background: url(images/wallpaper-01.jpg) no-repeat center top; background-size: cover;';
+	return false;
 };
