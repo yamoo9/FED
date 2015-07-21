@@ -41,7 +41,8 @@ var posts = app.getElementsByClassName('post'); // IE 9+
 // console.log(posts);
 
 // 원하는 대상(span.target)을 찾는 코드
-var first_target = posts[0].getElementsByClassName('target')[0];
+var first_target  = posts[0].getElementsByClassName('target')[0];
+var second_target = posts[1].getElementsByClassName('target')[0];
 
 // 요소노드의 첫번째 자식노드(텍스트노드)의 노드 값을 출력
 // console.log(first_target.firstChild.nodeValue);
@@ -50,5 +51,19 @@ var first_target = posts[0].getElementsByClassName('target')[0];
 // 2. 대상 조작 (선언 구문 내에서 대상을 꾸밉니다.)
 // 3. 언제? 조작을 할 것인가?
 first_target.onmouseenter = function() {
-	first_target.className = 'first-target';
+	this.className = 'first-target';
+};
+
+first_target.onclick = function() {
+	this.style.cssText = 'color:#468966; position:absolute; top:0; right:0; z-index:10000;';
+	// this.style.color    = '#468966';
+	// this.style.position = 'absolute';
+	// this.style.top      = '0px';
+	// this.style.right    = '0px';
+	// this.style.zIndex   = '10000';
+};
+
+second_target.onclick = function() {
+	this.style.backgroundColor = '#FE4940';
+	this.style.color = '#fff';
 };
