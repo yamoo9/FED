@@ -10,62 +10,63 @@ body {
 #background-group {
 	background: #FC414B;
 }
-
 #background-group [class^="bg-area"] {
 	position: relative;
 	float: left;
 	width: 50%;
 	height: 50%;
 	text-align: center;
+	transition: all 0.4s cubic-bezier(0.950, 0.050, 0.795, 0.035);
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
-	transition: all 0.4s cubic-bezier(0.950, 0.050, 0.795, 0.035);
 }
-
 #background-group  .filter-off {
 	-webkit-filter: grayscale(0%);
 	filter: grayscale(0%);
 }
-
 #background-group [class^="bg-area"]::before {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	font-size: 40px;
 	color: #fff;
+	font-size: 40px;
 	text-shadow: 0 0 3px #3A0099;
 	transform: translate(-50%, -50%);
 }
-
-#background-group :nth-child(1) {
+#background-group:nth-child(1) {
 	background: url(../images/wallpaper-01.jpg) no-repeat center;
 	background-size: cover;
 }
-#background-group :nth-child(2) {
+#background-group:nth-child(2) {
 	background: url(../images/wallpaper-02.jpg) no-repeat center;
 	background-size: cover;
 }
-#background-group :nth-child(3) {
+#background-group:nth-child(3) {
 	background: url(../images/wallpaper-03.jpg) no-repeat center;
 	background-size: cover;
 }
-#background-group :nth-child(4) {
+#background-group:nth-child(4) {
 	background: url(../images/wallpaper-04.jpg) no-repeat center;
 	background-size: cover;
 }
-
-#background-group :nth-child(1)::before { content: 'Card A'; }
-#background-group :nth-child(2)::before { content: 'Card B'; }
-#background-group :nth-child(3)::before { content: 'Card C'; }
-#background-group :nth-child(4)::before { content: 'Card D'; }
-
+#background-group:nth-child(1)::before {
+	content: "Card A";
+}
+#background-group:nth-child(2)::before {
+	content: "Card B";
+}
+#background-group:nth-child(3)::before {
+	content: "Card C";
+}
+#background-group:nth-child(4)::before {
+	content: "Card D";
+}
 
 /**
  * --------------------------------
  * #background-control
  * --------------------------------
  */
-
 #background-control {
 	position: absolute;
 	z-index: 100;
@@ -73,47 +74,43 @@ body {
 	left: 50%;
 	width: 300px;
 	height: 300px;
-	transform: translate(-50%, -50%) rotate(-45deg);
 	transition: all 0.4s cubic-bezier(0.600, -0.280, 0.735, 0.045);
+	transform: translate(-50%, -50%) rotate(-45deg) scale(0.1);
 }
-
 #background-control:hover {
-	transform: translate(-50%, -50%) rotate(0deg);
+	transform: translate(-50%, -50%) rotate(0deg) scale(1);
 }
-
 #background-control a {
-	box-sizing: border-box;
-	float: left;
-	text-decoration: none;
 	display: block;
+	float: left;
 	width: 50%;
 	height: 50%;
-	/*border: 1px solid rgba(255,255,255, 0.8);*/
-	box-shadow: 0 0 6px rgba(255,255,255, 0.9);
+	text-decoration: none;
+	box-sizing: border-box;
+	box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
 }
-
-#background-control :nth-child(1) {
+#background-control:nth-child(1) {
 	background: #FC4B0D;
-	border-radius: 100% 0 0 0;
 	background: url(../images/wallpaper-01.jpg) no-repeat center;
+	border-radius: 100% 0 0 0;
 	background-size: cover;
 }
-#background-control :nth-child(2) {
+#background-control:nth-child(2) {
 	background: #2FE525;
-	border-radius: 0 100% 0 0;
 	background: url(../images/wallpaper-02.jpg) no-repeat center;
+	border-radius: 0 100% 0 0;
 	background-size: cover;
 }
-#background-control :nth-child(3) {
+#background-control:nth-child(3) {
 	background: #8400FF;
-	border-radius: 0 0 0 100%;
 	background: url(../images/wallpaper-03.jpg) no-repeat center;
+	border-radius: 0 0 0 100%;
 	background-size: cover;
 }
-#background-control :nth-child(4) {
+#background-control:nth-child(4) {
 	background: #C22E4A;
-	border-radius: 0 0 100% 0;
 	background: url(../images/wallpaper-04.jpg) no-repeat center;
+	border-radius: 0 0 100% 0;
 	background-size: cover;
 }
 
@@ -123,7 +120,10 @@ body {
  * --------------------------------
  */
 .clearfix::after {
-	content: '';
+	content: "";
 	display: block;
-	clear: both; }
-.lt-ie8 .clearfix { zoom: 1; }
+	clear: both;
+}
+.lt-ie8 .clearfix {
+	zoom: 1;
+}
