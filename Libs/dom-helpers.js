@@ -27,3 +27,16 @@ function $(selector) {
 	return nodeList;
 
 }
+
+
+
+/**
+ * getStyle(설정된 스타일 속성) 함수
+ */
+function getStyle(el, prop) {
+	if ( window.getComputedStyle ) {
+		return window.getComputedStyle(el)[prop];
+	} else {
+		return el.currentStyle[prop];
+	}
+}
