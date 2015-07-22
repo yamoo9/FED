@@ -19,10 +19,10 @@ body {
 	text-align: center;
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
-	transition: all 1s ease-out;
+	transition: all 0.4s cubic-bezier(0.950, 0.050, 0.795, 0.035);
 }
 
-#background-group [class^="bg-area"]:hover {
+#background-group  .filter-off {
 	-webkit-filter: grayscale(0%);
 	filter: grayscale(0%);
 }
@@ -73,15 +73,23 @@ body {
 	left: 50%;
 	width: 300px;
 	height: 300px;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) rotate(-45deg);
+	transition: all 0.4s cubic-bezier(0.600, -0.280, 0.735, 0.045);
+}
+
+#background-control:hover {
+	transform: translate(-50%, -50%) rotate(0deg);
 }
 
 #background-control a {
+	box-sizing: border-box;
 	float: left;
 	text-decoration: none;
 	display: block;
 	width: 50%;
 	height: 50%;
+	/*border: 1px solid rgba(255,255,255, 0.8);*/
+	box-shadow: 0 0 6px rgba(255,255,255, 0.9);
 }
 
 #background-control :nth-child(1) {
