@@ -33,32 +33,32 @@ body {
 	text-shadow: 0 0 3px #3A0099;
 	transform: translate(-50%, -50%);
 }
-#background-group:nth-child(1) {
+#background-group *:nth-child(1) {
 	background: url(../images/wallpaper-01.jpg) no-repeat center;
 	background-size: cover;
 }
-#background-group:nth-child(2) {
+#background-group *:nth-child(2) {
 	background: url(../images/wallpaper-02.jpg) no-repeat center;
 	background-size: cover;
 }
-#background-group:nth-child(3) {
+#background-group *:nth-child(3) {
 	background: url(../images/wallpaper-03.jpg) no-repeat center;
 	background-size: cover;
 }
-#background-group:nth-child(4) {
+#background-group *:nth-child(4) {
 	background: url(../images/wallpaper-04.jpg) no-repeat center;
 	background-size: cover;
 }
-#background-group:nth-child(1)::before {
+#background-group *:nth-child(1)::before {
 	content: "Card A";
 }
-#background-group:nth-child(2)::before {
+#background-group *:nth-child(2)::before {
 	content: "Card B";
 }
-#background-group:nth-child(3)::before {
+#background-group *:nth-child(3)::before {
 	content: "Card C";
 }
-#background-group:nth-child(4)::before {
+#background-group *:nth-child(4)::before {
 	content: "Card D";
 }
 
@@ -89,25 +89,25 @@ body {
 	box-sizing: border-box;
 	box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
 }
-#background-control:nth-child(1) {
+#background-control *:nth-child(1) {
 	background: #FC4B0D;
 	background: url(../images/wallpaper-01.jpg) no-repeat center;
 	border-radius: 100% 0 0 0;
 	background-size: cover;
 }
-#background-control:nth-child(2) {
+#background-control *:nth-child(2) {
 	background: #2FE525;
 	background: url(../images/wallpaper-02.jpg) no-repeat center;
 	border-radius: 0 100% 0 0;
 	background-size: cover;
 }
-#background-control:nth-child(3) {
+#background-control *:nth-child(3) {
 	background: #8400FF;
 	background: url(../images/wallpaper-03.jpg) no-repeat center;
 	border-radius: 0 0 0 100%;
 	background-size: cover;
 }
-#background-control:nth-child(4) {
+#background-control *:nth-child(4) {
 	background: #C22E4A;
 	background: url(../images/wallpaper-04.jpg) no-repeat center;
 	border-radius: 0 0 100% 0;
