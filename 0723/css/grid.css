@@ -3,15 +3,17 @@ body {
 		height: 100vh;
 	}
 	.grid {
-		display: none;
-		height: 200vh;
+		/*display: none;*/
+		height: 0;
 		background: url(../images/grid-bg-pattern.png);
 		width: 960px;
 		margin-left: auto;
 		margin-right: auto;
+		transition: all 1s ease-out;
 	}
 	.grid.show {
-		display: block;
+		height: 200vh;
+		/*display: block;*/
 	}
 
 	.grid-toggle {
