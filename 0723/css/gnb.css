@@ -11,7 +11,7 @@ body {
 	display: none;
 }
 
-#gnb .on + .lv-2,
+#gnb .on > .lv-2,
 #gnb li:hover .lv-2 {
 	display: block;
 }

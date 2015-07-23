@@ -28,11 +28,8 @@ while(k < l) {
 function gnbD1Focus() {
 	// this.className = 'on';
 	// this.setAttribute('class', 'on');
-	var activeTarget = $('#gnb .on'),
-		parent = this.parentNode;
-	if(activeTarget.nodeType === 1) {
-		activeTarget.classList.remove('on');
-	}
+	collapseMenu();
+	var parent       = this.parentNode;
 	parent.classList.add('on');
 };
 // function gnbD1Blur() {
@@ -61,4 +58,20 @@ function gnbD1Focus() {
 // while(l-- > 0) {
 // 	gnb_d1_links[l].onfocus = gnbD1Action;
 // }
+
+var gnb_d1_lis = $('#gnb .lv-1 > li'),
+	gnb_d1_lis_len = gnb_d1_lis.length;
+
+while(gnb_d1_lis_len--) {
+	gnb_d1_lis[gnb_d1_lis_len].onmouseleave = collapseMenu;
+}
+
+document.onclick = collapseMenu;
+
+function collapseMenu() {
+	var target = $('#gnb .on');
+	if (target.nodeName) {
+		target.classList.remove('on');
+	}
+};
 
