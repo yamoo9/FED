@@ -27,10 +27,25 @@
 		right: 20px;
 		color: #34c0ff;
 		font-size: 32px;
+		animation: slideDownPoint 1.2s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+	}
+
+	.grid-toggle:active {
+		transform: scale(0.9);
+	}
+
+	@keyframes slideDownPoint {
+		0% {
+			top: -400px;
+		}
+		100% {
+			top: 20px;
+		}
 	}
 
 	</style>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script src="../Libs/dom-helpers.js"></script>
 </head>
 <body>
 
@@ -43,5 +58,6 @@
 	<!-- 그리드 시스템 가이드 뷰 -->
 	<div class="grid"></div>
 
+<script src="js/grid.js"></script>
 </body>
 </html>
