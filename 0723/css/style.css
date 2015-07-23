@@ -11,10 +11,12 @@ html, body {
 body {
 	position: relative;
 	margin: 0;
-	background: linear-gradient(hsla(346, 100%, 31%, 0.4), hsla(346, 100%, 31%, 0.4)), url('https://download.unsplash.com/photo-1433840496881-cbd845929862');
+	background: linear-gradient(hsla(346, 100%, 31%, 0.4), hsla(346, 100%, 31%, 0.4)),
+	url('https://download.unsplash.com/photo-1433840496881-cbd845929862');
 	background-size: cover;
 	color: #fff;
 }
+
 /*
 body::after {
 	content: '';
