@@ -40,3 +40,22 @@ function getStyle(el, prop) {
 		return el.currentStyle[prop];
 	}
 }
+
+/**
+ * --------------------------------
+ * CSS3 신기능을 검수하는 헬퍼함수
+ * --------------------------------
+ */
+function checkCSS3Feature(feature) {
+	var html = $('html'),
+		body = $('body');
+	if ( feature in body.style ) {
+		var html_old_class = html.getAttribute('class');
+		// 조건이 참이면 실행되는 결과
+		html.setAttribute('class', html_old_class + ' ' + feature);
+	} else {
+		var html_old_class = html.getAttribute('class');
+		// 조건이 거짓이면 실행되는 결과
+		html.setAttribute('class', html_old_class + ' ' + 'no-'+feature);
+	}
+}
