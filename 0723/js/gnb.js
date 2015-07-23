@@ -16,17 +16,30 @@ var count = 0;
  * --------------------------------
  */
 
-// var k = 0,
-// 	l = gnb_d1_links.length;
+var k = 0,
+	l = gnb_d1_links.length;
 
-// while(k < l) {
-// 	gnb_d1_links[k].onfocus = gnbD1Action;
-// 	k++;
-// }
+while(k < l) {
+	gnb_d1_links[k].onfocus = gnbD1Focus;
+	// gnb_d1_links[k].onblur = gnbD1Blur;
+	k++;
+}
 
-function gnbD1Action() {
-	console.log(this.textContent);
+function gnbD1Focus() {
+	// this.className = 'on';
+	// this.setAttribute('class', 'on');
+	var activeTarget = $('#gnb .on'),
+		parent = this.parentNode;
+	if(activeTarget.nodeType === 1) {
+		activeTarget.classList.remove('on');
+	}
+	parent.classList.add('on');
 };
+// function gnbD1Blur() {
+// 	// this.className = '';
+// 	// this.setAttribute('class', '');
+// 	this.classList.remove('on');
+// };
 
 /**
  * --------------------------------
