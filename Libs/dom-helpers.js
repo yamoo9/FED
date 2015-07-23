@@ -59,3 +59,21 @@ function checkCSS3Feature(feature) {
 		html.setAttribute('class', html_old_class + ' ' + 'no-'+feature);
 	}
 }
+
+/**
+ * --------------------------------
+ * 브라우저 식별자로 대상을 구분하는 헬퍼함수
+ * --------------------------------
+ */
+
+function checkUserAgent(device_name) {
+	var userAgent = navigator.userAgent.toLowerCase(),
+		html      = $('html');
+	if ( userAgent.indexOf(device_name) > -1 ) {
+		var html_old_class = html.getAttribute('class');
+		html.setAttribute('class', html_old_class + ' ' + device_name);
+	}
+}
+
+
+
