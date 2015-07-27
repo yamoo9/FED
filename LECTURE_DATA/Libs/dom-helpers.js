@@ -50,8 +50,11 @@ function find(parentEl, childSelector) {
  */
 function children(parentEl, childrenSelector) {
 	var childEl     = find(parentEl, childrenSelector),
-		childEl_len = childEl.length,
+		childEl_len = childEl ? childEl.length : null,
 		els         = []; // 배열
+
+	if (!childEl_len) { return childEl; }
+
 	while(childEl_len--) {
 		var el = childEl[childEl_len];
 		if (parentEl === el.parentNode) {
@@ -95,10 +98,56 @@ function hasClass(el, className) {
  * ----------------------------------------------------------------------
  */
 function addClass(el, className) {
+	validate( isElement(el), '첫번째 전달인자는 DOM 요소노드여야만 합니다.' );
+	validate( isString(className), '두번째 전달인자 값은 문자여야만 합니다.' );
+
 	if ( !hasClass(el, className) ) {
 		var oldClasses = attr(el, 'class') || '';
 		el.setAttribute( 'class', (oldClasses + ' ' + className).trim() );
 	}
+}
+
+/**
+ * ----------------------------------------------------------------------
+ * removeClass() 함수
+ * removeClass(el, className)
+ * ----------------------------------------------------------------------
+ */
+function removeClass(el, className) {
+	validate( isElement(el), '첫번째 전달인자는 DOM 요소노드여야만 합니다.' );
+	validate( isString(className), '두번째 전달인자 값은 문자여야만 합니다.' );
+
+	if ( hasClass(el, className) ) {
+		var changeValue = attr(el, 'class').replace(className, '').trim();
+		attr(el, 'class', changeValue);
+	}
+}
+
+/**
+ * ----------------------------------------------------------------------
+ * toggleClass() 함수
+ * toggleClass(el, className)
+ * ----------------------------------------------------------------------
+ */
+function toggleClass(el, className) {
+	hasClass(el, className) ?
+		removeClass(el, className) :
+		addClass(el, className);
+}
+
+/**
+ * ----------------------------------------------------------------------
+ * radioClass() 함수
+ * radioClass(el, className)
+ * ----------------------------------------------------------------------
+ */
+function radioClass(el, className) {
+	var parent = el.parentNode,
+		target = children(parent, '.'+className);
+	if (target) {
+		removeClass(target, className);
+	}
+	addClass(el, className);
 }
 
 /**
@@ -112,7 +161,7 @@ function attr(el, prop, value) {
 	validate(isElement(el), '첫번째 인자는 요소노드여야 함.');
 	validate(isString(prop), '두번째 인자는 문자여야 함.');
 
-	if( !value ) {
+	if( !value && value !== '' ) {
 		return el.getAttribute(prop);
 	} else {
 		el.setAttribute(prop, value);

@@ -66,7 +66,5 @@ for( var i=0, l=gnb_expand_handle.length, handle; i<l; i++ ) {
 
 // 메뉴 펼침 함수
 function expandMenu() {
-	// this.parentNode.className = 'on';
-	// this.parentNode.setAttribute('class', 'on');
-	// this.parentNode.classList.add('on');
+	radioClass(this.parentNode, 'on');
 }
