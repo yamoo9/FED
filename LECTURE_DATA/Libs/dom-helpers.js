@@ -10,8 +10,8 @@ function $(selector, context) {
 
 	// 유효성 검사
 	// validate(조건, 조건이 참이면 에러를 띄우는)
-	validate( !isString(selector), '첫번째 전달인자는 문자열이어야 합니다.' );
-	validate( context && !isElement(context), '두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.' );
+	validate( isString(selector), '첫번째 전달인자는 문자열이어야 합니다.' );
+	validate( context && isElement(context), '두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.' );
 
 	// 첫번째 인자(argument): 문자열
 	// if ( !isString(selector) ) {
@@ -68,6 +68,19 @@ function find(parentEl, childSelector) {
 	}
 }
 
+// function findAll(list, childSelector) {
+// 	validate( isElement(list) || isNodeList(list), 'DOM 요소노드 또는 노드리스트여야만 합니다.' );
+// 	if (isElement(list)) {
+// 		return list;
+// 	} else {
+// 		var listSet = [];
+// 		for(var i=list.length; i<-1;i++) {
+// 			listSet.add(find(list[i], childSelector));
+// 		}
+// 		return listSet;
+// 	}
+// }
+
 /**
  * --------------------------------
  * chilren() 함수
@@ -75,11 +88,9 @@ function find(parentEl, childSelector) {
  * --------------------------------
  */
 function children(parentEl, childrenSelector) {
-
 	var childEl     = find(parentEl, childrenSelector),
 		childEl_len = childEl.length,
 		els         = []; // 배열
-
 	while(childEl_len--) {
 		var el = childEl[childEl_len];
 		if (parentEl === el.parentNode) {
@@ -87,11 +98,25 @@ function children(parentEl, childrenSelector) {
 			els.push(el);
 		}
 	}
-
 	return els.length === 0 ? null : els.length === 1 ? els[0] : els;
-
 }
 
+/**
+ * ======================================================================
+ * 조작(Manipulation)
+ * ======================================================================
+ */
+
+/**
+ * --------------------------------
+ * hasClass() 함수
+ * --------------------------------
+ */
+// hasClass(el, 'on'); // true, false
+function hasClass(el, className) {
+	validate( isElement(el), '첫번째 전달인자는 DOM 요소노드여야만 합니다.' );
+	validate( isString(className), '두번째 전달인자 값은 문자여야만 합니다.' );
+}
 
 /**
  * ----------------------------------------------------------------------
@@ -175,20 +200,32 @@ function isObject(obj) {
 	return typeof obj === 'object' && !obj.push;
 }
 
+/**
+ * --------------------------------
+ * isElement() 헬퍼 함수
+ * isNodeList() 헬퍼 함수
+ * 요소노드인지, 노드리스트인지 파악하는 함수
+ * --------------------------------
+ */
 function isElement(el) {
 	return el ? el.nodeType === 1 : false;
+}
+
+function isNodeList(list) {
+	return !!(list && list.length > 0 && list.item);
 }
 
 /**
  * --------------------------------
  * validate() 헬퍼 함수
- * 조건, 오류메시지
+ * 전달인자 [조건, 오류메시지]
  * --------------------------------
  */
 function validate(condition, error_msg) {
-	if(condition) {
-		console.error(error_msg)
-		return; // 함수 종료
+	if(typeof condition !== 'undefined' && !condition) {
+		throw new TypeError(error_msg);
+		// console.error(error_msg)
+		// return; // 함수 종료
 	}
 }
 

@@ -30,10 +30,7 @@
  */
 var gnb                   = $('#gnb'), // Selecting
 	// gnb_expand_handle     = find(gnb, '.expand-handle'), // Traversing
-	gnb_expand_handle     = $('.expand-handle', gnb),
-	gnb_expand_handle_len = gnb_expand_handle.length;
-
-console.log(gnb_expand_handle);
+	gnb_expand_handle     = $('.expand-handle', gnb);
 
 /**
  * ================================
@@ -47,3 +44,29 @@ console.log(gnb_expand_handle);
  * expandMenu()
  * collapseMenu()
  */
+// var gnb_expand_handle_len = gnb_expand_handle.length;
+
+// while( gnb_expand_handle_len-- ) {
+// 	var handle = gnb_expand_handle[gnb_expand_handle_len];
+// 	console.log(handle);
+// }
+
+for( var i=0, l=gnb_expand_handle.length, handle; i<l; i++ ) {
+	// gnb_expand_handle의 개별 아이템 참조 변수
+	handle = gnb_expand_handle[i];
+	// 각 핸들에 이벤트 연결 → 함수(핸들러)
+	handle.onfocus = expandMenu;
+}
+
+/**
+ * --------------------------------
+ * 이벤트 핸들러(함수)
+ * --------------------------------
+ */
+
+// 메뉴 펼침 함수
+function expandMenu() {
+	// this.parentNode.className = 'on';
+	// this.parentNode.setAttribute('class', 'on');
+	// this.parentNode.classList.add('on');
+}
