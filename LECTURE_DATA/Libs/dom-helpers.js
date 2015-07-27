@@ -9,16 +9,22 @@
 function $(selector, context) {
 
 	// 유효성 검사
+	// validate(조건, 조건이 참이면 에러를 띄우는)
+	validate( !isString(selector), '첫번째 전달인자는 문자열이어야 합니다.' );
+	validate( context && !isElement(context), '두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.' );
+
 	// 첫번째 인자(argument): 문자열
-	if (typeof selector !== 'string') {
-		// throw new TypeError('message');
-		console.error('첫번째 전달인자는 문자열이어야 합니다.');
-	}
+	// if ( !isString(selector) ) {
+	// 	// throw new TypeError('message');
+	// 	console.error('첫번째 전달인자는 문자열이어야 합니다.');
+	// 	return; // 함수 종료
+	// }
 
 	// 두번째 인자: DOM 객체(요소노드, 1, nodeName)
-	if ( context && context.nodeType !== 1 ) {
-		console.error('두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.');
-	}
+	// if ( context && isElement(context) ) {
+	// 	console.error('두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.');
+	// 	return;
+	// }
 
 	// 함수 내부 지역 변수 nodeList에 document.querySelectorAll() 방법을 사용하여
 	// 전달받은 인자(매개변수) selector에 해당되는 DOM 객체를 찾아서 참조합니다.
@@ -69,6 +75,7 @@ function find(parentEl, childSelector) {
  * --------------------------------
  */
 function children(parentEl, childrenSelector) {
+
 	var childEl     = find(parentEl, childrenSelector),
 		childEl_len = childEl.length,
 		els         = []; // 배열
@@ -168,6 +175,21 @@ function isObject(obj) {
 	return typeof obj === 'object' && !obj.push;
 }
 
+function isElement(el) {
+	return el ? el.nodeType === 1 : false;
+}
 
+/**
+ * --------------------------------
+ * validate() 헬퍼 함수
+ * 조건, 오류메시지
+ * --------------------------------
+ */
+function validate(condition, error_msg) {
+	if(condition) {
+		console.error(error_msg)
+		return; // 함수 종료
+	}
+}
 
 
