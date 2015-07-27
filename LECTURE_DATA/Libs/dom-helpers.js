@@ -16,7 +16,7 @@ function $(selector, context) {
 	}
 
 	// 두번째 인자: DOM 객체(요소노드, 1, nodeName)
-	if ( context && contenxt.nodeType !== 1 ) {
+	if ( context && context.nodeType !== 1 ) {
 		console.error('두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.');
 	}
 
@@ -132,6 +132,42 @@ function checkUserAgent(device_name) {
 		html.setAttribute('class', html_old_class + ' ' + device_name);
 	}
 }
+
+/**
+ * --------------------------------
+ * 유효성 검사 헬퍼 함수
+ * isNumber()
+ * isString()
+ * isBoolean()
+ * isFunction()
+ * isArray()
+ * isObject()
+ * --------------------------------
+ */
+function isNumber(num) {
+	return typeof num === 'number';
+}
+
+function isString(str) {
+	return typeof str === 'string';
+}
+
+function isBoolean(boo) {
+	return typeof boo === 'boolean';
+}
+
+function isFunction(fnc) {
+	return typeof fnc === 'function';
+}
+
+function isArray(arr) {
+	return !isObject(arr);
+}
+
+function isObject(obj) {
+	return typeof obj === 'object' && !obj.push;
+}
+
 
 
 
