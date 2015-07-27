@@ -108,14 +108,60 @@ function children(parentEl, childrenSelector) {
  */
 
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * hasClass() 함수
- * --------------------------------
+ * hasClass(el, 'on'); // true, false
+ * ----------------------------------------------------------------------
  */
-// hasClass(el, 'on'); // true, false
 function hasClass(el, className) {
 	validate( isElement(el), '첫번째 전달인자는 DOM 요소노드여야만 합니다.' );
 	validate( isString(className), '두번째 전달인자 값은 문자여야만 합니다.' );
+
+	// var classList = el.getAttribute('class');
+	var classList = attr(el, 'class');
+
+	var _classList = (classList || '').split(' ');
+
+	for(var i=_classList.length-1; i>-1; i--) {
+		if ( _classList[i] === className ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * --------------------------------
+ * addClass() 함수
+ * addClass(el, className)
+ * --------------------------------
+ */
+function addClass(el, className) {
+	if ( !hasClass(el, className) ) {
+		var oldClasses = attr(el, 'class') || '';
+		el.setAttribute( 'class', (oldClasses + ' ' + className).trim() );
+	}
+}
+
+/**
+ * --------------------------------
+ * attr()
+ * attr(el, key)        // GET
+ * attr(el, key, value) // SET
+ * --------------------------------
+ */
+function attr(el, prop, value) {
+	validate(isElement(el), '첫번째 인자는 요소노드여야 함.');
+	validate(isString(prop), '두번째 인자는 문자여야 함.');
+	// validate(isString(value), '세번째 인자는 문자여야 함.');
+
+	if( !value ) {
+		// GET
+		return el.getAttribute(prop);
+	} else {
+		// SET
+		el.setAttribute(prop, value);
+	}
 }
 
 /**
@@ -140,13 +186,15 @@ function checkCSS3Feature(feature) {
 	var html = $('html'),
 		body = $('body');
 	if ( feature in body.style ) {
-		var html_old_class = html.getAttribute('class');
+		var html_old_class = attr(html, 'class');
 		// 조건이 참이면 실행되는 결과
-		html.setAttribute('class', html_old_class + ' ' + feature);
+		// attr(html, 'class', html_old_class + ' ' + feature);
+		addClass(html, feature);
 	} else {
-		var html_old_class = html.getAttribute('class');
+		var html_old_class = attr(html, 'class');
 		// 조건이 거짓이면 실행되는 결과
-		html.setAttribute('class', html_old_class + ' ' + 'no-'+feature);
+		// html.setAttribute('class', html_old_class + ' ' + 'no-'+feature);
+		addClass(html, 'no-' + feature);
 	}
 }
 
@@ -160,8 +208,9 @@ function checkUserAgent(device_name) {
 	var userAgent = navigator.userAgent.toLowerCase(),
 		html      = $('html');
 	if ( userAgent.indexOf(device_name) > -1 ) {
-		var html_old_class = html.getAttribute('class');
-		html.setAttribute('class', html_old_class + ' ' + device_name);
+		var html_old_class = attr(html, 'class');
+		// html.setAttribute('class', html_old_class + ' ' + device_name);
+		addClass(html, device_name);
 	}
 }
 
