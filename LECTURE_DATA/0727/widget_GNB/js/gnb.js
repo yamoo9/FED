@@ -44,12 +44,6 @@ var gnb                   = $('#gnb'), // Selecting
  * expandMenu()
  * collapseMenu()
  */
-// var gnb_expand_handle_len = gnb_expand_handle.length;
-
-// while( gnb_expand_handle_len-- ) {
-// 	var handle = gnb_expand_handle[gnb_expand_handle_len];
-// 	console.log(handle);
-// }
 
 for( var i=0, l=gnb_expand_handle.length, handle; i<l; i++ ) {
 	// gnb_expand_handle의 개별 아이템 참조 변수
