@@ -1,59 +1,33 @@
 /**
+ * ======================================================================
+ * 선택(Selecting) | 탐색(Traversing)
+ * ======================================================================
+ */
+
+/**
  * ----------------------------------------------------------------------
+ * $() 함수
  * 대상을 손쉽게 선택할 수 있는 선택자 헬퍼 함수
- * $함수 : CSS 선택자를 활용하여 문서 객체를 선택하는데 도움을 주는 함수
- * @param  {[string]} selector [CSS 선택자 표현식]
- * @return {[Node|NodeList]}   [문서객체, 객체집합을 반환]
  * ----------------------------------------------------------------------
  */
 function $(selector, context) {
 
-	// 유효성 검사
-	// validate(조건, 조건이 참이면 에러를 띄우는)
 	validate( isString(selector), '첫번째 전달인자는 문자열이어야 합니다.' );
 	validate( context && isElement(context), '두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.' );
 
-	// 첫번째 인자(argument): 문자열
-	// if ( !isString(selector) ) {
-	// 	// throw new TypeError('message');
-	// 	console.error('첫번째 전달인자는 문자열이어야 합니다.');
-	// 	return; // 함수 종료
-	// }
-
-	// 두번째 인자: DOM 객체(요소노드, 1, nodeName)
-	// if ( context && isElement(context) ) {
-	// 	console.error('두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.');
-	// 	return;
-	// }
-
-	// 함수 내부 지역 변수 nodeList에 document.querySelectorAll() 방법을 사용하여
-	// 전달받은 인자(매개변수) selector에 해당되는 DOM 객체를 찾아서 참조합니다.
-	// 그리고 수집된 대상(노드리스트)의 개수를 파악하여 nodeList_length 변수에 참조합니다.
-
-	// if(!context) {
-	// 	context = document;
-	// }
-
-	var nodeList = (context || document).querySelectorAll(selector),
+	var nodeList        = (context || document).querySelectorAll(selector),
 		nodeList_length = nodeList.length;
 
-	// 만약 nodeList_length 변수가 참조하고 있는 값이 1이라면...
-	if ( nodeList_length === 1 ) {
-		// 수집된 nodeList의 첫번째 인덱스에 해당되는 요소를 반환합니다.
-		return nodeList[0];
-	}
-
-	// 위 조건이 거짓이라면 수집된 nodeList를 그대로 반환합니다.
-	return nodeList;
+	return nodeList_length === 1 ? nodeList[0] : nodeList;
 
 }
 
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * find() 함수
  * 전달된 첫번째 인자(부모 요소노드)에서
  * 자손(CSS 선택자) 요소노드를 찾는 함수
- * --------------------------------
+ * ----------------------------------------------------------------------
  */
 function find(parentEl, childSelector) {
 	var children     = parentEl.querySelectorAll(childSelector),
@@ -68,24 +42,11 @@ function find(parentEl, childSelector) {
 	}
 }
 
-// function findAll(list, childSelector) {
-// 	validate( isElement(list) || isNodeList(list), 'DOM 요소노드 또는 노드리스트여야만 합니다.' );
-// 	if (isElement(list)) {
-// 		return list;
-// 	} else {
-// 		var listSet = [];
-// 		for(var i=list.length; i<-1;i++) {
-// 			listSet.add(find(list[i], childSelector));
-// 		}
-// 		return listSet;
-// 	}
-// }
-
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * chilren() 함수
  * children(parentEl, childrenSelector)
- * --------------------------------
+ * ----------------------------------------------------------------------
  */
 function children(parentEl, childrenSelector) {
 	var childEl     = find(parentEl, childrenSelector),
@@ -94,7 +55,6 @@ function children(parentEl, childrenSelector) {
 	while(childEl_len--) {
 		var el = childEl[childEl_len];
 		if (parentEl === el.parentNode) {
-			// 조건이 참일 경우, 배열에 원소 수집(Collection)
 			els.push(el);
 		}
 	}
@@ -110,20 +70,18 @@ function children(parentEl, childrenSelector) {
 /**
  * ----------------------------------------------------------------------
  * hasClass() 함수
- * hasClass(el, 'on'); // true, false
+ * hasClass(el, 'on');
  * ----------------------------------------------------------------------
  */
 function hasClass(el, className) {
 	validate( isElement(el), '첫번째 전달인자는 DOM 요소노드여야만 합니다.' );
 	validate( isString(className), '두번째 전달인자 값은 문자여야만 합니다.' );
 
-	// var classList = el.getAttribute('class');
 	var classList = attr(el, 'class');
+	classList = (classList || '').split(' ');
 
-	var _classList = (classList || '').split(' ');
-
-	for(var i=_classList.length-1; i>-1; i--) {
-		if ( _classList[i] === className ) {
+	for(var i=classList.length-1; i>-1; i--) {
+		if ( classList[i] === className ) {
 			return true;
 		}
 	}
@@ -131,10 +89,10 @@ function hasClass(el, className) {
 }
 
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * addClass() 함수
  * addClass(el, className)
- * --------------------------------
+ * ----------------------------------------------------------------------
  */
 function addClass(el, className) {
 	if ( !hasClass(el, className) ) {
@@ -144,22 +102,19 @@ function addClass(el, className) {
 }
 
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * attr()
  * attr(el, key)        // GET
  * attr(el, key, value) // SET
- * --------------------------------
+ * ----------------------------------------------------------------------
  */
 function attr(el, prop, value) {
 	validate(isElement(el), '첫번째 인자는 요소노드여야 함.');
 	validate(isString(prop), '두번째 인자는 문자여야 함.');
-	// validate(isString(value), '세번째 인자는 문자여야 함.');
 
 	if( !value ) {
-		// GET
 		return el.getAttribute(prop);
 	} else {
-		// SET
 		el.setAttribute(prop, value);
 	}
 }
@@ -177,6 +132,13 @@ function getStyle(el, prop) {
 	}
 }
 
+
+/**
+ * ======================================================================
+ * 유틸리티(Utility)
+ * ======================================================================
+ */
+
 /**
  * ----------------------------------------------------------------------
  * CSS3 신기능을 검수하는 헬퍼함수
@@ -186,14 +148,8 @@ function checkCSS3Feature(feature) {
 	var html = $('html'),
 		body = $('body');
 	if ( feature in body.style ) {
-		var html_old_class = attr(html, 'class');
-		// 조건이 참이면 실행되는 결과
-		// attr(html, 'class', html_old_class + ' ' + feature);
 		addClass(html, feature);
 	} else {
-		var html_old_class = attr(html, 'class');
-		// 조건이 거짓이면 실행되는 결과
-		// html.setAttribute('class', html_old_class + ' ' + 'no-'+feature);
 		addClass(html, 'no-' + feature);
 	}
 }
@@ -208,14 +164,12 @@ function checkUserAgent(device_name) {
 	var userAgent = navigator.userAgent.toLowerCase(),
 		html      = $('html');
 	if ( userAgent.indexOf(device_name) > -1 ) {
-		var html_old_class = attr(html, 'class');
-		// html.setAttribute('class', html_old_class + ' ' + device_name);
 		addClass(html, device_name);
 	}
 }
 
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * 유효성 검사 헬퍼 함수
  * isNumber()
  * isString()
@@ -223,7 +177,7 @@ function checkUserAgent(device_name) {
  * isFunction()
  * isArray()
  * isObject()
- * --------------------------------
+ * ----------------------------------------------------------------------
  */
 function isNumber(num) {
 	return typeof num === 'number';
@@ -250,11 +204,11 @@ function isObject(obj) {
 }
 
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * isElement() 헬퍼 함수
  * isNodeList() 헬퍼 함수
  * 요소노드인지, 노드리스트인지 파악하는 함수
- * --------------------------------
+ * ----------------------------------------------------------------------
  */
 function isElement(el) {
 	return el ? el.nodeType === 1 : false;
@@ -265,16 +219,14 @@ function isNodeList(list) {
 }
 
 /**
- * --------------------------------
+ * ----------------------------------------------------------------------
  * validate() 헬퍼 함수
  * 전달인자 [조건, 오류메시지]
- * --------------------------------
+ * ----------------------------------------------------------------------
  */
 function validate(condition, error_msg) {
 	if(typeof condition !== 'undefined' && !condition) {
 		throw new TypeError(error_msg);
-		// console.error(error_msg)
-		// return; // 함수 종료
 	}
 }
 
