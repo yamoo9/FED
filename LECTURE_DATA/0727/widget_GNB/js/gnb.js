@@ -29,7 +29,8 @@
  * CSS 선택자를 활용하여 문서 객체 참조
  */
 var gnb                   = $('#gnb'), // Selecting
-	gnb_expand_handle     = find(gnb, '.expand-handle'), // Traversing
+	// gnb_expand_handle     = child(gnb, '.expand-handle'), // Traversing
+	gnb_expand_handle     = $('.expand-handle', gnb), // Traversing
 	gnb_expand_handle_len = gnb_expand_handle.length;
 
 // console.log(gnb_expand_handle);

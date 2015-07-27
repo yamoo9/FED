@@ -6,12 +6,29 @@
  * @return {[Node|NodeList]}   [문서객체, 객체집합을 반환]
  * ----------------------------------------------------------------------
  */
-function $(selector) {
+function $(selector, context) {
+
+	// 유효성 검사
+	// 첫번째 인자(argument): 문자열
+	if (typeof selector !== 'string') {
+		// throw new TypeError('message');
+		console.error('첫번째 전달인자는 문자열이어야 합니다.');
+	}
+
+	// 두번째 인자: DOM 객체(요소노드, 1, nodeName)
+	if ( context && contenxt.nodeType !== 1 ) {
+		console.error('두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.');
+	}
 
 	// 함수 내부 지역 변수 nodeList에 document.querySelectorAll() 방법을 사용하여
 	// 전달받은 인자(매개변수) selector에 해당되는 DOM 객체를 찾아서 참조합니다.
 	// 그리고 수집된 대상(노드리스트)의 개수를 파악하여 nodeList_length 변수에 참조합니다.
-	var nodeList = document.querySelectorAll(selector),
+
+	// if(!context) {
+	// 	context = document;
+	// }
+
+	var nodeList = (context || document).querySelectorAll(selector),
 		nodeList_length = nodeList.length;
 
 	// 만약 nodeList_length 변수가 참조하고 있는 값이 1이라면...
@@ -52,17 +69,19 @@ function find(parentEl, childSelector) {
  * --------------------------------
  */
 function children(parentEl, childrenSelector) {
-	var childEl = find(parentEl, childrenSelector),
-		childEl_len = childEl.length;
-
-	// console.log(childEl_len);
+	var childEl     = find(parentEl, childrenSelector),
+		childEl_len = childEl.length,
+		els         = []; // 배열
 
 	while(childEl_len--) {
 		var el = childEl[childEl_len];
 		if (parentEl === el.parentNode) {
-			return el;
+			// 조건이 참일 경우, 배열에 원소 수집(Collection)
+			els.push(el);
 		}
 	}
+
+	return els.length === 0 ? null : els.length === 1 ? els[0] : els;
 
 }
 
