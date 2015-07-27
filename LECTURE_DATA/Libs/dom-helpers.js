@@ -25,6 +25,26 @@ function $(selector) {
 
 }
 
+/**
+ * --------------------------------
+ * find() 함수
+ * 전달된 첫번째 인자(부모 요소노드)에서
+ * 자손(CSS 선택자) 요소노드를 찾는 함수
+ * --------------------------------
+ */
+function find(parentEl, childSelector) {
+	var children = parentEl.querySelectorAll(childSelector),
+		children_len = children.length;
+
+	if (children_len === 0) {
+		return null;
+	} else if ( children_len === 1 ) {
+		return children[0];
+	} else {
+		return children;
+	}
+}
+
 
 
 /**
