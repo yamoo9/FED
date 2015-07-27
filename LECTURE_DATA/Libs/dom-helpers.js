@@ -33,7 +33,7 @@ function $(selector) {
  * --------------------------------
  */
 function find(parentEl, childSelector) {
-	var children = parentEl.querySelectorAll(childSelector),
+	var children     = parentEl.querySelectorAll(childSelector),
 		children_len = children.length;
 
 	if (children_len === 0) {
@@ -45,6 +45,26 @@ function find(parentEl, childSelector) {
 	}
 }
 
+/**
+ * --------------------------------
+ * chilren() 함수
+ * children(parentEl, childrenSelector)
+ * --------------------------------
+ */
+function children(parentEl, childrenSelector) {
+	var childEl = find(parentEl, childrenSelector),
+		childEl_len = childEl.length;
+
+	// console.log(childEl_len);
+
+	while(childEl_len--) {
+		var el = childEl[childEl_len];
+		if (parentEl === el.parentNode) {
+			return el;
+		}
+	}
+
+}
 
 
 /**
