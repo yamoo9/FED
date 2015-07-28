@@ -2,12 +2,12 @@
 <!--[if !IE]><!-->
 <html lang="ko-KR" class="no-js">
 <!--<![endif]-->
-<!--[if IE 6]><html lang="ko-KR" class="ie ie6 no-js"><![endif]-->
-<!--[if IE 7]><html lang="ko-KR" class="ie ie7 no-js"><![endif]-->
-<!--[if IE 8]><html lang="ko-KR" class="ie ie8 no-js"><![endif]-->
-<!--[if IE 9]><html lang="ko-KR" class="ie ie9 no-js"><![endif]-->
+<!--[if IE 6]><html lang="ko-KR" class="ie lt-ie10 lt-ie9 lt-ie8 ie6 no-js"><![endif]-->
+<!--[if IE 7]><html lang="ko-KR" class="ie lt-ie10 lt-ie9 lt-ie8 ie7 no-js"><![endif]-->
+<!--[if IE 8]><html lang="ko-KR" class="ie lt-ie10 lt-ie9 ie8 no-js"><![endif]-->
+<!--[if IE 9]><html lang="ko-KR" class="ie lt-ie10 ie9 no-js"><![endif]-->
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta charset="UTF-8">
 <title>GNB</title>
 <link rel="stylesheet" href="css/gnb.css">
@@ -16,7 +16,7 @@
 		background: #f00;
 	}
 
-	.ie6 body {
+	.lt-ie8 body {
 		background: #ff0;
 	}
 
@@ -35,6 +35,10 @@
 </style>
 <script src="../../Libs/modernizr.js"></script>
 <script src="../../Libs/dom-helpers.js"></script>
+<script>
+	checkUserAgent('msie 10', 'ie10');
+	checkUserAgent('rv:11.0', 'ie11');
+</script>
 </head>
 <body>
 

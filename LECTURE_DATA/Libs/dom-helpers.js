@@ -311,11 +311,14 @@ function checkCSS3Feature(feature) {
  * ----------------------------------------------------------------------
  */
 
-function checkUserAgent(device_name) {
+function checkUserAgent(device_name, class_name) {
 	var userAgent = navigator.userAgent.toLowerCase(),
 		html      = $('html');
+
+	class_name = class_name || device_name;
+
 	if ( userAgent.indexOf(device_name) > -1 ) {
-		addClass(html, device_name);
+		addClass(html, class_name);
 	}
 }
 
