@@ -25,12 +25,6 @@ function append(parent, child) {
 	parent.appendChild(child);
 }
 
-// function prev(el) {
-// 	do {
-// 		el = el.previousSibling;
-// 	} while( el && el.nodeType !== 1 )
-// }
-
 function before(target, insert) {
 	parent(target).insertBefore(insert, target);
 	return insert;
@@ -106,7 +100,9 @@ function children(parentEl, childrenSelector) {
 /**
  * --------------------------------
  * first()
+ * 전달된 요소노드의 첫번째 자손 요소 반환
  * last()
+ * 전달된 요소노드의 마지막 자손 요소 반환
  * --------------------------------
  */
 function first(parent, selector) {
@@ -117,6 +113,34 @@ function last(parent, selector) {
 	var childs     = $(selector, parent),
 		childs_len = childs.length;
 	return childs[ childs_len - 1 ];
+}
+
+/**
+ * --------------------------------
+ * prev()
+ * 이전 형제 요소노드 반환
+ * next()
+ * 다음 형제 요소노드 반환
+ * --------------------------------
+ */
+function prev(el) {
+	// 유효성 검사
+	validate(isElement(el), 'DOM 요소노드를 전달해야 합니다.');
+	// IE 9+ 브라우저 신 기능 지원유무 확인 후 대상 반환
+	if (el.previousElementSibling) { return el.previousElementSibling; }
+	// IE 8- 브라우저에서 적용 가능한 크로스 브라우징 기능 구현
+	do {
+		el = el.previousSibling;
+	} while (el && el.nodeType !== 1);
+	return el;
+}
+
+function next(el) {
+	validate(isElement(el), 'DOM 요소노드를 전달해야 합니다.');
+	if (el.nextElementSibling) { return el.nextElementSibling; }
+	do { el = el.nextSibling; }
+	while (el && el.nodeType !== 1);
+	return el;
 }
 
 /**
