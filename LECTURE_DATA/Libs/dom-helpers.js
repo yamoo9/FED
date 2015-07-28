@@ -3,23 +3,42 @@
  * 생성(Creating)
  * ======================================================================
  */
-// 요소노드 생성
-var page = document.createElement('div'); // <div>
 
-// 생성한 요소에 속성 추가
-attr(page, 'id', 'page');
-attr(page, 'class', 'page');
-attr(page, 'title', '페이지 요소');
-attr(page, 'data-ui-element', true);
+function createEl(elName) {
+	validate(isString(elName), '문자열을 넣어주셔야 합니다.');
+	return document.createElement(elName);
+}
 
-console.log(attr(page, 'id'));
-console.log(attr(page, 'class'));
-console.log(attr(page, 'title'));
-console.log(attr(page, 'data-ui-element'));
+function createText(content) {
+	validate(isString(content), '문자열을 넣어주셔야 합니다.');
+	return document.createTextNode(content);
+}
 
-// 텍스트노드 생성
-// 문서(DOM)에 삽입
 
+/**
+ * ======================================================================
+ * 삽입(Inserting) 또는 이동(Moving)
+ * ======================================================================
+ */
+function append(parent, child) {
+	validate(isElement(parent) && isElement(child), '전달인자는 모두 DOM 요소노드여야 합니다.');
+	parent.appendChild(child);
+}
+
+// function prev(el) {
+// 	do {
+// 		el = el.previousSibling;
+// 	} while( el && el.nodeType !== 1 )
+// }
+
+function before(target, insert) {
+	parent(target).insertBefore(insert, target);
+	return insert;
+}
+
+function insertBefore(insert, target) {
+	return before(target, insert);
+}
 
 /**
  * ======================================================================
@@ -34,15 +53,12 @@ console.log(attr(page, 'data-ui-element'));
  * ----------------------------------------------------------------------
  */
 function $(selector, context) {
-
+	context = context || document;
 	validate( isString(selector), '첫번째 전달인자는 문자열이어야 합니다.' );
-	validate( context && isElement(context), '두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.' );
-
-	var nodeList        = (context || document).querySelectorAll(selector),
+	validate( context && (isElement(context) || context === document), '두번째 전달인자는 DOM 객체(요소노드)이어야 합니다.' );
+	var nodeList        = context.querySelectorAll(selector),
 		nodeList_length = nodeList.length;
-
 	return nodeList_length === 1 ? nodeList[0] : nodeList;
-
 }
 
 /**
@@ -101,6 +117,28 @@ function last(parent, selector) {
 	var childs     = $(selector, parent),
 		childs_len = childs.length;
 	return childs[ childs_len - 1 ];
+}
+
+/**
+ * --------------------------------
+ * parent()
+ * 전달된 요소노드 인자의 부모요소노드를 반환
+ * --------------------------------
+ */
+function parent(el, upper) {
+	// upper 초기화 및 덮어쓰기
+	upper = upper || 1;
+	// 유효성 검사
+	validate(isElement(el), '첫번째 전달인자는 DOM 요소노드를 전달해야 합니다');
+	validate(isNumber(upper), '두번째 전달인자는 숫자를 전달해야 합니다');
+	// 반복적으로 부모 요소노드를 찾음
+	do {
+		if ( el === null ) { return null; }
+		el = el.parentNode;
+	} while(--upper);
+	// 찾은 요소 노드를 반환
+	// 요소노드가 아닐 경우, null 반환
+	return el.nodeType === 1 ? el : null;
 }
 
 
@@ -272,8 +310,6 @@ function checkUserAgent(device_name) {
 
 function is(data, type) {
 
-	// validate(data, '첫번째 인자 값은 확인하고자 하는 데이터 값을 입력해주세요');
-
 	validate(isString(type), '두번째 인자 값은 문자열을 사용해야 합니다.');
 
 	switch( data.constructor ) {
@@ -369,12 +405,10 @@ function isNodeList(list) {
  * ----------------------------------------------------------------------
  */
 function validate(condition, error_msg) {
-	if(
-		condition === undefined &&
-		condition === null &&
-		condition !== 0 &&
-		condition !== ''
-	) {
+
+	if ( condition === undefined || condition === null ) {
+		condition = false;
+	} else if( !condition && condition !== 0 && condition !== '' ) {
 		throw new TypeError(error_msg);
 	}
 }

@@ -46,18 +46,24 @@ var gnb                  = $('#gnb'), // Selecting
  * collapseMenu()
  */
 
-for( var i=0, l=gnb_expand_handle.length, handle, parent; i<l; i++ ) {
+for( var i=0, l=gnb_expand_handle.length, handle, parentEl; i<l; i++ ) {
 
 	// gnb_expand_handle의 개별 아이템 참조 변수
 	handle = gnb_expand_handle[i];
-	parent = handle.parentNode;
+	parentEl = parent(handle);
 
 	// 각 핸들에 키보드(포커스) 이벤트 연결 → 함수(핸들러)
 	handle.onfocus = expandMenu;
 
+	// 마지막 handle 요소 내부 마지막 <a>에 키보드(블러) 이벤트 연결 → 함수(핸들러)
+	if( i === l-1 ) {
+		last(parentEl, 'a').onblur = collapseMenu;
+	}
+
 	// 핸들의 부모(<li>)에 마우스 이벤트 연결 → 함수(핸들러)
 	parent.onmouseenter = expandMenu;
 	parent.onmouseleave = collapseMenu;
+
 }
 
 /**
@@ -70,7 +76,7 @@ for( var i=0, l=gnb_expand_handle.length, handle, parent; i<l; i++ ) {
 function expandMenu() {
 	var _this = this.nodeName.toLowerCase();
 	if(_this === 'a') {
-		radioClass(this.parentNode, 'on');
+		radioClass( parent(this), 'on' );
 	} else {
 		radioClass(this, 'on');
 	}
@@ -78,11 +84,5 @@ function expandMenu() {
 
 // 메뉴 접힘 함수
 function collapseMenu() {
-	var i=0, l=gnb_expand_handle.length, parent;
-	for(; i<l; i+=1) {
-		parent = gnb_expand_handle[i].parentNode;
-		if( hasClass(parent, 'on') ) {
-			removeClass(parent, 'on');
-		}
-	}
+	removeClass( $('.on', gnb), 'on' );
 }
