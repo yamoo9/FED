@@ -42,3 +42,47 @@ function makeArray(pseudo_arr) {
 	// return Array.prototype.slice.call(pseudo_arr);
 	return [].slice.call(pseudo_arr);
 }
+
+
+function override(obj1, obj2) {
+	for( var key in obj2 ) {
+		obj1[key] = obj2[key];
+	}
+	return obj1;
+}
+
+function draw(user) {
+	// 수행 ....
+
+	var defaults = {
+		'where' : '화실',
+		'how'   : '핸드 드로잉으로',
+		'who'   : '나'
+	};
+
+	var config = override(defaults, user);
+	console.log(config);
+
+	var sentence = config.who +'은(는) ' + config.where + '에서 ' + config.how + ' 그림을 그립니다.';
+
+	console.log(sentence);
+
+	if ( config.callback ) {
+		config.callback();
+	}
+
+	// for ( var key in argumentMap ) {
+	// 	console.log(key, argumentMap[key]);
+	// }
+
+	// callback.call(argumentMap); // 일을 다 처리하고 실행
+}
+
+draw({
+	'where' : '화장실',
+	'how'   : '물 묻혀서 손으로',
+	'who'   : '당신',
+	'callback': function() {
+		console.log(this, ': 모든 일이 종료되었습니다.');
+	}
+});

@@ -445,7 +445,7 @@ function validate(condition, error_msg) {
  * 동일한 멤버가 있을 경우 덮어씀(Override)
  * --------------------------------
  */
-function override() {
+function override(obj1, obj2) {
 	for( var key in obj2 ) {
 		obj1[key] = obj2[key];
 	}
