@@ -12,6 +12,26 @@
 </head>
 <body>
 
-<script src="js/function-methods.js"></script>
+	<ul id="demo">
+		<li><a href="">link-1</a></li>
+		<li><a href="">link-2</a></li>
+		<li><a href="">link-3</a></li>
+		<li><a href="">link-4</a></li>
+	</ul>
+
+<!-- <script src="js/function-methods.js"></script> -->
+<script>
+var demo = document.querySelector('#demo');
+var demo_links = demo.querySelectorAll('a');
+
+for ( var i=demo_links.length-1; i > -1; i-- ) {
+	var link = demo_links[i];
+	// link.index = i;
+	link.onclick = function(index) {
+		console.log('link-'+ (index+1));
+		return false;
+	}.bind(link, i);
+}
+</script>
 </body>
 </html>

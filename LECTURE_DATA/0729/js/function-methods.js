@@ -52,6 +52,12 @@ function override(obj1, obj2) {
 	return obj1;
 }
 
+function bind(fn, owner) {
+	return function() {
+		fn.apply(owner, arguments);
+	}
+}
+
 // draw() 함수
 function draw(user, callback) {
 
@@ -78,7 +84,11 @@ function draw(user, callback) {
 
 	if (callback && typeof callback === 'function') {
 		// callback(); // this === window
+
 		callback.call(config, sentence, id); // this === config
+
+		callback.apply(config, [sentence, id]); // this === config
+
 	}
 
 	return sentence;
