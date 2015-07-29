@@ -41,9 +41,20 @@ function fn2() {
  */
 
 // 전역 공간 - window
+var memory = '김치찌개';
+
+localScope();
 
 function localScope() {
 	// 지역 공간 - 함수 내부
+
+	// var memory; // 지역 변수 memory는 호이스트 됨. undefined
+
+	if (memory)  { // 지역 변수 memory는 undefined이기에 if 조건문은 실행되지 않음.
+		var memory = '된장찌개';
+	}
+
+	console.log(memory);  // 지역 변수 memory 값 출력 undefined
 
 	function inLocalScope() {
 		// 지역 내부의 지역 공간 - 함수 내부의 함수 공간
@@ -51,3 +62,5 @@ function localScope() {
 	}
 
 }
+
+console.log(memory); // 전역 변수 '김치찌개' 출력
