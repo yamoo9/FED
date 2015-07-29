@@ -44,6 +44,7 @@ function makeArray(pseudo_arr) {
 }
 
 
+// 객체 복제 및 덮어쓰기 헬퍼 함수
 function override(obj1, obj2) {
 	for( var key in obj2 ) {
 		obj1[key] = obj2[key];
@@ -51,38 +52,35 @@ function override(obj1, obj2) {
 	return obj1;
 }
 
+// draw() 함수
 function draw(user) {
-	// 수행 ....
 
+	// 함수 기본 설정 객체
 	var defaults = {
 		'where' : '화실',
 		'how'   : '핸드 드로잉으로',
 		'who'   : '나'
 	};
 
-	var config = override(defaults, user);
-	console.log(config);
+	// 설정 객체 config 정의
+	var config = user ? override(defaults, user) : defaults;
 
+	// 문장 작성
 	var sentence = config.who +'은(는) ' + config.where + '에서 ' + config.how + ' 그림을 그립니다.';
 
-	console.log(sentence);
-
-	if ( config.callback ) {
-		config.callback();
+	if ( config.finished ) {
+		config.finished();
 	}
 
-	// for ( var key in argumentMap ) {
-	// 	console.log(key, argumentMap[key]);
-	// }
-
-	// callback.call(argumentMap); // 일을 다 처리하고 실행
+	return sentence;
 }
 
+// draw() 함수에 객체 리터럴 사용자 정의 설정 전달
 draw({
-	'where' : '화장실',
-	'how'   : '물 묻혀서 손으로',
-	'who'   : '당신',
-	'callback': function() {
-		console.log(this, ': 모든 일이 종료되었습니다.');
+	'where'    : '화장실',
+	'how'      : '물 묻혀서 손으로',
+	'who'      : '당신',
+	'finished' : function() {
+		console.log(this, '\n\n모든 일을 완료하였습니다.');
 	}
 });
