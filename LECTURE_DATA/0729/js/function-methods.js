@@ -53,7 +53,9 @@ function override(obj1, obj2) {
 }
 
 // draw() 함수
-function draw(user) {
+function draw(user, callback) {
+
+	var id = Math.round(Math.random() * 10);
 
 	// 함수 기본 설정 객체
 	var defaults = {
@@ -63,24 +65,37 @@ function draw(user) {
 	};
 
 	// 설정 객체 config 정의
-	var config = user ? override(defaults, user) : defaults;
+	var config = (user && user.constructor === Object) ?
+			override(defaults, user) :
+			defaults;
 
 	// 문장 작성
 	var sentence = config.who +'은(는) ' + config.where + '에서 ' + config.how + ' 그림을 그립니다.';
 
-	if ( config.finished ) {
+	if ( config.finished && config.finished.constructor === Function) {
 		config.finished();
+	}
+
+	if (callback && typeof callback === 'function') {
+		// callback(); // this === window
+		callback.call(config, sentence, id); // this === config
 	}
 
 	return sentence;
 }
 
-// draw() 함수에 객체 리터럴 사용자 정의 설정 전달
-draw({
+var user_settings = {
 	'where'    : '화장실',
-	'how'      : '물 묻혀서 손으로',
-	'who'      : '당신',
-	'finished' : function() {
-		console.log(this, '\n\n모든 일을 완료하였습니다.');
-	}
+	// 'how'      : '물 묻혀서 손으로',
+	// 'who'      : '당신',
+	// 'finished' : function() {
+	// 	console.log(this, '\n\n모든 일을 완료하였습니다.');
+	// }
+}
+
+// draw() 함수에 객체 리터럴 사용자 정의 설정 전달
+draw(user_settings, function(sentence, id) {
+	console.log(this, sentence);
+	sentence += '♥';
+	console.log(sentence, id);
 });
