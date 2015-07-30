@@ -1,7 +1,6 @@
-function DomHelpers(context) {
+// IIFE 패턴
+(function (global) {
 	/*! DOM Helpers © yamoo9.net, 2015 */
-
-	context = context || window;
 
 	/**
 	 * ======================================================================
@@ -308,7 +307,7 @@ function DomHelpers(context) {
 		validate( isElement(el), '첫번째 인자는 요소노드여야 함.' );
 		validate( isString(prop), '두번째 인자는 문자여야 함.' );
 		// SET
-		if( prop.match(':') ) { setStyle(el, prop, value); }
+		if( value || prop.match(':') ) { setStyle(el, prop, value); }
 		// GET
 		else { return getStyle(el, prop); }
 	}
@@ -518,16 +517,54 @@ function DomHelpers(context) {
 	}
 
 	// 외부에서 접근가능한 객체 설정
-	var openAPI = {
-		$         : $,
-		css       : css,
-		makeArray : makeArray,
-	}
+	global.yamoo9 = {
 
-	// 객체 복제
-	override(yamoo9, openAPI);
-}
+		// 생성(Creating)
+		createEl         : createEl,
+		createText       : createText,
 
-var yamoo9 = {};
+		// 삽입(Inserting) 또는 이동(Moving)
+		append           : append,
+		before           : before,
+		insertBefore     : insertBefore,
 
-DomHelpers(yamoo9);
+		// 선택(Selecting) | 탐색(Traversing)
+		$                : $,
+		find             : find,
+		children         : children,
+		first            : first,
+		last             : last,
+		prev             : prev,
+		next             : next,
+		parent           : parent,
+
+		// 조작(Manipulation)
+		css              : css,
+		attr             : attr,
+		hasClass         : hasClass,
+		addClass         : addClass,
+		removeClass      : removeClass,
+		toggleClass      : toggleClass,
+		radioClass       : radioClass,
+
+		// 감지(Detection)
+		checkCSS3Feature : checkCSS3Feature,
+		checkUserAgent   : checkUserAgent,
+
+		// 유틸리티(Utility)
+		validate         : validate,
+		isNumber         : isNumber,
+		isString         : isString,
+		isBoolean        : isBoolean,
+		isFunction       : isFunction,
+		isArray          : isArray,
+		isObject         : isObject,
+		isElement        : isElement,
+		isNodeList       : isNodeList,
+		each             : each,
+		makeArray        : makeArray,
+		override         : override,
+
+	};
+
+})(window);
