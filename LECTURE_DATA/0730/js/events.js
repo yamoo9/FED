@@ -52,30 +52,34 @@
 			y9.override(defaults, options) :
 			defaults;
 
+		function removeClass(id) {
+			y9.hasClass(config.targetEl, config.deviceId[id]) && y9.removeClass(config.targetEl, config.deviceId[id]);
+		}
+
+		function addClass(id) {
+			y9.hasClass(config.targetEl, config.deviceId[id]) || y9.addClass(config.targetEl, config.deviceId[id]);
+		}
 
 		// Javascript Closure Function
 		return function() {
-			var detectW = getDeviceWidth(),
-				target = config.targetEl;
+			var detectW = getDeviceWidth();
 
 			if ( detectW < config.mobile ) {
 				// 제거
-				y9.hasClass(target, config.deviceId.tablet) && y9.removeClass(target, config.deviceId.tablet);
-				y9.hasClass(target, config.deviceId.desktop) && y9.removeClass(target, config.deviceId.desktop);
+				y9.each(['tablet', 'desktop'], removeClass);
 				// 추가
-				y9.hasClass(target, config.deviceId.mobile) || y9.addClass(target, config.deviceId.mobile);
-			} else if( detectW >= config.mobile && detectW < config.tablet ) {
+				addClass('mobile');
+			}
+			else if( detectW >= config.mobile && detectW < config.tablet ) {
 				// 제거
-				y9.hasClass(target, config.deviceId.mobile) && y9.removeClass(target, config.deviceId.mobile);
-				y9.hasClass(target, config.deviceId.desktop) && y9.removeClass(target, config.deviceId.desktop);
+				y9.each(['mobile', 'desktop'], removeClass);
 				// 추가
-				y9.hasClass(target, config.deviceId.tablet) || y9.addClass(target, config.deviceId.tablet);
+				addClass('tablet');
 			} else {
 				// 제거
-				y9.hasClass(target, config.deviceId.mobile) && y9.removeClass(target, config.deviceId.mobile);
-				y9.hasClass(target, config.deviceId.tablet) && y9.removeClass(target, config.deviceId.tablet);
+				y9.each(['mobile', 'tablet'], removeClass);
 				// 추가
-				y9.hasClass(target, config.deviceId.desktop) || y9.addClass(target, config.deviceId.desktop);
+				addClass('desktop');
 			}
 		}
 	}
