@@ -1,3 +1,5 @@
+/*! DOM Helpers © yamoo9.net, 2015 */
+
 /**
  * ======================================================================
  * 생성(Creating)
@@ -275,11 +277,39 @@ function attr(el, prop, value) {
  * getStyle(설정된 스타일 속성) 함수
  * ----------------------------------------------------------------------
  */
-function getStyle(el, prop) {
-	if ( window.getComputedStyle ) {
+
+var getStyle;
+
+if ( window.getComputedStyle ) {
+	// W3C 표준 방식, IE 9+
+	getStyle = function(el, prop) {
 		return window.getComputedStyle(el)[prop];
-	} else {
+	}
+} else {
+	// MS전용 비표준 속성, IE 8-
+	getStyle = function(el, prop) {
 		return el.currentStyle[prop];
+	}
+}
+
+function setStyle(el, prop, value) {
+	if ( prop.match(':') ) {
+		el.style.cssText = prop;
+	} else {
+		el.style[prop] = value;
+	}
+}
+
+function css(el, prop, value) {
+	// 유효성 검사
+	validate( isElement(el), '첫번째 인자는 요소노드여야 함.' );
+	validate( isString(prop), '두번째 인자는 문자여야 함.' );
+	if(!value && !prop.match(':')) {
+		// GET
+		return getStyle(el, prop);
+	} else {
+		// SET
+		setStyle(el, prop, value);
 	}
 }
 
