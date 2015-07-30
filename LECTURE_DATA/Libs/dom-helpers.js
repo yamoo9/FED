@@ -304,15 +304,14 @@ function css(el, prop, value) {
 	// 유효성 검사
 	validate( isElement(el), '첫번째 인자는 요소노드여야 함.' );
 	validate( isString(prop), '두번째 인자는 문자여야 함.' );
-	if(!value && !prop.match(':')) {
-		// GET
-		return getStyle(el, prop);
-	} else {
+	if( prop.match(':') ) {
 		// SET
 		setStyle(el, prop, value);
+	} else {
+		// GET
+		return getStyle(el, prop);
 	}
 }
-
 
 /**
  * ======================================================================
@@ -480,4 +479,16 @@ function override(obj1, obj2) {
 		obj1[key] = obj2[key];
 	}
 	return obj1;
+}
+
+/**
+ * --------------------------------
+ * makeArray()
+ * 유사배열을 배열로 변경하여 반환하는 함수
+ * --------------------------------
+ */
+function makeArray(like_arr_obj) {
+	validate( like_arr_obj.length, '유사배열 또는 문자열을 인자로 설정해주세요.' );
+	// return Array.prototype.slice.call(like_arr_obj);
+	return [].slice.call(like_arr_obj);
 }

@@ -9,9 +9,9 @@ var app_margin_top           = css(app, 'margin-top');
 var app_header_padding       = css(app_header, 'padding');
 var app_headline_font_weight = css(app_headline, 'font-weight');
 
-// console.log(app_margin_top);
-// console.log(app_header_padding);
-// console.log(app_headline_font_weight);
+console.log(app_margin_top);
+console.log(app_header_padding);
+console.log(app_headline_font_weight);
 
 // SET
 // css(app, 'background-color', '#f06000');
