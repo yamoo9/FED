@@ -33,7 +33,11 @@
 		// 부모의 첫번째 자식을 찾아 그 앞에 삽입한다.
 		validate(isElement(parent) && isElement(child), '전달인자는 모두 DOM 요소노드여야 합니다.');
 		var firstEl = first(parent, '*');
-		before(firstEl, child);
+		if (firstEl.length === 0) {
+			append(parent, child);
+		} else {
+			before(firstEl, child);
+		}
 	}
 
 	function before(target, insert) {
@@ -124,7 +128,7 @@
 	function last(parent, selector) {
 		var childs     = $(selector, parent),
 			childs_len = childs.length;
-		return childs[ childs_len - 1 ];
+		return childs_len > 0 ? childs[ childs_len - 1 ] : childs;
 	}
 
 	/**
@@ -525,7 +529,7 @@
 	}
 
 	// 외부에서 접근가능한 객체 설정
-	global.yamoo9 = {
+	global.y9 = global.yamoo9 = {
 
 		// 생성(Creating)
 		createEl         : createEl,

@@ -52,6 +52,11 @@
 		$.attr( app, 'id', 'app' );
 		$.prepend( body, app );
 
+		// <header> 요소 생성
+		var header = $.createEl('header');
+
+		$.prepend( app, header );
+
 	}
 
 
