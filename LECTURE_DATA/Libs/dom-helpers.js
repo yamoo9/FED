@@ -29,6 +29,13 @@
 		parent.appendChild(child);
 	}
 
+	function prepend(parent, child) {
+		// 부모의 첫번째 자식을 찾아 그 앞에 삽입한다.
+		validate(isElement(parent) && isElement(child), '전달인자는 모두 DOM 요소노드여야 합니다.');
+		var firstEl = first(parent, '*');
+		before(firstEl, child);
+	}
+
 	function before(target, insert) {
 		parent(target).insertBefore(insert, target);
 		return insert;
@@ -110,7 +117,8 @@
 	 * --------------------------------
 	 */
 	function first(parent, selector) {
-		return $(selector, parent)[0];
+		var firstEl = $(selector, parent);
+		return firstEl.length > 0 ? firstEl[0] : firstEl;
 	}
 
 	function last(parent, selector) {
@@ -525,6 +533,7 @@
 
 		// 삽입(Inserting) 또는 이동(Moving)
 		append           : append,
+		prepend          : prepend,
 		before           : before,
 		insertBefore     : insertBefore,
 

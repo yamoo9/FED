@@ -46,9 +46,12 @@
 		// <body> 요소에 동적으로 콘텐츠를 만들어 붙인다.
 
 		// <div id="app"> 요소 생성
-		var app = $.createEl('div');
-		$.attr(app, 'id', 'app');
-		console.log(app);
+		var body = $.$('body'),
+			app  = $.createEl('div');
+
+		$.attr( app, 'id', 'app' );
+		$.prepend( body, app );
+
 	}
 
 
