@@ -25,13 +25,13 @@
 	 * ======================================================================
 	 */
 	function append(parent, child) {
-		validate(isElement(parent) && isElement(child), '전달인자는 모두 DOM 요소노드여야 합니다.');
+		validate(isElement(parent) && ( isElement(child) || isTextNode(child) ), '전달인자는 모두 DOM 요소노드여야 합니다.');
 		parent.appendChild(child);
 	}
 
 	function prepend(parent, child) {
 		// 부모의 첫번째 자식을 찾아 그 앞에 삽입한다.
-		validate(isElement(parent) && isElement(child), '전달인자는 모두 DOM 요소노드여야 합니다.');
+		validate(isElement(parent) && ( isElement(child) || isTextNode(child) ), '전달인자는 모두 DOM 요소노드여야 합니다.');
 		var firstEl = first(parent, '*');
 		if (firstEl.length === 0) {
 			append(parent, child);
@@ -325,6 +325,16 @@
 	}
 
 	/**
+	 * ----------------------------------------------------------------------
+	 * text() 함수
+	 * ----------------------------------------------------------------------
+	 */
+	function text(parent, content) {
+		var method = parent.textContent ? 'textContent' : 'innerText';
+		parent[method] = content;
+	}
+
+	/**
 	 * ======================================================================
 	 * 유틸리티(Utility)
 	 * ======================================================================
@@ -459,6 +469,10 @@
 		return el ? el.nodeType === 1 : false;
 	}
 
+	function isTextNode(txt) {
+		return txt ? txt.nodeType === 3 : false;
+	}
+
 	function isNodeList(list) {
 		return !!(list && list.length > 0 && list.item);
 	}
@@ -554,6 +568,7 @@
 		// 조작(Manipulation)
 		css              : css,
 		attr             : attr,
+		text             : text,
 		hasClass         : hasClass,
 		addClass         : addClass,
 		removeClass      : removeClass,
@@ -573,6 +588,7 @@
 		isArray          : isArray,
 		isObject         : isObject,
 		isElement        : isElement,
+		isTextNode       : isTextNode,
 		isNodeList       : isNodeList,
 		each             : each,
 		makeArray        : makeArray,
