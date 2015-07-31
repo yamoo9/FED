@@ -25,6 +25,7 @@ body {
 	font-size:   32px;
 	font-weight: 600;
 	text-align:  right;
+	animation: dungdung 0.6s linear infinite alternate;
 }
 
 .show-scroll-info::before {
@@ -34,4 +35,25 @@ body {
 	right: 0px;
 	width: 100px;
 	font-size: 12px;
+}
+
+#scrolled-progress-bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 3px;
+	background: #FC414B;
+}
+
+@keyframes dungdung {
+	0% {
+		transform: translateY(-2px);
+	}
+	50% {
+		transform: translateY(0px);
+	}
+	100% {
+		transform: translateY(2px);
+	}
 }

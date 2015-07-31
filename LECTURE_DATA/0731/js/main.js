@@ -46,6 +46,20 @@
 		var scrollY     = this.scrollY || global.body.scrollTop;
 		var scroll_info = $.$('.show-scroll-info');
 		$.text( scroll_info, scrollY );
+
+		actionProgressBar();
+	}
+
+	function actionProgressBar() {
+		// 허용 가능한 스크롤 높이 = 문서의 총 높이 - 현재 창 화면 높이
+		// 현재 스크롤 높이
+		// 현재 스크롤 높이 / 허용 가능한 스크롤 높이 x 100
+		var availableScrollHeight = global.body.offsetHeight - global.innerHeight,
+			currentScrollHeight = global.scrollY,
+			percent = Math.round( currentScrollHeight / availableScrollHeight * 100 ) + '%';
+
+		$.css( $.$('#scrolled-progress-bar') , 'width', percent);
+
 	}
 
 	function dynamicAddContents() {
@@ -77,6 +91,12 @@
 		$.addClass( scroll_info, 'show-scroll-info' );
 
 		$.append( global.body, scroll_info );
+
+		// <span id="scrolled-progress-bar">
+		var scrolled_progress = $.createEl('span');
+
+		$.attr( scrolled_progress, 'id', 'scrolled-progress-bar' );
+		$.prepend( global.body, scrolled_progress );
 
 	}
 
