@@ -277,9 +277,13 @@
 	 */
 	function attr(el, prop, value) {
 		validate(isElement(el), '첫번째 인자는 요소노드여야 함.');
-		validate(isString(prop), '두번째 인자는 문자여야 함.');
+		// validate(isString(prop), '두번째 인자는 문자여야 함.');
 
-		if( !value && value !== '' ) {
+		if( isObject(prop) ) {
+			each( prop, function(key, value) {
+				el.setAttribute(key, value);
+			} );
+		} else if( !value && value !== '' ) {
 			return el.getAttribute(prop);
 		} else {
 			el.setAttribute(prop, value);
@@ -528,16 +532,30 @@
 
 	if ( Array.prototype.forEach ) {
 		each = function(data, fn) {
-			data.forEach(fn);
+			validate( isFunction(fn), '두번째 전달인자는 함수여야 합니다.' );
+			if ( isArray(data) ) {
+				data.forEach(fn);
+			} else if (isObject(data)) {
+				for ( var key in data ) {
+					var value = data[key];
+					fn.call(global.y9, key, value);
+				}
+			}
 		};
 	} else {
 		each = function(data, fn) {
-			validate( isArray(data), '첫번째 전달인자는 배열이어야 합니다.' );
 			validate( isFunction(fn), '두번째 전달인자는 함수여야 합니다.' );
-			for( var i=0, l=data.length; i<l; i++ ) {
-				var item  = data[i],
-					index = i;
-				fn.call(null, item, index, data);
+			if ( isArray(data) ) {
+				for( var i=0, l=data.length; i<l; i++ ) {
+					var item  = data[i],
+						index = i;
+					fn.call(null, item, index, data);
+				}
+			} else if (isObject(data)) {
+				for ( var key in data ) {
+					var value = data[key];
+					fn.call(global.y9, key, value);
+				}
 			}
 		};
 	}

@@ -26,16 +26,17 @@
 	 */
 	function uiInit() {
 
+		// 전역 body 변수에 <body> 요소 참조
 		global.body = $.$('body');
 
 		// 동적으로 콘텐츠를 추가하는 함수 실행
 		dynamicAddContents();
 
 		// 이벤트 연결
-		this.onscroll = checkEventScroll;
-		this.onkeydown = keyDownFn;
+		this.onscroll   = checkEventScroll;
+		this.onkeydown  = keyDownFn;
 		this.onkeypress = keyDownFn;
-		this.onkeyup = keyUpFn;
+		this.onkeyup    = keyUpFn;
 
 		// 이벤트에 연결된 함수 실행
 		this.onscroll();
@@ -105,15 +106,17 @@
 	function keyDownFn(event) {
 		console.log(
 			'[['+ event.type + ']] ', event.keyCode,
-			' ─ shiftKey: ', event.shiftKey,
-			' ─ altKey: ', event.altKey);
+			' ─ [[shiftKey]] ', event.shiftKey,
+			' ─ [[altKey]] ', event.altKey
+		);
 	}
 
 	function keyUpFn(event) {
 		console.log(
 			'[['+ event.type + ']] ', event.keyCode,
-			' ─ shiftKey: ', event.shiftKey,
-			' ─ altKey: ', event.altKey);
+			' ─ [[shiftKey]] ', event.shiftKey,
+			' ─ [[altKey]] ', event.altKey
+		);
 	}
 
 
