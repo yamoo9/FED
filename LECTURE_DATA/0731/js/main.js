@@ -33,6 +33,10 @@
 
 		// 이벤트 연결
 		this.onscroll = checkEventScroll;
+		this.onkeydown = keyDownFn;
+		this.onkeypress = keyDownFn;
+		this.onkeyup = keyUpFn;
+
 		// 이벤트에 연결된 함수 실행
 		this.onscroll();
 	}
@@ -47,18 +51,16 @@
 		var scroll_info = $.$('.show-scroll-info');
 		$.text( scroll_info, scrollY );
 
-		actionProgressBar();
+		actionProgressBar.call(global, scrollY);
 	}
 
-	function actionProgressBar() {
+	function actionProgressBar(currentScrollY) {
 		// 허용 가능한 스크롤 높이 = 문서의 총 높이 - 현재 창 화면 높이
-		// 현재 스크롤 높이
-		// 현재 스크롤 높이 / 허용 가능한 스크롤 높이 x 100
+		// 진행률 = 현재 스크롤 높이 / 허용 가능한 스크롤 높이 x 100
 		var availableScrollHeight = global.body.offsetHeight - global.innerHeight,
-			currentScrollHeight = global.scrollY,
-			percent = Math.round( currentScrollHeight / availableScrollHeight * 100 ) + '%';
+			percent = Math.round( currentScrollY / availableScrollHeight * 100 ) + '%';
 
-		$.css( $.$('#scrolled-progress-bar') , 'width', percent);
+		$.css( $.$('#scrolled-progress-bar') , 'width', percent );
 
 	}
 
@@ -98,6 +100,20 @@
 		$.attr( scrolled_progress, 'id', 'scrolled-progress-bar' );
 		$.prepend( global.body, scrolled_progress );
 
+	}
+
+	function keyDownFn(event) {
+		console.log(
+			'[['+ event.type + ']] ', event.keyCode,
+			' ─ shiftKey: ', event.shiftKey,
+			' ─ altKey: ', event.altKey);
+	}
+
+	function keyUpFn(event) {
+		console.log(
+			'[['+ event.type + ']] ', event.keyCode,
+			' ─ shiftKey: ', event.shiftKey,
+			' ─ altKey: ', event.altKey);
 	}
 
 
