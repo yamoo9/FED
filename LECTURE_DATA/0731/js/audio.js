@@ -7,22 +7,23 @@
 	// console.log( $.hasClass( $.$('html'), 'audio') );
 	// console.log( !!Modernizr.audio );
 
-	var body = $.$('body'),
+	var body      = $.$('body'),
 		audioFile = $.createEl('audio');
 
 	$.append(body, audioFile);
 
-	// $.attr( audioFile, {
-	// 	'src'      : 'media/hypnotik.mp3',
-	// 	'type'     : 'audio/mpeg',
-	// 	'controls' : true,
-	// });
+	$.attr( audioFile, {
+		'src'      : 'media/hypnotik.mp3',
+		'type'     : 'audio/mpeg',
+		// 'controls' : true,
+		'autoplay' : true,
+	});
 
-	$.attr( audioFile, 'src', 'media/hypnotik.mp3' );
-	$.attr( audioFile, 'type', 'audio/mpeg' );
-	$.attr( audioFile, 'controls', true );
-	$.attr( audioFile, 'autoplay', true );
-	$.attr( audioFile, 'muted', true );
+	// $.attr( audioFile, 'src', 'media/hypnotik.mp3' );
+	// $.attr( audioFile, 'type', 'audio/mpeg' );
+	// $.attr( audioFile, 'controls', true );
+	// $.attr( audioFile, 'autoplay', true );
+	// $.attr( audioFile, 'muted', true );
 
 	audioFile.oncanplay = playAudio.bind(audioFile);
 	// document.onclick = pauseAudio.bind(audioFile);
