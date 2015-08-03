@@ -9,4 +9,7 @@
 - [07.28](DOC/07.28.md)
 - [07.29](DOC/07.29.md)
 - [07.30](DOC/07.30.md)
+- [07.31](DOC/07.31.md)
+
+## 테스트
 - [TEST v1](http://goo.gl/forms/XVPSZjfGyg)
