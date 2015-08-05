@@ -5,16 +5,31 @@
 <!--[if IE 8]><html lang="ko-KR" class="ie lt-ie10 ie8 no-js"><![endif]-->
 <!--[if IE 9]><html lang="ko-KR" class="ie lt-ie10 ie9 no-js"><![endif]-->
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta charset="UTF-8">
-<title>DOM Helper Library RE:Design</title>
-<link rel="stylesheet" href="css/style.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>DOM Helper Library RE:Design</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 
 
 <script src="js/dom-helpers.js"></script>
+<script>
+
+	var body       = document.querySelector('body'), // document.body
+		my_div     = dom.createEl('div'),
+		my_div_txt = dom.createText('div is division.');
+
+	// console.log(my_div);
+
+	dom.append(my_div, my_div_txt);
+
+	// console.log(my_div);
+
+	dom.append(body, my_div);
+
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
