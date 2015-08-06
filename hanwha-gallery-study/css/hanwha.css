@@ -46,6 +46,7 @@ body {
 .hw-gallery .hw-gallery-item a {
 	position: relative;
 	display: block;
+	height: 340px;
 	background: url('../images/bg_list_link.png') no-repeat -1px 180px;
 	text-decoration: none;
 	padding-top: 210px;

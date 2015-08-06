@@ -54,7 +54,7 @@
 		// 모델 데이터 반복 순환 처리하여 템플릿 코드 작성
 		model.forEach(function(item, index) {
 			template_code += '<li class="hw-gallery-item">';
-			template_code += 	'<a href="#">';
+			template_code += 	'<a href="'+ item.href +'">';
 			template_code += 		'<img src="'+ item.image +'" alt="">';
 			template_code += 		'<h3 class="headline">'+ textElipsis(item.headline, 10) +'</h3>';
 			template_code += 		'<p class="summary">'+ textElipsis(item.summary, 14) +'</p>';
@@ -64,6 +64,30 @@
 
 		// 작성된 템플릿 코드 template_code의 앞/뒤에 <ul>, </ul> 문자열을 추가하여 반환
 		return '<ul class="hw-gallery-container">'+ template_code +'</ul>';
+	}
+
+	gallery.innerHTML = makePagenation(model) + gallery.innerHTML;
+
+	/**
+	 * 모델 데이터의 개수를 화면에 표시할 카운트로 나눈 결과를 토대로 페이지네이션 컴포넌트를 작성하는 함수
+	 * @param  {Array} model              모델 데이터
+	 * @param  {Number} display_item_count 화면에 표시할 아이템의 개수
+	 * @return {String}                    동적으로 작성된 HTML 코드
+	 */
+	function makePagenation(model, display_item_count) {
+		// display_item_count의 초기 설정
+		display_item_count = display_item_count || 3;
+
+		// 필요한 정보를 토대로 make_count 값을 구성
+		var total      = model.length,
+			make_count = Math.ceil(total/display_item_count); // Math.ceil() 올림
+
+		// 만들어야 하는 페이지네이션 아이템 반복 처리
+		for (var i = 0, page_nation_code=''; i < make_count; i++) {
+			page_nation_code += '<a href role="button" aria-label="'+(i+1)+'번째 슬라이드"></a>';
+		};
+
+		return '<div class="hw-gallery-pagenation">' + page_nation_code + '</div>';
 	}
 
 })(window, window.hanwha_model);
