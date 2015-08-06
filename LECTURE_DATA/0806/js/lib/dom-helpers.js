@@ -1,6 +1,14 @@
+// 전역 변수 dom, IIFE 패턴으로 클로저 객체 참조
 var dom = (function(global){
-	// 지역의 변수, 함수를 참조
 
+	var tester = createEl('div'),
+		text;
+
+	function createEl(el_name) {
+		return global.document.createElement(el_name);
+	}
+
+	// 지역 변수, 함수
 	function html(targetEl, htmlCode) {
 		// GET
 		if (!htmlCode) {
@@ -12,23 +20,23 @@ var dom = (function(global){
 		}
 	}
 
-	function text(targetEl, text) {
-		// GET
-		if (!text) {
-			if (targetEl.innerText) {
+	if (tester.innerText) {
+		text = function(targetEl, text_content) {
+			if (!text_content) {
 				return targetEl.innerText;
 			} else {
-				return targetEl.textContent; // FF
+				targetEl.innerText = text_content;
 			}
 		}
-		// SET
-		else {
-			if (targetEl.innerText) {
-				targetEl.innerText = text;
+	}
+	// Firefox
+	else {
+		text = function() {
+			if (!text_content) {
+				return targetEl.textContent;
 			} else {
-				targetEl.textContent = text; // FF
+				targetEl.textContent = text_content;
 			}
-
 		}
 	}
 
