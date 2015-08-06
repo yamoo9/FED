@@ -1,0 +1,95 @@
+body {
+	margin: 100px 0;
+}
+
+/**
+ * --------------------------------
+ * .hanwha-gallery
+ * --------------------------------
+ */
+.wrapper {
+	max-width: 1180px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wrapper::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.hw-gallery * {
+	box-sizing: border-box;
+}
+
+.hw-gallery ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+.hw-gallery .hw-gallery-container {
+	overflow: hidden;
+	height: 350px;
+}
+
+.hw-gallery .hw-gallery-item {
+	overflow: hidden;
+	float: left;
+	width: 33%;
+	min-height: 350px;
+	border: 1px solid #efefef;
+}
+
+.hw-gallery .hw-gallery-item a {
+	position: relative;
+	display: block;
+	background: url('../images/bg_list_link.png') no-repeat -1px 180px;
+	text-decoration: none;
+	padding-top: 210px;
+}
+
+.hw-gallery .hw-gallery-item img {
+	position: absolute;
+	z-index: -10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+}
+
+.hw-gallery .hw-gallery-item *:not(img) {
+	padding-left: 0.6em;
+	padding-right: 0.6em;
+}
+
+.hw-gallery .hw-gallery-item .headline {
+	margin: 0;
+	min-height: 2em;
+	color: #566b7c;
+	line-height: 1.2;
+}
+
+.hw-gallery .hw-gallery-item .summary {
+	position: relative;
+	height: 2em;
+	color: #767676;
+}
+
+.hw-gallery .hw-gallery-item .summary::after {
+	position: absolute;
+	bottom: -30px;
+	right: 4px;
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: url(../images/bg_icon_more.png) no-repeat;
+}
+
+.ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
