@@ -31,7 +31,7 @@ var dom = (function(global){
 	}
 	// Firefox
 	else {
-		text = function() {
+		text = function(targetEl, text_content) {
 			if (!text_content) {
 				return targetEl.textContent;
 			} else {
