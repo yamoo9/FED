@@ -1,6 +1,9 @@
 (function(global, $){
 	'use strict';
-
+	/**
+	 * --------------------------------
+	 * Model
+	 */
 	var myFriendsList = [];
 
 	function makeFriend(f_name, f_job, f_beverage) {
@@ -18,13 +21,16 @@
 	myFriendsList.push( makeFriend('알버트 아인슈타인', '과학자', '우유') );
 	myFriendsList.push( makeFriend('슈바이처', '의사', '물') );
 
+	/**
+	 * --------------------------------
+	 * View
+	 */
 	// 객체를 전달하면 해당 객체의 멤버를 확인하여 HTML 코드로 변경합니다.
 	function assignTemplate(obj) {
 		return '<li>'+obj.name+'</li><li>'+obj.job+'</li><li>'+obj.beverage+'</li>';
 	}
 
-
-	function makeTempateCode(arr) {
+	function makeTemplateCode(arr) {
 		for( var i=0, mergeHTMLCode='', l=arr.length; i<l; i++) {
 			var makedTempateHTMLCode = assignTemplate(arr[i]);
 			mergeHTMLCode += makedTempateHTMLCode;
@@ -32,7 +38,7 @@
 		return '<ul>' + mergeHTMLCode +'</ul>';
 	}
 
-	var finished_process = makeTempateCode(myFriendsList);
+	var finished_process = makeTemplateCode(myFriendsList);
 
 	// console.log(makedTempateHTMLCode);
 
