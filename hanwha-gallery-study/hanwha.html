@@ -8,17 +8,57 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta charset="UTF-8">
 <title>한화 갤러리 디자인 스터디</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/hanwha.css">
+<style>
+	#slide-control-buttonset [role=button] {
+		color: #d4d3d0;
+		font-size: 16px;
+		margin-right: 10px;
+	}
+
+	#slide-control-buttonset [role=button]:hover,
+	#slide-control-buttonset [role=button]:focus {
+		color: #626260;
+	}
+
+	#slide-control-buttonset [role=button]:focus {
+		outline: none;
+	}
+</style>
 </head>
 <body>
 
-	<div id="hanwha-gallery">
-
+	<div id="slide-control-buttonset" class="wrapper">
+		<a href role="button" id="auto-slide-btn"><i class="fa fa-play" aria-label="슬라이드 자동 재생"></i></a>
+		<a href role="button" id="stop-slide-btn"><i class="fa fa-stop" aria-label="슬라이드 정지"></i></a>
 	</div>
+
+	<div id="hanwha-gallery"></div>
 
 <!-- Javascript MVC -->
 <script src="js/hanwha-gallery-model.js"></script>
 <script src="js/hanwha-gallery-view.js"></script>
 <script src="js/hanwha-gallery-controller.js"></script>
+<script>
+
+(function(global, $){
+
+	var autoSlideBtn = document.querySelector('#auto-slide-btn'),
+		stopSlideBtn = document.querySelector('#stop-slide-btn');
+
+	autoSlideBtn.onclick = function() {
+		$.controller.autoSlide(1400);
+		return false;
+	};
+
+	stopSlideBtn.onclick = function() {
+		$.controller.stopSlide();
+		return false;
+	}
+
+})(window, window.hanwha);
+
+</script>
 </body>
 </html>
