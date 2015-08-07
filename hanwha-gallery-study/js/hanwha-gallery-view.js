@@ -1,5 +1,7 @@
-(function(global, model){
+(function(global, hw){
 	'use strict';
+
+	var model = hw.model;
 
 	/**
 	 * ----------------------------------------------------------------------
@@ -120,4 +122,12 @@
 	// 페이지네이션 첫번째 요소에 동적으로 활성화 클래스 설정
 	pagenation_first.classList.add('on');
 
-})(window, window.hanwha_model);
+
+	// window.hanwha.view 객체 설정
+	hw.view = {
+		'gallery'    : gallery,
+		'container'  : container,
+		'pagenation' : pagenation,
+	}
+
+})(window, window.hanwha);
