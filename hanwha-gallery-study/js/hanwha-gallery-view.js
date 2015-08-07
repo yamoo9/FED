@@ -1,28 +1,11 @@
 (function(global, model){
 	'use strict';
 
-	// 모델 데이터를 콘솔에 출력
-	// console.log(model);
-
-	// 모델 데이터 탐색 예시 코드
-	// for(var i=0, l=model.length; i<l; i++) {
-	// 	var model_item = model[i]; // 객체 접근
-	// 	if(i === 3) {
-	// 		for(var key in model_item) {
-	// 			console.log('key = ', key);
-	// 			console.log('value = ', model_item[key]);
-	// 		}
-	// 	}
-	// }
-
-	// View를 붙이고자하는 요소 찾아....
-	var gallery = document.querySelector('#hw-gallery');
-
-	// wrapper, hw-gallery 클래스 모듈을 설정한다.
-	gallery.setAttribute('class', 'wrapper hw-gallery');
-
-	// 템플릿을 구현하는 함수 실행, 모델을 전달
-	gallery.innerHTML = makeTemplateCode(model);
+	/**
+	 * ----------------------------------------------------------------------
+	 * Functions
+	 * ----------------------------------------------------------------------
+	 */
 
 	/**
 	 * 정해진 텍스트의 길이 이상되는 코드는 잘라버리고, 마지막에 ...을 붙여주는 함수
@@ -66,15 +49,6 @@
 		return '<ul class="hw-gallery-container">'+ template_code +'</ul>';
 	}
 
-	gallery.innerHTML = makePagenation(model) + gallery.innerHTML;
-
-	var pagenation = gallery.querySelector('.hw-gallery-pagenation'),
-		pagenation_first = pagenation.children[0];
-
-	pagenation_first.classList.add('on');
-
-
-
 	/**
 	 * 모델 데이터의 개수를 화면에 표시할 카운트로 나눈 결과를 토대로 페이지네이션 컴포넌트를 작성하는 함수
 	 * @param  {Array} model              모델 데이터
@@ -96,5 +70,54 @@
 
 		return '<div class="hw-gallery-pagenation">' + page_nation_code + '</div>';
 	}
+
+
+
+
+
+	/**
+	 * ----------------------------------------------------------------------
+	 * View
+	 * ----------------------------------------------------------------------
+	 */
+
+	/**
+	 * --------------------------------
+	 * gallery
+	 */
+	// 갤러리 요소 참조
+	var gallery = document.querySelector('#hanwha-gallery');
+
+	// [초기화] 속성 및 스타일 설정
+	gallery.setAttribute('class', 'wrapper hw-gallery');
+	gallery.style.overflow = 'hidden';
+
+	// [초기화] 갤러리 템플릿, 페이지네이션 동적 구현을 위한 함수 실행(모델 전달)
+	gallery.innerHTML = makeTemplateCode(model);
+	gallery.innerHTML = makePagenation(model) + gallery.innerHTML;
+
+	/**
+	 * --------------------------------
+	 * gallery-container
+	 */
+	// 갤러리 컨테이너 요소 및 하위 리스트 요소 & 기준이 되는 리스트 가로 폭 참조
+	var container          = gallery.querySelector('.hw-gallery-container'),
+		container_li       = container.querySelector('li'),
+		container_li_width = parseInt(global.getComputedStyle(container_li).width),
+		container_width    = container_li_width * model.length + 'px';
+
+	// 갤러리 컨테이너 요소에 스타일 설정
+	container.style.width = container_width;
+
+	/**
+	 * --------------------------------
+	 * gallery-pagenation
+	 */
+	// [초기화] 갤러리 페이지네이션 요소 및 첫번째 요소 참조
+	var pagenation       = gallery.querySelector('.hw-gallery-pagenation'),
+		pagenation_first = pagenation.children[0];
+
+	// 페이지네이션 첫번째 요소에 동적으로 활성화 클래스 설정
+	pagenation_first.classList.add('on');
 
 })(window, window.hanwha_model);
