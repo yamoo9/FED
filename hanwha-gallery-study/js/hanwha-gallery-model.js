@@ -1,4 +1,4 @@
-var hanwha = (function(global, hw){
+(function(global, hw){
 
 	hw.model = [
 		{
@@ -75,5 +75,13 @@ var hanwha = (function(global, hw){
 		},
 	];
 
-	return hw;
-})(window, {});
+	// ECMA Script v5, IE 9+
+	// 객체의 속성을 수정하지 못하도록 설정(Only GET)
+	Object.defineProperty(global, 'hanwha', {
+		'value'        : hw,
+		'writable'     : false, // 수정 가능한지 여부 설정
+		'enumerable'   : false, // 속성이 for ~ in, Object.keys()에 노출 여부 설정
+		'configurable' : false, // 객체에서 해당키가 제거될 수 있는지 설정
+	});
+
+})( window, (window.hanwha = window.hanwha || {}) );

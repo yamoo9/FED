@@ -65,6 +65,10 @@ body {
 }
 
 
+.hw-gallery .hw-gallery-container.anim {
+	transition: all 0.6s ease;
+}
+
 .hw-gallery .hw-gallery-container {
 	overflow: hidden;
 	height: 350px;

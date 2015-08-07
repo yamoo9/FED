@@ -1,7 +1,7 @@
 (function(global, hw){
 	'use strict';
 
-	var model = hw.model;
+	var model =hw.model;
 
 	/**
 	 * ----------------------------------------------------------------------
@@ -90,11 +90,11 @@
 	// 갤러리 요소 참조
 	var gallery = document.querySelector('#hanwha-gallery');
 
-	// [초기화] 속성 및 스타일 설정
+	// [초기수행] 속성 및 스타일 설정
 	gallery.setAttribute('class', 'wrapper hw-gallery');
 	gallery.style.overflow = 'hidden';
 
-	// [초기화] 갤러리 템플릿, 페이지네이션 동적 구현을 위한 함수 실행(모델 전달)
+	// [초기수행] 갤러리 템플릿, 페이지네이션 동적 구현을 위한 함수 실행(모델 전달)
 	gallery.innerHTML = makeTemplateCode(model);
 	gallery.innerHTML = makePagenation(model) + gallery.innerHTML;
 
@@ -110,24 +110,26 @@
 
 	// 갤러리 컨테이너 요소에 스타일 설정
 	container.style.width = container_width;
+	container.classList.add('anim');
 
 	/**
 	 * --------------------------------
 	 * gallery-pagenation
 	 */
-	// [초기화] 갤러리 페이지네이션 요소 및 첫번째 요소 참조
-	var pagenation       = gallery.querySelector('.hw-gallery-pagenation'),
-		pagenation_first = pagenation.children[0];
+	// [초기수행] 갤러리 페이지네이션 요소 및 첫번째 요소 참조
+	var pagenation       = gallery.querySelector('.hw-gallery-pagenation');
 
-	// 페이지네이션 첫번째 요소에 동적으로 활성화 클래스 설정
-	pagenation_first.classList.add('on');
+	// hanwha.view 객체 설정
+	// hw.view = {};
+	// hw.view.gallery = gallery;
+	// hw.view.container = container;
+	// hw.view.pagenation = pagenation;
 
-
-	// window.hanwha.view 객체 설정
 	hw.view = {
-		'gallery'    : gallery,
-		'container'  : container,
-		'pagenation' : pagenation,
-	}
+		'gallery'             : gallery,
+		'container'           : container,
+		'container_base_width': container_li_width,
+		'pagenation'          : pagenation,
+	};
 
 })(window, window.hanwha);
