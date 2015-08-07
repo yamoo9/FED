@@ -4,11 +4,11 @@ body {
 
 /**
  * --------------------------------
- * .hanwha-gallery
+ * .hw-gallery
  * --------------------------------
  */
 .wrapper {
-	max-width: 1180px;
+	max-width: 1170px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -30,6 +30,38 @@ body {
 	list-style: none;
 }
 
+.hw-gallery .hw-gallery-pagenation {
+	margin-bottom: 14px;
+	text-align: center;
+}
+
+.hw-gallery .hw-gallery-pagenation [role=button] {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin-right: 30px;
+	background: #d4d3d0;
+	border-radius: 50%;
+}
+
+.hw-gallery .hw-gallery-pagenation [role=button]:last-child {
+	margin-right: 0;
+}
+
+.hw-gallery .hw-gallery-pagenation [role=button]:hover,
+.hw-gallery .hw-gallery-pagenation [role=button]:focus {
+	background: #565654;
+}
+
+.hw-gallery .hw-gallery-pagenation [role=button]:focus {
+	outline: none;
+}
+
+.hw-gallery .hw-gallery-pagenation [role=button].on {
+	background: #ff7500;
+}
+
+
 .hw-gallery .hw-gallery-container {
 	overflow: hidden;
 	height: 350px;
@@ -38,7 +70,7 @@ body {
 .hw-gallery .hw-gallery-item {
 	overflow: hidden;
 	float: left;
-	width: 33%;
+	width: 390px;
 	min-height: 350px;
 	border: 1px solid #efefef;
 }

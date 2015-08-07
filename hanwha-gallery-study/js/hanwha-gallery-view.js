@@ -16,7 +16,7 @@
 	// }
 
 	// View를 붙이고자하는 요소 찾아....
-	var gallery = document.querySelector('#hanwha-gallery');
+	var gallery = document.querySelector('#hw-gallery');
 
 	// wrapper, hw-gallery 클래스 모듈을 설정한다.
 	gallery.setAttribute('class', 'wrapper hw-gallery');
@@ -67,6 +67,13 @@
 	}
 
 	gallery.innerHTML = makePagenation(model) + gallery.innerHTML;
+
+	var pagenation = gallery.querySelector('.hw-gallery-pagenation'),
+		pagenation_first = pagenation.children[0];
+
+	pagenation_first.classList.add('on');
+
+
 
 	/**
 	 * 모델 데이터의 개수를 화면에 표시할 카운트로 나눈 결과를 토대로 페이지네이션 컴포넌트를 작성하는 함수
