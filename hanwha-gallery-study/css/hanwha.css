@@ -19,6 +19,10 @@ body {
 	clear: both;
 }
 
+.hw-gallery {
+	padding-top: 30px;
+}
+
 .hw-gallery * {
 	box-sizing: border-box;
 }
@@ -59,13 +63,35 @@ body {
 }
 
 .hw-gallery .hw-gallery-pagenation [role=button].on {
+	cursor: default;
+	position: relative;
+	z-index: 10;
 	background: #ff7500;
 	transform: scale(1.5);
 }
 
+.hw-gallery .hw-gallery-pagenation [role=button].on::before {
+	content: '';
+	position: absolute;
+	z-index: -100;
+	top: 0;
+	left: 0;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: hsla(40, 80%, 50%, 1);
+	animation: zoom-fade-out .8s cubic-bezier(0.190, 1.000, 0.220, 1.000) both;
+}
+
+@keyframes zoom-fade-out {
+	0% { opacity: 1;  transform: scale(0); }
+	100% { opacity: 0; transform: scale(3); }
+}
+
+
 
 .hw-gallery .hw-gallery-container.anim {
-	transition: all 0.6s ease;
+	transition: all 0.4s cubic-bezier(0.860, 0.000, 0.070, 1.000);
 }
 
 .hw-gallery .hw-gallery-container {

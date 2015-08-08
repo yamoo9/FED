@@ -72,6 +72,29 @@
 			'image'    : 'images/gallery-12.png',
 			'headline' : 'Hanwha Q CELLS, Promoting Sustainable Solar Energy with R&D Leadership',
 			'summary'  : 'Hanwha Q CELLS has been opening up new possibilities for the solar energy business while pioneering unexplored fields on the strengths of its world leading R&D capacity and technologies.'
+		},{
+			'href'     : '/contents/page-09.html',
+			'image'    : 'images/gallery-09.jpg',
+			'headline' : 'Hanwha Launches the World\'s Largest Solar Energy Company',
+			'summary'  : 'in Terms of Cell Production Hanwha Group becomes the world’s leading solar energy company in terms of cell production by integrating Hanwha SolarOne Co., Ltd. and Hanwha Q CELLS Investment Co.'
+		},
+		{
+			'href'     : '/contents/page-10.html',
+			'image'    : 'images/gallery-10.jpg',
+			'headline' : 'Hanwha Chairman Seung Youn Kim Visited the Bismayah New City Project(BNCP) Site in Iraq',
+			'summary'  : 'BNCP is a mega construction project to build 100,000 residential units'
+		},
+		{
+			'href'     : '/contents/page-11.html',
+			'image'    : 'images/gallery-11.jpg',
+			'headline' : 'Hanwha Has Completed Building 24 MW Solar Power Plant in Kitsuki, Oita prefecture, in Japan',
+			'summary'  : 'Hanwha Group is accelerating its leading position in the Japanese solar power market with the construction of a large-scale 24 MW solar power plant'
+		},
+		{
+			'href'     : '/contents/page-12.html',
+			'image'    : 'images/gallery-12.png',
+			'headline' : 'Hanwha Q CELLS, Promoting Sustainable Solar Energy with R&D Leadership',
+			'summary'  : 'Hanwha Q CELLS has been opening up new possibilities for the solar energy business while pioneering unexplored fields on the strengths of its world leading R&D capacity and technologies.'
 		},
 	];
 
