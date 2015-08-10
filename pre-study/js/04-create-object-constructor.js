@@ -10,19 +10,30 @@
 // BioCreature 정의
 function BioCreature() {
 	// JS 함수 내부의 this는 함수의 실행 영역(Excutable Context)을 가리킴.(참조)
-	console.log(this);
+	this.self = this;
+	this.type = 'sleep';
 }
 
-// this === window 참조
-var resultFn = BioCreature(); // 실행 ━ 일반 함수와 같음.
+// 생성자를 통해 생성되는 모든 인스턴스 원형의 멤버 정의
+// 공통적으로 모든 인스턴스 객체가 가지는 멤버가 됩니다.
+BioCreature.prototype.init = function() {
 
-// console.log(resultFn);
+}
+
+// 생성자 함수의 프로토타입 객체 (생성자로부터 생성된 모든 인스턴스 객체의 모체(원형))
+// BioCreature.prototype; // {}
+// console.log(BioCreature.prototype);
+
+// this === window 참조
+// var resultFn = BioCreature(); // 실행 ━ 일반 함수와 같음.
 
 // this === 생성된 객체 인스턴스 참조
 var sleepingDog  = new BioCreature(); // 객체 인스턴스 생성. (생성자 함수의 역할)
 var sleepingBaby = new BioCreature();
 var sleepingCat  = new BioCreature();
 
-console.log(sleepingDog);
-console.log(sleepingBaby);
-console.log(sleepingCat);
+// 생성된 객체 인스턴스
+// console.log(sleepingBaby);
+
+// 생성된 객체 인스턴스의 constructor 속성을 통해 생성자 함수가 누구인지 확인할 수 있다.
+// console.log(sleepingBaby.constructor === BioCreature);
