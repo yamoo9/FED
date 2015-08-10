@@ -77,6 +77,8 @@ var obj = {};
 
 // sleepingBaby 사용자 정의 객체를 정의
 var sleepingBaby = new Object();
+sleepingBaby.type = 'Baby';
+sleepingBaby.self = sleepingBaby;
 
 // sleepingBaby 사용자 정의 객체의 멤버 구현
 sleepingBaby.current_state = 'sleep'; // 'awake'
@@ -91,12 +93,17 @@ sleepingBaby.sleep = function() {
 	this.current_state = 'sleep';
 };
 sleepingBaby.cry = function() {
-	this.current_state = 'Oops! Baby is crying';
+	this.current_state = 'Oops! '+ this.type +' is crying';
 };
 
 // 새로운 멤버를 객체에 추가(확장)
 sleepingBaby.currentStatus = function() {
-	return 'My Baby is ' + this.current_state + '. ' + (this.isSleep() ? 'I\'m Happy. :-)' : 'I\'m Sad. :-(');
+	return 'My '+ this.type +' is ' + this.current_state + '. ' + (this.isSleep() ? 'I\'m Happy. :-)' : 'I\'m Sad. :-(');
+}
+
+// sleepingBaby.updateFromCopyObj
+sleepingBaby.update = function(copy_obj) {
+	this.self = copyObjectProperties(this, copy_obj, false);
 }
 
 
@@ -172,13 +179,17 @@ function copyObjectProperties(assign_obj, target_obj, is_copy_all) {
 // };
 
 var sleepingDog = {};
+sleepingDog.type = 'Dog';
+sleepingDog.self = sleepingDog;
+
+console.log(sleepingDog);
 
 // 다른 객체의 멤버를 복사해서 새로운 객체에 할당
 // sleepingDog.isSleep = sleepingBaby.isSleep;
 
 // copyObjectProperties 헬퍼 함수를 사용하여
 // 다른 객체의 멤버를 복사해서 새로운 객체에 할당
-sleepingDog = copyObjectProperties(sleepingDog, sleepingBaby);
+sleepingDog = copyObjectProperties(sleepingDog, sleepingBaby, false);
 console.log(sleepingDog);
 
 
@@ -205,3 +216,11 @@ console.log(sleepingDog);
 // sleepingCat.cry = function() {
 // 	this.current_state = 'Oops! Cat is crying.';
 // };
+
+var sleepingCat = {};
+sleepingCat.type = 'Cat';
+sleepingCat.self = sleepingCat;
+
+sleepingCat = copyObjectProperties(sleepingCat, sleepingDog, false);
+
+console.log(sleepingCat);
