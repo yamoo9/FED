@@ -77,10 +77,14 @@ var obj = {};
 
 // sleepingBaby 사용자 정의 객체를 정의
 var sleepingBaby = new Object();
+
+// 시작: 객체마다 개별적으로 수행되는 초기 실행 과정 ------------------
 sleepingBaby.type = 'Baby';
 sleepingBaby.self = sleepingBaby;
+// 끝: 객체마다 개별적으로 수행되는 초기 실행 과정 -------------------
 
-// sleepingBaby 사용자 정의 객체의 멤버 구현
+
+// 시작: 객체가 공통적으로 가지게 되는 공통 멤버(속성) 정의 ------------
 sleepingBaby.current_state = 'sleep'; // 'awake'
 // sleepingBaby.current_sleep_state = true; // false
 sleepingBaby.isSleep = function() {
@@ -95,17 +99,14 @@ sleepingBaby.sleep = function() {
 sleepingBaby.cry = function() {
 	this.current_state = 'Oops! '+ this.type +' is crying';
 };
-
-// 새로운 멤버를 객체에 추가(확장)
 sleepingBaby.currentStatus = function() {
 	return 'My '+ this.type +' is ' + this.current_state + '. ' + (this.isSleep() ? 'I\'m Happy. :-)' : 'I\'m Sad. :-(');
 }
-
 // sleepingBaby.updateFromCopyObj
 sleepingBaby.update = function(copy_obj) {
 	this.self = copyObjectProperties(this, copy_obj, false);
 }
-
+// 끝: 객체가 공통적으로 가지게 되는 공통 멤버(속성) 정의 ------------
 
 
 /**
@@ -179,18 +180,23 @@ function copyObjectProperties(assign_obj, target_obj, is_copy_all) {
 // };
 
 var sleepingDog = {};
+// 시작: 객체마다 개별적으로 수행되는 초기 실행 과정 ------------
 sleepingDog.type = 'Dog';
 sleepingDog.self = sleepingDog;
+// 끝: 객체마다 개별적으로 수행되는 초기 실행 과정 --------------
 
-console.log(sleepingDog);
+// console.log(sleepingDog);
 
 // 다른 객체의 멤버를 복사해서 새로운 객체에 할당
 // sleepingDog.isSleep = sleepingBaby.isSleep;
 
 // copyObjectProperties 헬퍼 함수를 사용하여
 // 다른 객체의 멤버를 복사해서 새로운 객체에 할당
+
+// sleepingBaby의 능력 복제(상속과 유사해보이나, 상속과는 다름)
+// false 를 전달할 경우, 모든 능력을 그대로 복제하지 않고 존재하지 않는 능력만 복제
 sleepingDog = copyObjectProperties(sleepingDog, sleepingBaby, false);
-console.log(sleepingDog);
+// console.log(sleepingDog);
 
 
 /**
@@ -218,9 +224,12 @@ console.log(sleepingDog);
 // };
 
 var sleepingCat = {};
+// 시작: 객체마다 개별적으로 수행되는 초기 실행 과정 ------------
 sleepingCat.type = 'Cat';
 sleepingCat.self = sleepingCat;
+// 끝: 객체마다 개별적으로 수행되는 초기 실행 과정 --------------
 
+// sleepingBaby의 능력 복제(상속과 유사해보이나, 상속과는 다름)
+// false 를 전달할 경우, 모든 능력을 그대로 복제하지 않고 존재하지 않는 능력만 복제
 sleepingCat = copyObjectProperties(sleepingCat, sleepingDog, false);
-
-console.log(sleepingCat);
+// console.log(sleepingCat);
