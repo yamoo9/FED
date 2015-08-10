@@ -13,12 +13,16 @@ function BioCreature() {
 	this.self = this;
 	this.type = null;
 	this.current_state = 'sleep';
+	// return this;
 }
 
 // 생성자를 통해 생성되는 모든 인스턴스 원형의 멤버 정의
 // 공통적으로 모든 인스턴스 객체가 가지는 멤버가 됩니다.
-BioCreature.prototype.init = function() {
-
+BioCreature.prototype.init = function(initializationFn) {
+	// 함수 실행시, 사용자가 전달한 인자들의 집합
+	// arguments
+	initializationFn.call(this); // this === window
+	return this;
 };
 BioCreature.prototype.getType = function() {
 	return this.type;
@@ -26,20 +30,20 @@ BioCreature.prototype.getType = function() {
 BioCreature.prototype.setType = function(type) {
 	this.type = type;
 };
-BioCreature.prototype.getCurrentState = function() {
+BioCreature.prototype.getState = function() {
 	return this.current_state;
 };
 BioCreature.prototype.setState = function(state) {
 	this.current_state = state;
 };
 BioCreature.prototype.isSleep = function() {
-	return this.getCurrentState() === 'sleep';
+	return this.getState() === 'sleep';
 };
 BioCreature.prototype.isCry = function() {
-	return this.getCurrentState() === 'cry';
+	return this.getState() === 'cry';
 };
 BioCreature.prototype.isAwake = function() {
-	return this.getCurrentState() === 'awake';
+	return this.getState() === 'awake';
 };
 BioCreature.prototype.awake = function() {
 	this.setState('awake');
@@ -51,7 +55,7 @@ BioCreature.prototype.cry = function() {
 	this.setState('Oops! '+ this.type +' is crying');
 };
 BioCreature.prototype.displayStatus = function() {
-	return 'My '+ this.type +' is ' + this.getCurrentState() + '. ' + (this.isSleep() ? 'I\'m Happy. :-)' : 'I\'m Sad. :-(');
+	return 'My '+ this.type +' is ' + this.getState() + '. ' + (this.isSleep() ? 'I\'m Happy. :-)' : 'I\'m Sad. :-(');
 }
 
 // 생성자 함수의 프로토타입 객체 (생성자로부터 생성된 모든 인스턴스 객체의 모체(원형))
@@ -62,9 +66,22 @@ BioCreature.prototype.displayStatus = function() {
 // var resultFn = BioCreature(); // 실행 ━ 일반 함수와 같음.
 
 // this === 생성된 객체 인스턴스 참조
-var sleepingDog  = new BioCreature(); // 객체 인스턴스 생성. (생성자 함수의 역할)
-var sleepingBaby = new BioCreature();
-var sleepingCat  = new BioCreature();
+// 객체 인스턴스 생성. (생성자 함수의 역할)
+var sleepingDog = new BioCreature().init(function() {
+	// this // 생성된 객체 인스턴스를 참조
+	this.type = 'Dog';
+	this.current_state = 'sleep';
+});
+
+var sleepingBaby = new BioCreature().init(function() {
+	this.type = 'Baby';
+	this.current_state = 'cry';
+});
+
+var sleepingCat  = new BioCreature().init(function() {
+	this.type = 'Cat';
+	this.current_state = 'awake';
+});
 
 // 생성된 객체 인스턴스
 // console.log(sleepingBaby);
