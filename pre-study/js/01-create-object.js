@@ -56,6 +56,39 @@ var obj = {};
 
 
 
+// copyObjectProperties({}, {'name': 'hi'}, false);
+
+// 객체의 능력(속성)을 복사하는 헬퍼 함수
+function copyObjectProperties(assign_obj, target_obj, is_copy_all) {
+	var prop;
+	// assign_obj <---- (복사) ---- target_obj
+
+	// 모든 능력을 복사할 것인가?
+	// 아니면 없는 능력만 복사할 것인가?
+	is_copy_all = (typeof is_copy_all === 'undefined' || is_copy_all === true) ? true : false;
+
+	if (is_copy_all) {
+		// 모든 속성을 복사
+		for (prop in target_obj) {
+			assign_obj[prop] = target_obj[prop];
+		}
+	} else {
+		// 없는 속성만 복사
+		// target_obj의 모든 능력을 assign_obj에 복사
+		for (prop in target_obj) {
+			// assign_obj가 이미 해당 능력을 가지고 있다면?
+			// target_obj의 능력을 복사하고 싶지 않다.
+			if ( !assign_obj[prop] ) {
+				// console.log(prop, target_obj[prop]);
+				assign_obj[prop] = target_obj[prop];
+			}
+		}
+	}
+
+
+	// 모든 능력 복사가 끝나면 적용 객체를 반환
+	return assign_obj;
+}
 
 // 사용자 정의 객체 (다른 언어에서는 클래스(Class))
 
@@ -82,10 +115,11 @@ sleepingBaby.sleep = function() {
 sleepingBaby.cry = function() {
 	this.current_state = 'Oops! Baby is crying';
 };
+
+// 새로운 멤버를 객체에 추가(확장)
 sleepingBaby.currentStatus = function() {
 	return 'My Baby is ' + this.current_state + '. ' + (this.isSleep() ? 'I\'m Happy. :-)' : 'I\'m Sad. :-(');
 }
-
 
 // console.log(sleepingBaby);
 
@@ -95,45 +129,60 @@ sleepingBaby.currentStatus = function() {
  * --------------------------------
  */
 
-// sleepingDog 사용자 정의 객체를 정의
-var sleepingDog = new Object();
+var sleepingDog = {};
 
-// sleepingDog 사용자 정의 객체의 멤버 구현
-sleepingDog.current_state = 'sleep'; // 'awake'
-// sleepingDog.current_sleep_state = true; // false
-sleepingDog.isSleep = function() {
-	return this.current_state === 'sleep';
-};
-sleepingDog.awake = function() {
-	this.current_state = 'awake';
-};
-sleepingDog.sleep = function() {
-	this.current_state = 'sleep';
-};
-sleepingDog.cry = function() {
-	this.current_state = 'Oops! Dog is crying.';
-};
+// 다른 객체의 멤버를 복사해서 새로운 객체에 할당
+// sleepingDog.isSleep = sleepingBaby.isSleep;
+
+// copyObjectProperties 헬퍼 함수를 사용하여
+// 다른 객체의 멤버를 복사해서 새로운 객체에 할당
+sleepingDog = copyObjectProperties(sleepingDog, sleepingBaby);
+console.log(sleepingDog);
+
+
+// // sleepingDog 사용자 정의 객체를 정의
+// var sleepingDog = new Object();
+
+// // sleepingDog 사용자 정의 객체의 멤버 구현
+// sleepingDog.current_state = 'sleep'; // 'awake'
+// // sleepingDog.current_sleep_state = true; // false
+// sleepingDog.isSleep = function() {
+// 	return this.current_state === 'sleep';
+// };
+// sleepingDog.awake = function() {
+// 	this.current_state = 'awake';
+// };
+// sleepingDog.sleep = function() {
+// 	this.current_state = 'sleep';
+// };
+// sleepingDog.cry = function() {
+// 	this.current_state = 'Oops! Dog is crying.';
+// };
+
+// 복사/붙여넣기 ====> ?
+// 복사/붙여넣기 모듈화(재사용) ---> ?!!
+
 
 /**
  * 잠자는 고양이
  * --------------------------------
  */
 
-// sleepingCat 사용자 정의 객체를 정의
-var sleepingCat = new Object();
+// // sleepingCat 사용자 정의 객체를 정의
+// var sleepingCat = new Object();
 
-// sleepingCat 사용자 정의 객체의 멤버 구현
-sleepingCat.current_state = 'sleep'; // 'awake'
-// sleepingCat.current_sleep_state = true; // false
-sleepingCat.isSleep = function() {
-	return this.current_state === 'sleep';
-};
-sleepingCat.awake = function() {
-	this.current_state = 'awake';
-};
-sleepingCat.sleep = function() {
-	this.current_state = 'sleep';
-};
-sleepingCat.cry = function() {
-	this.current_state = 'Oops! Cat is crying.';
-};
+// // sleepingCat 사용자 정의 객체의 멤버 구현
+// sleepingCat.current_state = 'sleep'; // 'awake'
+// // sleepingCat.current_sleep_state = true; // false
+// sleepingCat.isSleep = function() {
+// 	return this.current_state === 'sleep';
+// };
+// sleepingCat.awake = function() {
+// 	this.current_state = 'awake';
+// };
+// sleepingCat.sleep = function() {
+// 	this.current_state = 'sleep';
+// };
+// sleepingCat.cry = function() {
+// 	this.current_state = 'Oops! Cat is crying.';
+// };
