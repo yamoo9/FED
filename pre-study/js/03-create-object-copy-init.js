@@ -27,14 +27,15 @@ var sleepingBaby = {}; // new Object();
 
 sleepingBaby.init = function(initialization) {
 
+	// 객체 멤버 내에서 함수 실행시, 컨텍스트 변경에 대해 이해하여야 합니다.
 	if( typeof initialization === 'function' ) {
-		initialization();
-		// initialization.call(this);
+		// initialization();
+		initialization.call(this);
 	}
 
-	// this.type = type;
-	// this.self = this; // 객체 자신을 참조하는 속성(변수) 정의
-	// this.current_state = state || 'sleep'; // 'awake', 'cry'
+	this.type = this.type || null;
+	this.current_state = this.state || 'sleep'; // 'awake', 'cry'
+	this.self = this; // 객체 자신을 참조하는 속성(변수) 정의
 
 	return this;
 };
@@ -162,8 +163,16 @@ function copyObjectProperties(assign_obj, target_obj, is_copy_all) {
 // var sleepingDog = copyObjectProperties({}, sleepingBaby);
 // sleepingDog.init('Dog', 'sleep');
 
-var sleepingDog = copyObjectProperties({}, sleepingBaby).init(function() {
-	console.log(this); // this ?????
+var aki = copyObjectProperties({}, sleepingBaby).init(function() {
+	this.name = '아키';
+	this.age = 4;
+	this.lived = true;
+});
+
+var haru = copyObjectProperties({}, aki).init(function() {
+	this.name = '하루';
+	this.age = 14;
+	this.lived = !true;
 });
 
 /**
