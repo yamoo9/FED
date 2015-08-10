@@ -17,15 +17,29 @@ var sleepingBaby = {}; // new Object();
 // sleepingBaby.type = 'Baby';
 // sleepingBaby.self = sleepingBaby;
 // 끝: 객체마다 개별적으로 수행되는 초기 실행 과정 -------------------
-sleepingBaby.init = function(type, state) {
-	this.type = type;
-	this.self = this; // 객체 자신을 참조하는 속성(변수) 정의
-	this.current_state = state || 'sleep'; // 'awake', 'cry'
+// sleepingBaby.init = function(type, state) {
+// 	this.type = type;
+// 	this.self = this; // 객체 자신을 참조하는 속성(변수) 정의
+// 	this.current_state = state || 'sleep'; // 'awake', 'cry'
+
+// 	return this;
+// };
+
+sleepingBaby.init = function(initialization) {
+
+	if( typeof initialization === 'function' ) {
+		initialization();
+		// initialization.call(this);
+	}
+
+	// this.type = type;
+	// this.self = this; // 객체 자신을 참조하는 속성(변수) 정의
+	// this.current_state = state || 'sleep'; // 'awake', 'cry'
 
 	return this;
 };
 
-sleepingBaby.init('Baby');
+// sleepingBaby.init('Baby');
 
 
 // 시작: 객체가 공통적으로 가지게 되는 공통 멤버(속성) 정의 ------------
@@ -148,7 +162,9 @@ function copyObjectProperties(assign_obj, target_obj, is_copy_all) {
 // var sleepingDog = copyObjectProperties({}, sleepingBaby);
 // sleepingDog.init('Dog', 'sleep');
 
-var sleepingDog = copyObjectProperties({}, sleepingBaby).init('Dog', 'sleep');
+var sleepingDog = copyObjectProperties({}, sleepingBaby).init(function() {
+	console.log(this); // this ?????
+});
 
 /**
  * 잠자는 고양이 (객체)
@@ -187,4 +203,4 @@ var sleepingDog = copyObjectProperties({}, sleepingBaby).init('Dog', 'sleep');
 
 // sleepingCat.init('Cat', 'cry');
 
-var sleepingCat = copyObjectProperties({'name': '에곤쉴레'}, sleepingDog, false).init('Cat', 'cry');
+// var sleepingCat = copyObjectProperties({'name': '에곤쉴레'}, sleepingDog, false).init('Cat', 'cry');
