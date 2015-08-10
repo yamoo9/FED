@@ -11,13 +11,47 @@
 function BioCreature() {
 	// JS 함수 내부의 this는 함수의 실행 영역(Excutable Context)을 가리킴.(참조)
 	this.self = this;
-	this.type = 'sleep';
+	this.type = null;
+	this.current_state = 'sleep';
 }
 
 // 생성자를 통해 생성되는 모든 인스턴스 원형의 멤버 정의
 // 공통적으로 모든 인스턴스 객체가 가지는 멤버가 됩니다.
 BioCreature.prototype.init = function() {
 
+};
+BioCreature.prototype.getType = function() {
+	return this.type;
+};
+BioCreature.prototype.setType = function(type) {
+	this.type = type;
+};
+BioCreature.prototype.getCurrentState = function() {
+	return this.current_state;
+};
+BioCreature.prototype.setState = function(state) {
+	this.current_state = state;
+};
+BioCreature.prototype.isSleep = function() {
+	return this.getCurrentState() === 'sleep';
+};
+BioCreature.prototype.isCry = function() {
+	return this.getCurrentState() === 'cry';
+};
+BioCreature.prototype.isAwake = function() {
+	return this.getCurrentState() === 'awake';
+};
+BioCreature.prototype.awake = function() {
+	this.setState('awake');
+};
+BioCreature.prototype.sleep = function() {
+	this.setState('sleep');
+};
+BioCreature.prototype.cry = function() {
+	this.setState('Oops! '+ this.type +' is crying');
+};
+BioCreature.prototype.displayStatus = function() {
+	return 'My '+ this.type +' is ' + this.getCurrentState() + '. ' + (this.isSleep() ? 'I\'m Happy. :-)' : 'I\'m Sad. :-(');
 }
 
 // 생성자 함수의 프로토타입 객체 (생성자로부터 생성된 모든 인스턴스 객체의 모체(원형))
