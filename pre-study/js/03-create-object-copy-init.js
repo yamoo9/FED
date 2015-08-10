@@ -21,6 +21,8 @@ sleepingBaby.init = function(type, state) {
 	this.type = type;
 	this.self = this; // 객체 자신을 참조하는 속성(변수) 정의
 	this.current_state = state || 'sleep'; // 'awake', 'cry'
+
+	return this;
 };
 
 sleepingBaby.init('Baby');
@@ -120,7 +122,7 @@ function copyObjectProperties(assign_obj, target_obj, is_copy_all) {
 // 	this.current_state = 'Oops! Dog is crying.';
 // };
 
-var sleepingDog = {};
+// var sleepingDog = {};
 // 시작: 객체마다 개별적으로 수행되는 초기 실행 과정 ------------
 // sleepingDog.type = 'Dog';
 // sleepingDog.self = sleepingDog;
@@ -137,10 +139,16 @@ var sleepingDog = {};
 
 // sleepingBaby의 능력 복제(상속과 유사해보이나, 상속과는 다름)
 // false 를 전달할 경우, 모든 능력을 그대로 복제하지 않고 존재하지 않는 능력만 복제
-sleepingDog = copyObjectProperties(sleepingDog, sleepingBaby, false);
+// sleepingDog = copyObjectProperties(sleepingDog, sleepingBaby, false);
 // console.log(sleepingDog);
 
-sleepingDog.init('Dog', 'awake');
+// sleepingDog.init('Dog', 'awake');
+
+
+// var sleepingDog = copyObjectProperties({}, sleepingBaby);
+// sleepingDog.init('Dog', 'sleep');
+
+var sleepingDog = copyObjectProperties({}, sleepingBaby).init('Dog', 'sleep');
 
 /**
  * 잠자는 고양이 (객체)
@@ -166,7 +174,7 @@ sleepingDog.init('Dog', 'awake');
 // 	this.current_state = 'Oops! Cat is crying.';
 // };
 
-var sleepingCat = {};
+// var sleepingCat = {};
 // 시작: 객체마다 개별적으로 수행되는 초기 실행 과정 ------------
 // sleepingCat.type = 'Cat';
 // sleepingCat.self = sleepingCat;
@@ -174,7 +182,9 @@ var sleepingCat = {};
 
 // sleepingBaby의 능력 복제(상속과 유사해보이나, 상속과는 다름)
 // false 를 전달할 경우, 모든 능력을 그대로 복제하지 않고 존재하지 않는 능력만 복제
-sleepingCat = copyObjectProperties(sleepingCat, sleepingDog, false);
+// sleepingCat = copyObjectProperties(sleepingCat, sleepingDog, false);
 // console.log(sleepingCat);
 
-sleepingCat.init('Cat', 'cry');
+// sleepingCat.init('Cat', 'cry');
+
+var sleepingCat = copyObjectProperties({'name': '에곤쉴레'}, sleepingDog, false).init('Cat', 'cry');
