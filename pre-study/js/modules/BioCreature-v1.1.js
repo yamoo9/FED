@@ -57,6 +57,7 @@ function BioCreature(init_settings) {
 	// 객체의 속성이 열거(Enumerable) 가능하니 체크하려면...
 	// 객체.propertyIsEnumerable(값); // true or false
 
+	// 'value'와 'get'을 함께 사용할 수는 없다.
 	Object.defineProperty(this, 'leg_count', {
 		'get': function() {
 			return _leg__count;

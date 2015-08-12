@@ -1,6 +1,22 @@
 ;(function(global, undefined){
 	'use strict';
 
+	global.milks = new Model;
+
+	milks.save('딸기 우유');
+	milks.save('바나나 우유');
+	milks.save('커피 우유');
+
+
+	global.bears = new Model;
+
+	bears.save('카스');
+	bears.save('사뽀르');
+	bears.save('호가든');
+	bears.save('칭따오');
+
+	// ---------------------------------------------------------
+
 	// Cat 데이터 객체 생성
 	var sleepingCat = new BioCreature(function() {
 		this.type = 'Cat';
