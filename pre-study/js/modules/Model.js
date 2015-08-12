@@ -11,9 +11,9 @@ function Model() {
 		'get': function(){
 			return _database;
 		},
-		'set': function(value) {
-			_database.push(value);
-		}
+		// 'set': function(value) {
+		// 	_database.push(value);
+		// }
 	});
 
 }

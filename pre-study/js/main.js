@@ -64,4 +64,32 @@
 	// 전역에서 접근 가능하도록 설정
 	global.sleepingCat = sleepingCat;
 
+
+	// ----------------------------------------------------------------------------
+
+	// global.hanwha = {};
+	Object.defineProperty(global, 'hanwha', { 'value': {} });
+
+	// global.hanwha.slideGallery = {};
+	Object.defineProperty(hanwha, 'slideGallery', { 'value': {} });
+
+	// global.hanwha.slideGallery.model = new Model;
+	Object.defineProperty(hanwha.slideGallery, 'model', { 'value': new Model });
+
+	hanwha.slideGallery.model.save({
+		'href'     : '#',
+		'image'    : 'images/photo-02.jpg',
+		'headline' : 'hanwha image 02',
+		'summary'  : '한화 이미지는 작다!'
+	});
+
+	hanwha.slideGallery.model.save({
+		'href'     : '#',
+		'image'    : 'images/photo-02.jpg',
+		'headline' : 'hanwha image 02',
+		'summary'  : '한화 이미지는 작다!'
+	});
+
+	console.log(hanwha.slideGallery.model.database);
+
 })(window);
