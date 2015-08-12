@@ -12,8 +12,8 @@
 
 			return {
 				'DB': _database,
-				'createModel': function(id) {
-					this.add(id, []);
+				'createModel': function(id, value) {
+					this.add(id, (value || []) );
 				},
 				'add': function(id, value) {
 					if( typeof value !== 'object' ) { throw console.error('배열 또는 객체를 전달해야 합니다.') }
