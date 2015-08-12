@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if !IE]><!-->
+<html lang="ko-KR" class="no-js">
+<!--<![endif]-->
+<!--[if IE 8]><html lang="ko-KR" class="ie lt-ie10 ie8 no-js"><![endif]-->
+<!--[if IE 9]><html lang="ko-KR" class="ie lt-ie10 ie9 no-js"><![endif]-->
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery - Javascript Library</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../Libs/modernizr.js"></script>
+	<script src="../Libs/detectizr.js"></script>
+	<!-- jQuery v1.x -->
+	<script src="../Libs/jquery-1.11.3.min.js"></script>
+	<!-- jQuery v2.x -->
+	<!-- <script src="../Libs/jquery-2.1.4.min.js"></script> -->
+	<script>
+		// Native의 onload 이벤트는 이미지를 모두 다 불러온 후에 실행되기 때문에 느립니다.
+		// 그래서 사용을 권하고 싶지 않습니다.
+		window.onload = function() {
+			console.log('window onload문은 DOM + 이미지 로드 후에 실행');
+		// 	var $page = jQuery(document.querySelector('#page'));
+		// 	console.log($page);
+		}
+
+		console.log('head 내부에서 실행');
+
+		// jQuery Ready Event
+		// Native의 'DOMContentLoaded'와 동일한 처리를 수행
+		// DOM이 완성되는 즉시 실행
+
+		// 문서 객체 모델이 완성되는 즉시, ready() 내부에 전달된
+		// 익명 함수(콜백 함수)를 실행한다.
+		// jQuery(document).ready(init);
+		jQuery(function(){
+			console.log('jQuery Ready문은 DOM이 완성된 즉시 실행');
+		});
+		// jQuery(init);
+
+		function init() {
+			// document에서 #page인 요소를 찾아와 jQuery 인스턴스 객체화하고,
+			// $page 지역변수에 참조합니다.
+			var $page = jQuery(document.querySelector('#page'));
+			// $page 변수에 참조된 jQuery 인스턴스 메소드인 .css()를 사용하여
+			// 수집된 문서 객체에 스타일을 설정합니다.
+			$page
+				.css('color', '#4372bd')
+				.css('font-size', '100px');
+		}
+	</script>
+</head>
+<body>
+
+	<!-- 시작: #page -->
+	<div id="page">
+		<header>
+			<h1>hi, everyone!!</h1>
+		</header>
+	</div>
+	<!-- 끝: #page -->
+
+<script src="js/main.js"></script>
+
+console.log('body 끝에서 실행');
+</body>
+</html>
