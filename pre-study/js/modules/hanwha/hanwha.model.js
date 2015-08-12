@@ -22,14 +22,14 @@
 				'add': function(id, value) {
 					if( typeof value !== 'object' ) { throw console.error('배열 또는 객체를 전달해야 합니다.') }
 					if( value.constructor === Object ) {
-						if (this.contains[id]) {
+						if (_database[id]) {
 							_database[id].push(value);
 						} else {
 							_database[id] = [];
 							_database[id].push(value);
 						}
 					} else {
-						if (this.contains[id]) {
+						if (_database[id]) {
 							_database[id] = _database[id].concat(value);
 						} else {
 							_database[id] = value;
@@ -37,9 +37,7 @@
 					}
 				},
 				'remove': function(id) {
-					if (this.contains[id]) {
-						delete _database[id];
-					}
+					delete _database[id];
 				},
 				'contains': function(id) {
 					return !!_database[id];

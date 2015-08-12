@@ -12,11 +12,18 @@
 
 	<!-- BioCreature 객체 정의 파일 호출 -->
 	<script src="js/modules/BioCreature-v1.1.js"></script>
-	<script src="js/modules/Model.js"></script>
+	<!-- // <script src="js/modules/Model.js"></script> -->
+	<script src="js/modules/hanwha/hanwha.model.js"></script>
 </head>
 <body>
 
-<script src="js/main.js"></script>
+<!-- <script src="js/main.js"></script> -->
 
+<script>
+	(function(global){
+		'use strict';
+		hanwha.model.createModel('slideGallery');
+	})(window);
+</script>
 </body>
 </html>
