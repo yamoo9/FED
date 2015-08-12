@@ -16,12 +16,22 @@
 	<!-- jQuery v2.x -->
 	<!-- <script src="../Libs/jquery-2.1.4.min.js"></script> -->
 </head>
-<body>
+<body class="assign-jquery-effect">
 
 	<!-- 시작: #page -->
 	<div id="page">
 		<header>
+
 			<h1>hi, everyone!!</h1>
+
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ipsam, laborum, debitis mollitia esse porro, ab odit adipisci quis ipsum voluptate consequatur dicta. Suscipit facilis autem dignissimos. Nisi, maiores reprehenderit blanditiis, ipsa consequuntur facilis beatae voluptate voluptatem officia ratione debitis nobis quidem cupiditate adipisci accusamus et itaque repudiandae quaerat sint voluptatum officiis. Nostrum nihil voluptate distinctio impedit sint odio assumenda laudantium quis corrupti ab exercitationem harum aliquid, molestiae cupiditate tenetur beatae deserunt magnam dolorum numquam autem eos eius, tempore, maiores! Veniam, beatae in. Facere ea numquam soluta vero consectetur, sit dolore nobis maxime consequatur magni, facilis enim quam, labore consequuntur!</p>
+
+			<ul>
+				<li><a href="">item-15</a></li>
+				<li><a href="">item-14</a></li>
+				<li><a href="">item-13</a></li>
+				<li><a href="">item-12</a></li>
+			</ul>
 		</header>
 	</div>
 	<!-- 끝: #page -->
@@ -32,7 +42,29 @@
 	DOM이 완성된 후, Javascript를 실행하는 가장 빠른 지점은 이 곳이다.
 	window.onload, jQuery().ready()보다는 이 곳에 코드를 입력하길 권장한다.
 -->
-<script src="js/main.js"></script>
+<!-- <script src="js/main.js"></script> -->
+
+<script>
+(function(global, $, undefined){
+	'use strict';
+
+	var $page          = $('#page'),
+		$page_headline = $page.find('h1');
+
+	// console.log($page, $page_headline);
+
+	$page_headline.on('click', function() {
+		$page_headline.next().hide('slow');
+	});
+
+
+
+	$page_headline.on('dblclick', function() {
+		$page_headline.next().show('slow');
+	});
+
+})(window, window.jQuery);
+</script>
 
 </body>
 </html>

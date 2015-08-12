@@ -3,3 +3,61 @@
 body {
 	margin: 0;
 }
+
+/**
+ * --------------------------------
+ * .manipulation-html-class
+ * --------------------------------
+ */
+.manipulation-html-class #page * {
+	transition: all 0.3s ease 100ms;
+}
+
+.manipulation-html-class #page *.on {
+	font-weight: bold; /* 구형 브라우저 */
+	font-weight: 900;  /* 신형 브라우저 */
+	font-size:   48px; /* 구형 브라우저 */
+	font-size:   3rem; /* 신형 브라우저 */
+	color:       #34C0FF;
+}
+
+.manipulation-html-class #page *.off {
+	font-weight: lighter; /* 구형 브라우저 */
+	font-weight: 100;     /* 신형 브라우저 */
+	font-size:   32px;    /* 구형 브라우저 */
+	font-size:   2rem;    /* 신형 브라우저 */
+	color:       #ababab;
+}
+
+.manipulation-html-class #page *.on.off {
+	opacity: 0.45;
+}
+
+/**
+ * --------------------------------
+ * .assign-jquery-effect
+ * --------------------------------
+ */
+.assign-jquery-effect #page {
+	max-width: 1000px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+
+	font-weight: 100;
+	color: #515151;
+}
+
+.assign-jquery-effect #page h1 {
+
+}
+
+.assign-jquery-effect #page p {
+	line-height: 1.5;
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 1em;
+	-moz-column-gap: 1em;
+	column-gap: 1em;
+}
