@@ -4,7 +4,7 @@
  * 생성자 함수 (일급 함수)
  * ex) new 생성자 함수 -> 객체 인스턴스 생성
  *
- * Private Members in JavaScript
+ * Private Members in JavaScript (2001)
  * http://javascript.crockford.com/private.html
  *
  * JavaScript의 privileged 메서드가 끔찍한 이유
@@ -18,14 +18,22 @@ function BioCreature(init_settings) {
 	// 생성자 함수 내부에 속성을 설정하되,
 	// 지역 변수, 지역 함수 형태로 정의하면
 	// 그것이 곧 감춰진 멤버(Private Member).
-	var _age = 1;
 
+	// -----------------------------------------------------
+	// 감춰진 멤버(Private Member)
+	var _age          = 1,
+		_birth__place = 'Earth',
+		_leg__count   = 4;
+
+	// -----------------------------------------------------
 	// 공개된 멤버(Public Member)
 	this.self = this;
 	this.type = null;
 	this.current_state = 'sleep';
 	this.init(init_settings);
 
+	// -----------------------------------------------------
+	// 감춰진 멤버에 접근/조작할 수 있는 특별한 멤버(Privileged Member)
 	this.getAge = function() {
 		return _age;
 	};
@@ -34,15 +42,30 @@ function BioCreature(init_settings) {
 		_age = value;
 	};
 
-	// this._creature = _creature;
-	// return _creature;
-
+	// -----------------------------------------------------
+	// ECMAScript v5.1 (Standard) - Object.defineProperty()
 	// 공개된 멤버이나, 외부에서 수정할 수 없도록 하고 싶을 때
-	// Object.defineProperty(this, 'may', {
-	// 	'get': function() {
-	// 		return 9;
-	// 	}
-	// });
+	// 값을 가져오거나, 설정 가능하도록 구성하고자 할 때
+
+	Object.defineProperty(this, 'birth_place', {
+		'value': _birth__place,
+		'configurable' : true,
+		// 'enumerable'   : true,
+		// 'writable'     : true
+	});
+
+	// 객체의 속성이 열거(Enumerable) 가능하니 체크하려면...
+	// 객체.propertyIsEnumerable(값); // true or false
+
+	Object.defineProperty(this, 'leg_count', {
+		'get': function() {
+			return _leg__count;
+		},
+		'set': function(value) {
+			_leg__count = value;
+		}
+	});
+
 }
 
 // 생성자 함수의 프로토타입 (Prototype)
