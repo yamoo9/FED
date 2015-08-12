@@ -15,6 +15,7 @@
 13. [08.06](DOC/08.06.md)
 14. [08.07](DOC/08.07.md)
 15. [08.10](DOC/08.10.md)
+16. [08.12](DOC/08.12.md)
 
 ## 테스트
 - [TEST v1](http://goo.gl/forms/XVPSZjfGyg)
