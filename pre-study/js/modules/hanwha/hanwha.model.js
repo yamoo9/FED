@@ -1,4 +1,4 @@
-(function(){
+(function(global){
 	'use strict';
 
 	if (!global.hanwha) {
@@ -18,14 +18,14 @@
 				'add': function(id, value) {
 					if( typeof value !== 'object' ) { throw console.error('배열 또는 객체를 전달해야 합니다.') }
 					if( value.constructor === Object ) {
-						if (_database[id]) {
+						if (this.contains[id]) {
 							_database[id].push(value);
 						} else {
 							_database[id] = [];
 							_database[id].push(value);
 						}
 					} else {
-						if (_database[id]) {
+						if (this.contains[id]) {
 							_database[id] = _database[id].concat(value);
 						} else {
 							_database[id] = value;
@@ -33,10 +33,15 @@
 					}
 				},
 				'remove': function(id) {
-					delete _database[id];
+					if (this.contains[id]) {
+						delete _database[id];
+					}
 				},
 				'contains': function(id) {
 					return !!_database[id];
+				},
+				'get': function(id) {
+					return this.DB[id];
 				}
 			}
 
