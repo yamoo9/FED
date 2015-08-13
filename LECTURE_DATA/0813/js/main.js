@@ -26,7 +26,17 @@
 
 			return addclass; // 반환된 문자열이 클래스 속성 값으로 추가
 		})
+		// .hasClass('main') // Boolean 반환
 		// 다른 속성 추가에 사용되는 메소드 .attr()
-		.attr('data-context', 'body');
+		.attr('data-context', 'body')
+		// .removeClass()
+		// .removeClass('main')
+		.removeClass(function(index, current_classname) {
+			var removeclass = '';
+			if( current_classname.indexOf('main') > -1) {
+				removeclass = 'main';
+			}
+			return removeclass;
+		})
 
 })(window, window.jQuery);
