@@ -50,4 +50,9 @@
 
 	}
 
+	// 2초 뒤에 붙잡아둔(hold) ready 이벤트에 연결된 함수를 실행.
+	global.setTimeout(function() {
+		$.holdReady(false);
+	}, 2000);
+
 })(window, window.jQuery);
