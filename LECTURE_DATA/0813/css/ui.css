@@ -1,4 +1,43 @@
 body {
+	margin:       0;
+	font:         200 22px/1.5 'Dosis', Sans-Serif;
+	min-width:    960px;
+	width:        80%;
+	margin-top:   100px;
+	margin-left:  auto;
+	margin-right: auto;
+}
+
+.bold-dosis {
+	font-family: 'Dosis';
+	font-weight: 500;
+}
+
+.ui-accordion {
+	width: 40%;
+	border-top: 2px solid #ababab;
+	border-bottom: 2px solid #ababab;
+}
+
+.ui-accordion-handle a {
+	display: block;
+	color: #515151;
+	text-decoration: none;
+	border-bottom: 1px solid #dfdfdf;
+	padding: 0.3em 0 0.3em 0.3em;
+}
+
+.ui-accordion-handle a:hover,
+.ui-accordion-handle a:focus {
+	background: #E7E7E7;
+}
+
+.ui-accordion-content {
+	border-bottom: 1px solid #dfdfdf;
+	background: #F3F3F3;
+	padding: 0.6em;
+}
+
+.ui-accordion-content * {
 	margin: 0;
-	font: 14px/1.5 ;
 }
