@@ -29,12 +29,17 @@ body {
 
 .ui-accordion-handle a:hover,
 .ui-accordion-handle a:focus {
-	background: #E7E7E7;
+	/*background: #e7e7e7;*/
+	color: #fc414b;
+}
+
+.ui-accordion-handle a:focus {
+	outline: 3px solid #fcacaa;
 }
 
 .ui-accordion-content {
 	border-bottom: 1px solid #dfdfdf;
-	background: #F3F3F3;
+	background: #f3f3f3;
 	padding: 0.6em;
 }
 
