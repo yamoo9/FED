@@ -28,13 +28,15 @@ body {
 }
 
 .ui-accordion-handle a:hover,
-.ui-accordion-handle a:focus {
+.ui-accordion-handle a:focus,
+.ui-accordion-handle.on a {
 	/*background: #e7e7e7;*/
 	color: #fc414b;
 }
 
 .ui-accordion-handle a:focus {
-	outline: 3px solid #fcacaa;
+	outline: none;
+	/*outline: 3px solid #fcacaa;*/
 }
 
 .ui-accordion-content {

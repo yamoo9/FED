@@ -25,7 +25,7 @@
 	 * --------------------------------
 	 */
 	// console.log($accordion_handles);
-	$accordion_handles.on('click', function() {
+	$accordion_handles.on('click', function(e) {
 		// jQuery의 .on() 함수 내 전달되는 함수 안에서의 this는
 		// DOM ElementNode 입니다. 고로... jQuery 인스턴스의
 		// 능력은 사용할 수 없습니다.
@@ -34,15 +34,24 @@
 
 		// this.nextElementSibling.style.display = 'block';
 
-		var $nextEl = $(this).next();
+		var $this   = $(this),
+			$nextEl = $this.next();
+
+		if ( $this.hasClass('on') ) {
+			$this.removeclass('on');
+		} else {
+			$this.addClass('on');
+		}
+
+		$nextEl.toggle();
 
 		// $nextEl 보여지는 상태? 안 보여지는 상태?
 		// if ( $nextEl.css('display') === 'none' ) {
-		if ( $nextEl.is(':hidden') ) {
-			$nextEl.show();
-		} else {
-			$nextEl.hide();
-		}
+		// if ( $nextEl.is(':hidden') ) {
+		// 	$nextEl.show();
+		// } else {
+		// 	$nextEl.hide();
+		// }
 
 		return false;
 	});
