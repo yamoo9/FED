@@ -11,7 +11,7 @@
 
 	$app_child
 		// toggleclass - 문자열 전달 예제
-		.toggleclass('beta')
+		.toggleClass('beta')
 		// toggleclass - 상태(State) 전달 예제
 		.toggleClass('harmony', isHarmony)
 		.toggleClass('not-harmony', !isHarmony)
