@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery - UI</title>
+	<link rel="stylesheet" href="css/ui.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<script src="../../Libs/jquery-2.1.4.js"></script>
+	<script src="../../Libs/settingGoogleFonts.js"></script>
+	<script>
+		(function($){
+			$.settingGoogleFonts( [
+				'Dosis:200,500:latin',
+				// 'Roboto+Slab:400,300:latin',
+				// 'La+Belle+Aurore::latin'
+			] );
+		})(window.jQuery);
+	</script>
+</head>
+<body>
+
+<!-- 시작: .ui-accordion -->
+<div class="ui-accordion">
+	<div class="ui-accordion-handle bold-dosis" data-category="sns">
+		<a href role="button"><i class="fa fa-facebook-square"></i> SNS</a>
+	</div>
+	<div class="ui-accordion-content" data-category="sns">
+		<h4>SNS headline</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam at praesentium error, quae.</p>
+	</div>
+	<div class="ui-accordion-handle bold-dosis" data-category="shopping">
+		<a href role="button"><i class="fa fa-shopping-cart"></i> Shopping</a>
+	</div>
+	<div class="ui-accordion-content" data-category="shopping">
+		<h4>Shopping headline</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo dolor hic nam nulla!</p>
+	</div>
+	<div class="ui-accordion-handle bold-dosis" data-category="sports">
+		<a href role="button"><i class="fa fa-soccer-ball-o"></i> Sports</a>
+	</div>
+	<div class="ui-accordion-content" data-category="sports">
+		<h4>Sports headline</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi velit et, magni quo.</p>
+	</div>
+</div>
+<!-- 끝: .ui-accordion -->
+
+
+<script src="js/ui.js"></script>
+</body>
+</html>
