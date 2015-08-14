@@ -8,11 +8,17 @@
 	 */
 	var $box_layout_area = $('.box-layout-area');
 
-	// $.centerBox($box_layout_area, {
-	// 	'width'  : '',
-	// 	'height' : '',
-	// 	'html'   : ''
-	// });
+
+	$.layoutBox($box_layout_area);
+
+
+	$.layoutBox($box_layout_area, {
+		'html'       : '<div>box design</div>',
+		'width'      : 50,
+		'height'     : 100,
+		'background' : '#ff0',
+		'color'      : 'red'
+	});
 
 
 })(window, window.jQuery);
