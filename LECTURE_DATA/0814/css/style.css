@@ -3,6 +3,7 @@
 body {
 	margin: 0;
 	font-family: 'Noto Sans', Sans-Serif;
+	background: #eaeaea;
 }
 
 #app {
@@ -24,3 +25,20 @@ body {
 	color:          #c4ff3a;
 	letter-spacing: -0.03em;
 }
+
+/**
+ * --------------------------------
+ * .box-layout-area
+ * --------------------------------
+ */
+ .box-layout-area {
+ 	width:           100px;
+ 	height:          100px;
+ 	position:        absolute;
+ 	top:             50%;
+ 	left:            50%;
+ 	border:          3px solid #878787;
+ 	transform:       translate(-50%, -50%);
+ 	background:      linear-gradient(transparent 90%, #185274), linear-gradient(-90deg, transparent 90%, #185274), #fff;
+ 	background-size: 10px 10px, 10px 10px, cover;
+ }

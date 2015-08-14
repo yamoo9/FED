@@ -1,28 +1,18 @@
-/*! jQuery().width(), jQuery().height() © yamoo9.net, 2015 */
+/*! main.js © yamoo9.net, 2015 */
 (function(global, $, undefined){
 	'use strict';
 
 	/**
-	 * --------------------------------
-	 * 문서 객체 참조
+	 * jQuery.centerBox.js 활용
 	 * --------------------------------
 	 */
-	var $app = $('#app');
+	var $box_layout_area = $('.box-layout-area');
 
-	// GET: Content Box 까지만 가져옴.
-	var app_height = $app.height(),
-		app_width  = $app.width();
+	// $.centerBox($box_layout_area, {
+	// 	'width'  : '',
+	// 	'height' : '',
+	// 	'html'   : ''
+	// });
 
-	// console.log(app_height, app_width);
-
-	// SET
-	$app.height(500)
-		.width(function(index, width) {
-			var height = $(this).height() * 1.8;
-			return height;
-		})
-		.css('line-height', function(index, value){
-			return $(this).height() + 'px';
-		});
 
 })(window, window.jQuery);
