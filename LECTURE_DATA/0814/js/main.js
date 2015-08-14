@@ -8,16 +8,26 @@
 	 */
 	var $box_layout_area = $('.box-layout-area');
 
-
-	$.layoutBox($box_layout_area);
-
+	$.layoutBox($box_layout_area, {
+		'color' : 'hotpink',
+		'left'  : 30,
+		'top'   : 60
+	});
 
 	$.layoutBox($box_layout_area, {
-		'html'       : '<div>box design</div>',
-		'width'      : 50,
-		'height'     : 100,
-		'background' : '#ff0',
-		'color'      : 'red'
+		'color'  : '#f57452',
+		'width'  : 100,
+		'height' : 60,
+		'left'   : 250,
+		'top'    : 30
+	});
+
+	$.layoutBox($box_layout_area, {
+		'background' : '#505050',
+		'width'      : 210,
+		'height'     : 80,
+		'left'       : 250,
+		'top'        : 100
 	});
 
 
