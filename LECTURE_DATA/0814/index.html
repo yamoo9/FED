@@ -10,11 +10,19 @@
 	<title>jQuery</title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="../Libs/jquery-2.1.4.js"></script>
+	<script src="../Libs/settingGoogleFonts.js"></script>
+	<script>
+	(function($){
+		// Google WebFont 활용
+		$.settingGoogleFonts(['Noto+Sans::latin']);
+	})(window.jQuery);
+	</script>
 </head>
 <body>
 
 	<div id="app">
 		<div class="app-child">App Child</div>
+		<!-- <div class="app-onother-child">App Another Child</div> -->
 	</div>
 
 <script src="js/main.js"></script>

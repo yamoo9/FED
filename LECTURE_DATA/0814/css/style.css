@@ -2,4 +2,25 @@
 
 body {
 	margin: 0;
+	font-family: 'Noto Sans', Sans-Serif;
+}
+
+#app {
+	position:    absolute;
+	top:         50%;
+	left:        50%;
+	width:       450px;
+	min-height:  300px;
+	padding:     1.2em;
+	color:       #fff;
+	background:  #25a04d;
+	text-align:  center;
+	line-height: 300px;
+	transform: translate(-50%, -50%);
+}
+
+#app .app-child {
+	font-size:      64px;
+	color:          #c4ff3a;
+	letter-spacing: -0.03em;
 }

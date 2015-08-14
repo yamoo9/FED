@@ -1,36 +1,45 @@
-/*! main.js © yamoo9.net, 2015 */
+/*! jQuery().css() © yamoo9.net, 2015 */
 (function(global, $, undefined){
 	'use strict';
 
-	// DOM 객체를 jQuery 인스턴스 객체화
+	/**
+	 * --------------------------------
+	 * 문서 객체 참조 (jQuery 인스턴스 객체)
+	 * --------------------------------
+	 */
 	var $app       = $('#app'),
-		$app_child = $('.app-child', $app),
-		isHarmony  = !false;
+		$app_child = $app.children('.app-child');
 
 	// console.log($app, $app_child);
 
-	$app_child
-		// toggleclass - 문자열 전달 예제
-		.toggleClass('beta')
-		// toggleclass - 상태(State) 전달 예제
-		.toggleClass('harmony', isHarmony)
-		.toggleClass('not-harmony', !isHarmony)
-		// toggleclass - 함수 전달 예제
-		.toggleClass(function(){
-			var toggleclass = '';
-			// ------------------------------------------------
-			// Javascript 방식
-			var parentID = this.parentNode.getAttribute('id');
-			if(parentID === 'app') {
-				toggleclass = 'my-parent-is-app';
-			}
-			// ------------------------------------------------
-			// jQuery 방식
-			if( $(this).parent().is('#app') ) {
-				toggleclass = 'my-parent-is-app';
-			}
-			// ------------------------------------------------
-			return toggleclass;
-		});
+	// GET
+	var app_padding_left   = $app.css('padding-left'), // 19.2px
+		app_padding_right  = $app.css('padding-right'),
+		app_padding_bottom = $app.css('padding-bottom'),
+		app_padding_top    = $app.css('padding-top');
+
+	// PX2EM
+	function px2em(value, base) {
+		base = base || 16;
+		return parseFloat(value)/base + 'em';
+	}
+
+	// EM2PX
+	function em2px(value, base) {
+		base = base || 16;
+		return parseFloat(value) * base + 'px';
+	}
+
+	// PX
+	console.log( 'app_padding_left: ', app_padding_left );
+	console.log( 'app_padding_right: ', app_padding_right );
+	console.log( 'app_padding_bottom: ', app_padding_bottom );
+	console.log( 'app_padding_top: ', app_padding_top );
+
+	// EM
+	console.log( 'app_padding_left: ', px2em(app_padding_left) );
+	console.log( 'app_padding_right: ', px2em(app_padding_right) );
+	console.log( 'app_padding_bottom: ', px2em(app_padding_bottom) );
+	console.log( 'app_padding_top: ', px2em(app_padding_top) );
 
 })(window, window.jQuery);
