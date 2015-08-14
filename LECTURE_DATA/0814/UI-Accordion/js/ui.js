@@ -22,9 +22,7 @@
 	 * Event 바인딩
 	 * --------------------------------
 	 */
-	// console.log($accordion_handles);
-	// $accordion_handles.on('click', toggleContent);
-	$accordion_handles.on('click', radioContent);
+	$accordion_handles.on('mouseenter', radioContent);
 
 	// 초기 실행
 	$accordion_handles.eq(random).click();
@@ -54,6 +52,11 @@
 		// 형제들 siblings 중, 핸들 handle 요소만 필터링 Filtering
 		var $siblings = $this.siblings('[class*="-handle"]');
 		$siblings.removeClass('on');
+
+		// .stop()은 현재 진행 중인 애니메이션을 멈춘다.
+		// .stop()을 사용하지 않을 경우, 애니메이션은 이벤트에 따라 쌓이게(Stack) 된다.
+		$this.next().stop().slideDown();
+		$siblings.next().stop().slideUp();
 
 	}
 
