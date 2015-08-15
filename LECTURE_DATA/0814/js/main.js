@@ -3,7 +3,7 @@
 	'use strict';
 
 	/**
-	 * jQuery.centerBox.js 활용
+	 * jQuery.layoutBox.js 활용
 	 * --------------------------------
 	 */
 	var $box_layout_area = $('.box-layout-area');
