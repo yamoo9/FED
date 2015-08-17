@@ -25,7 +25,7 @@
 
 	/**
 	 * --------------------------------
-	 * Manipulation
+	 * Manipulation, Insertion Outside
 	 * --------------------------------
 	 */
 	var $beforeBox = $('<div id="box-before">before box</div>');
@@ -61,17 +61,42 @@
 	function append(target, last) {
 		target.insertAdjacentHTML('beforeend', last);
 	}
+	function appendTo(lastChild, targetParent) {
+		append(targetParent, lastChild);
+	}
 	function prepend(target, first) {
 		target.insertAdjacentHTML('afterbegin', first);
 	}
-	function insertBefore(target, prev) {
+	function prependTo(firstChild, targetParent) {
+		prepend(targetParent, lastChild);
+	}
+
+	function insertBefore(prev, target) {
 		target.insertAdjacentHTML('beforebegin', prev);
+	}
+	function before(targetParent, prevSibling) {
+		insertBefore(prevSibling, targetParent)
 	}
 	function insertAfter(target, next) {
 		target.insertAdjacentHTML('afterend', next);
 	}
+	function after(targetParent, nextSibling) {
+		insertAfter(nextSibling, targetParent)
+	}
 
 	append(head, '<link rel="stylesheet" href="css/temp.css" />');
 
+	/**
+	 * --------------------------------
+	 * Manipulation, Insertion Inside
+	 * --------------------------------
+	 */
+	// prepend, prependTo
+	$('.before-box').prepend('<span class="inside-before-box">inside</span>');
+	$('<em class="before-emphasis">emphasis</em>').prependTo('body');
+
+	// append, appendTo
+	$('.after-box').append('<span class="inside-after-box">inside</span>');
+	$('<em class="after-emphasis">emphasis</em>').appendTo('body');
 
 })(window, window.jQuery);
