@@ -8,13 +8,15 @@
 
 	// $post.filter(':gt(0)').append('<a href="#">go to Top</a>');
 
-	$post.filter(function(index, el) {
+	var s = $post.filter(function(index, el) {
 
 		// jQuery
 		var win_h       = $(window).height(),
 			$el         = $(el),
 			el_offset_h = $el.offset().top + $el.outerHeight(true);
-		if( win_h < el_offset_h ) { return true; }
+		console.log($el.offset().top);
+		if( win_h < el_offset_h ) {
+			return true; }
 
 		// Native
 		// var win_h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
@@ -28,6 +30,8 @@
 		// }
 
 	}).append('<a href="#">go to Top</a>');
+
+	console.log(s);
 
 	// --------------------------------------------------------
 
