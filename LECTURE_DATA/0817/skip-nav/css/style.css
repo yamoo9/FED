@@ -7,6 +7,12 @@ body {
 	font: 14px/1.5 'Nanum Gothic';
 }
 
+#page h1 {
+	font-size: 48px;
+	font-weight: 100;
+	letter-spacing: -0.03em;
+}
+
 .post {
 	border-top: 1px solid #ababab;
 	border-bottom: 1px solid #ababab;
@@ -14,6 +20,60 @@ body {
 	padding-bottom: 20px;
 }
 
+.post h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 46px;
+	font-weight: 100;
+	color: #846C49;
+}
+
+.post h3 + * {
+	background: #000;
+	color: #fff;
+	padding: 0.3em;
+	border-radius: 4px;
+}
+
 #footer {
 	margin-top: 30px;
+}
+
+.skip-content {
+	position: absolute;
+	top: 0;
+	left: 20px;
+}
+
+.skip-content a:focus {
+	padding: 0.45em 0.9em;
+	background: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+/**
+ * --------------------------------
+ * 공통 스타일 속성
+ * --------------------------------
+ */
+.a11y-hidden {
+	overflow: hidden;
+	position: absolute;
+	clip:     rect(0 0 0 0);
+	clip:     rect(0,0,0,0);
+	width:    1px;
+	height:   1px;
+	margin:   -1px;
+	padding:  0;
+	border:   0;
+}
+.a11y-hidden.focusable:focus,
+.a11y-hidden.focusable:active {
+	overflow: visible;
+	position: static;
+	clip:     auto;
+	width:    auto;
+	height:   auto;
+	margin:   0;
 }
