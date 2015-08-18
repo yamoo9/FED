@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery - SlideShow</title>
+	<link rel="stylesheet" href="css/slideShow.css">
+	<script src="../../Libs/jquery-2.1.4.js"></script>
+</head>
+<body>
+
+	<div class="slideShowContainer">
+		<ul class="slideShow">
+			<li data-src="img/photo01.jpg"></li>
+			<li data-src="img/photo02.jpg"></li>
+			<li data-src="img/photo03.jpg"></li>
+			<li data-src="img/photo04.jpg"></li>
+			<li data-src="img/photo05.jpg"></li>
+		</ul>
+	</div>
+
+<script>
+(function(global, $, undefined){
+	'use strict';
+
+	var $slideShowContainer = $('.slideShowContainer'),
+		$slideShow          = $('.slideShow', $slideShowContainer),
+		slideShow_length    = $slideShow.children().length,
+		currentSlide        = 0,
+		cacheSlides         = [];
+
+	// 이미지 로드
+	(function loadImages(){
+
+		if (currentSlide < slideShow_length) {
+			cacheSlides[currentSlide] = new Image();
+			cacheSlides[currentSlide].setAttribute('src', $slideShow.children(':eq('+currentSlide+')').attr('data-src'));
+			$slideShow.children(':eq('+currentSlide+')').append( cacheSlides[currentSlide] );
+			currentSlide++;
+			loadImages();
+		} else {
+			currentSlide = 0;
+			slideShow();
+		}
+
+	})();
+
+	// 슬라이드쇼
+	function slideShow() {
+		$slideShow.children().eq(currentSlide).fadeIn(1000).delay(2000).fadeOut(1000, function(){
+			slideShow();
+		});
+		currentSlide < slideShow_length-1 ? currentSlide++ : currentSlide=0;
+	}
+
+})(window, window.jQuery);
+</script>
+</body>
+</html>

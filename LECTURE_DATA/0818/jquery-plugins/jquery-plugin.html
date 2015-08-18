@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery - Data &amp; Clone</title>
+	<style>
+		.on { font-weight: 900; }
+		.on a { text-decoration: none; }
+	</style>
+	<!-- jQuery 호출 -->
+	<script src="../../Libs/jquery-2.1.4.js"></script>
+	<script src="../../Libs/jquery.utils.js"></script>
+	<!-- 제작한 jQuery 플러그인 코드 -->
+	<script src="js/libs/plugins/jquery.radioClass.js"></script>
+
+	<!-- owl plugin -->
+	<link rel="stylesheet" href="js/libs/plugins/owl-carousel/owl.carousel.css">
+	<link rel="stylesheet" href="js/libs/plugins/owl-carousel/owl.theme.css">
+	<script src="js/libs/plugins/owl-carousel/owl.carousel.min.js"></script>
+</head>
+<body>
+
+	<div id="owl-demo" class="owl-carousel">
+	  <div> Content1 </div>
+	  <div> Content2 </div>
+	  <div> Content3 </div>
+	  <div> Content4 </div>
+	  <div> Content5 </div>
+	  <div> Content6 </div>
+	  <div> Content7 </div>
+	</div>
+
+	<nav id="gnb">
+		<ul>
+			<li><a href="">item-1</a></li>
+			<li><a href="">item-2</a></li>
+			<li><a href="">item-3</a></li>
+			<li><a href="">item-4</a></li>
+		</ul>
+	</nav>
+
+<script>
+	(function(global, $, undefined){
+		'use strict';
+
+		$("#owl-demo").owlCarousel();
+
+		var $gnb = $('#gnb');
+
+		$gnb.on('click', 'a', function(ev) {
+			ev.preventDefault();
+			var $item = $.cache(ev.target);
+			$item.parent()
+				.radioClass('on')
+				.addClass('active');
+		});
+
+	})(window, window.jQuery);
+</script>
+</body>
+</html>

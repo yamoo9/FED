@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery Effect - Fade Basics</title>
+	<link rel="stylesheet" href="css/fade_basics.css">
+	<script src="../../Libs/jquery-2.1.4.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="bigBox"></div>
+		<div class="status"></div>
+		<a role="button" href="#" class="clickToFadeIn">Fade In</a>
+		<a role="button" href="#" class="clickToFadeOut">Fade Out</a>
+		<a role="button" href="#" class="toggleFade">Toggle</a>
+	</div>
+
+<script>
+(function(global, $, undefined){
+	'use strict';
+
+	var $container = $('.container'),
+		$bigBox    = $('.bigBox', $container),
+		$status    = $('.status', $container);
+
+	$container.on('click', 'a', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var $this = $(e.target);
+
+		if( $this.is('.clickToFadeIn') ) {
+			$bigBox.fadeIn(1000, function() {
+				$status.addClass('green');
+			});
+		}
+
+		if( $this.is('.clickToFadeOut') ) {
+			$bigBox.fadeOut(1000, function() {
+				$status.removeClass('green');
+			});
+		}
+
+		if( $this.is('.toggleFade') ) {
+			$bigBox.fadeToggle(1000, function() {
+				$status.toggleClass('green');
+			});
+		}
+
+	});
+
+})(window, window.jQuery);
+</script>
+</body>
+</html>

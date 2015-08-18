@@ -1,0 +1,65 @@
+.logoBox {
+	opacity: 0.5;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	width: 2px;
+	height: 100px;
+	margin: auto;
+	background: rgb(200, 0, 0);
+	/*border:2px solid black;*/
+}
+#logo {
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	width: 315px;
+	height: 315px;
+	margin: auto;
+}
+.buttons {
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+	width: 114px;
+	height: 25px;
+	margin: auto;
+	border: 1px solid;
+	background: rgba(0, 0, 0, 0.1);
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+#open-logo-btn {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 50px;
+	padding: 5px;
+	color: #000;
+	background: rgb(0, 220, 0);
+	font-family: sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+#close-logo-btn {
+	position: absolute;
+	left: 54px;
+	width: 50px;
+	padding: 5px;
+	color: #000;
+	background: rgb(220, 0, 0);
+	font-family: sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}

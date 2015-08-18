@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery - Time Sphere</title>
+	<link rel="stylesheet" href="css/timeSphere.css">
+	<script src="../../Libs/jquery-2.1.4.js"></script>
+</head>
+<body>
+
+	<div class="logoBox">
+		<img id="logo" src="img/timesphere.png">
+	</div>
+
+	<div class="buttons">
+		<a role="button" href="#" id="open-logo-btn">Open</a>
+		<a role="button" href="#" id="close-logo-btn">Close</a>
+	</div>
+
+<script>
+(function(global, $, undefined){
+	'use strict';
+
+	var $logoBox = $('.logoBox'),
+		$logo    = $('#logo'),
+		$buttons = $('.buttons');
+
+	(function loadQ(){
+		$logoBox
+			.queue('openQ', function(next) {
+				$(this).animate({
+					'width': 400
+				}, {
+					'duration': 300,
+					'queue': false
+				});
+				next();
+			})
+			.queue('openQ', function(next) {
+				$(this).animate({
+					'opacity': 1,
+					'height': 400
+				}, {
+					'duration': 300,
+					'queue': false
+				});
+				next();
+			})
+			.queue('openQ', function(next) {
+				$(this).animate({
+					'border-radius': '50%'
+				}, {
+					'duration': 1000,
+					'queue': false
+				});
+				next();
+			})
+			.queue('openQ', function(next) {
+				$logo.delay(1000).fadeIn();
+				next();
+			})
+			.queue('closeQ', function(next) {
+				$logo.fadeOut();
+				next();
+			})
+			.delay(600, 'closeQ')
+			.queue('closeQ', function(next) {
+				$(this).animate({
+					'height': 100,
+					'width': 1
+				}, {
+					'duration': 400,
+					'queue': false
+				});
+				next();
+			})
+			.queue('closeQ', function() {
+				loadQ();
+				$(this).dequeue();
+			});
+	})();
+
+
+	$buttons.on('click', 'a', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		if( $(e.target).is('#open-logo-btn') ) {
+			$logoBox.dequeue('openQ');
+		} else {
+			$logoBox.dequeue('closeQ');
+		}
+	});
+
+})(window, window.jQuery);
+</script>
+</body>
+</html>

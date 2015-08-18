@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery - Pop Notify</title>
+	<link rel="stylesheet" href="css/popNotify.css">
+	<script src="../../Libs/jquery-2.1.4.js"></script>
+</head>
+<body>
+
+	<div class="popNotify">
+		<div class="messageBox">
+			<h2>메시지 출력</h2>
+		</div>
+	</div>
+
+<script>
+(function(global, $, undefined){
+	'use strict';
+
+	var $popNotify = $('.popNotify'),
+		$messageBox = $popNotify.find('.messageBox'),
+		messages = 'I Make jQuery popNotify, our goal is Front-End Develop, Good Luck To You!'.split(', ');
+
+	$messageBox.data({
+		'index': 0,
+		'originLeft': $messageBox.css('left')
+	});
+
+	(function popNotify(){
+		$messageBox.find('h2').text(messages[$messageBox.data('index')]);
+		$messageBox
+		.animate({
+			'left': -10
+		}, 1000)
+		.delay(1400)
+		.animate({
+			'left': $messageBox.data('originLeft')
+		}, 1000)
+		.queue(function() {
+			var index = $messageBox.data('index');
+			if( $messageBox.data('index') < messages.length - 1 ) {
+				$messageBox.data('index', ++index);
+				popNotify();
+			} else {
+				messages=[];
+				$messageBox.data('index', 0);
+			}
+			$(this).dequeue();
+		});
+	})();
+
+})(window, window.jQuery);
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.slideShowContainer {
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	width: 800px;
+	height: 440px;
+	margin: auto;
+	border: 1px solid black;
+	background: #000;
+	border-radius: 5px;
+	box-shadow: 0px 1px 20px black;
+}
+.slideShow {
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.slideShow > li {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}

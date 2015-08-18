@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>jQuery Effect - Fade Basics</title>
+    <link rel="stylesheet" href="css/fade_to.css">
+    <script src="../../Libs/jquery-2.1.4.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <a href class="fadeBox">
+            <h3>Services</h3>
+        </a>
+        <a href class="fadeBox">
+            <h3>Support</h3>
+        </a>
+        <a href class="fadeBox">
+            <h3>Innovation</h3>
+        </a>
+    </div>
+
+<script>
+    (function(global, $, undefined){
+        'use strict';
+
+        var $container = $('.container');
+
+        $container
+            .on('mouseenter focusin', 'a', function(e) {
+                var $this = $(e.target);
+                if( $this.is('.fadeBox') ) {
+                    $this.stop(stop).fadeTo(300, 1);
+                }
+            })
+            .on('mouseleave focusout', 'a', function(e) {
+                var $this = $(e.target);
+                if( $this.is('.fadeBox') ) {
+                    $this.stop(stop).fadeTo(300, 0.4);
+                }
+            })
+            .on('click', 'a', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            })
+
+    })(window, window.jQuery);
+</script>
+</body>
+</html>
