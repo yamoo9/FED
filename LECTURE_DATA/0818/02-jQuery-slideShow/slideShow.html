@@ -19,5 +19,70 @@
 		</ul>
 	</div>
 
+<script>
+
+;(function(global, $, undefined){
+	'use strict';
+
+	/**
+	 * --------------------------------
+	 * 대상 객체 참조
+	 * --------------------------------
+	 */
+	var $slideShowContainer = $('.slideShowContainer'),
+		$slideShow          = $('.slideShow', $slideShowContainer),
+		$slide              = $slideShow.children(),
+		slide_total         = $slide.length; // 5
+
+	// 슬라이드 인덱스 초기 설정 (값: 0)
+	$slideShow.data('slide_index', 0);
+
+	/**
+	 * --------------------------------
+	 * 이미지 삽입
+	 * --------------------------------
+	 */
+	(function insertImage(){
+		var _index = $slideShow.data('slide_index');
+		if (_index < slide_total) {
+			$slide.eq( _index )
+				.append(function(index, html) {
+					var src = this.getAttribute('data-src');
+					return '<img src='+ src +' alt>';
+				});
+
+			$slideShow.data('slide_index', ++_index);
+			insertImage(); // 재귀함수
+		} else {
+			$slideShow.data('slide_index', 0);
+			slideShow();
+		}
+	})();
+
+	/**
+	 * --------------------------------
+	 * 슬라이드 쇼
+	 * --------------------------------
+	 */
+	function slideShow() {
+		var _index = $slideShow.data('slide_index');
+		$slide.eq( _index )
+			.fadeIn(1000)
+			.delay(2000)
+			.fadeOut(1000, function() {
+				slideShow();
+			});
+
+		if (_index < slide_total - 1) {
+			$slideShow.data('slide_index', ++_index);
+		} else {
+			$slideShow.data('slide_index', 0);
+		}
+
+	}
+
+})(window, window.jQuery);
+
+</script>
 </body>
 </html>

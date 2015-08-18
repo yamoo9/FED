@@ -6,6 +6,7 @@
 	<title>jQuery Effect - Fade Basics</title>
 	<link rel="stylesheet" href="css/fade_to.css">
 	<script src="../../Libs/jquery-2.1.4.js"></script>
+	<script src="../../Libs/jquery.utils.js"></script>
 </head>
 <body>
 
@@ -21,5 +22,29 @@
 		</a>
 	</div>
 
+<script>
+(function(global, $, undefined){
+	'use strict';
+	var $container = $('.container');
+
+	$container
+		.on('mouseenter', 'a.fadeBox', function(e) {
+			// 이벤트 위임 상에서 발생할 수 있는 문제
+			// jQuery
+			var $this = $.cache(e.target).is('a') ?
+							$.cache(e.target) :
+							$.cache(e.target).parent();
+			$this.stop().fadeTo(400, 1);
+		})
+		.on('mouseleave', 'a.fadeBox', function(e) {
+			// Native
+			var $this = $.cache(e.target.nodeName === 'A' ?
+								e.target :
+								e.target.parentNode
+				);
+			$this.stop().fadeTo(400, 0.2);
+		});
+})(window, window.jQuery);
+</script>
 </body>
 </html>

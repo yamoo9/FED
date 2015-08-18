@@ -38,8 +38,26 @@
 	(function(global, $, undefined){
 		'use strict';
 
+		/**
+		 * --------------------------------
+		 * jQuery.data() 유틸리티 메소드
+		 * 활용 예시: jQuery 인스턴스 객체 캐시
+		 * --------------------------------
+		 */
+		// if ( $.data(document.body, 'name') ) {
+		// 	$.data(document.body, 'name', '바디');
+		// } else {
+		// 	$.data(document.body, 'name');
+		// }
+
+
 		// REFERENCE
-		var $uniqueId = $('.UniqueID');
+		var $uniqueId = $('.UniqueID'),
+			deactive_class = {
+				'cursor'     : 'default',
+				'color'      : '#9F9F9F',
+				'background' : '#D4D4D4'
+			};
 
 		// SET
 		$uniqueId
@@ -51,20 +69,32 @@
 			})
 			.on('click', function(e) {
 				e.preventDefault();
-				var $this = $(this);
+				var $this = $.cache(this);
 				if ($this.data('one')) {
 					$('<div>', {
 						'class': 'UniqueID-result'
-					})
-						.text( $this.data('id') ).insertAfter($uniqueId);
+					}).text( $this.data('id') ).insertAfter($uniqueId);
 				}
 				$this.data('one', false);
-				$this.css({
-					'cursor'     : 'default',
-					'color'      : '#9F9F9F',
-					'background' : '#D4D4D4'
-				});
+				$this.css( deactive_class );
 			});
+			// .on('click', function(e) {
+			// 	e.preventDefault();
+			// 	// this // DOM Object
+			// 	var $this = $(this);// jQuery Instance Object
+			// 	if ($this.data('one')) {
+			// 		$('<div>', {
+			// 			'class': 'UniqueID-result'
+			// 		})
+			// 			.text( $this.data('id') ).insertAfter($uniqueId);
+			// 	}
+			// 	$this.data('one', false);
+			// 	$this.css({
+			// 		'cursor'     : 'default',
+			// 		'color'      : '#9F9F9F',
+			// 		'background' : '#D4D4D4'
+			// 	});
+			// });
 
 		// GET
 		// .data(key)
@@ -91,6 +121,14 @@
 		 * jQuery.ckeck(data, 'type');
 		 * --------------------------------
 		 */
+
+		$.cache = function(element) {
+			if ( !$.data(element, '$this') ) {
+				$.data(element, '$this', $(element));
+			}
+			return $.data(element, '$this');
+		};
+
 		$.check = (function(){
 			var toString = Object.prototype.toString;
 			return function(data, type) {

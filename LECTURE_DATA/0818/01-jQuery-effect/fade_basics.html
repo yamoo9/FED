@@ -6,16 +6,61 @@
 	<title>jQuery Effect - Fade Basics</title>
 	<link rel="stylesheet" href="css/fade_basics.css">
 	<script src="../../Libs/jquery-2.1.4.js"></script>
+	<script src="../../Libs/jquery.utils.js"></script>
 </head>
 <body>
 
 	<div class="container">
 		<div class="bigBox"></div>
 		<div class="status"></div>
-		<a role="button" href="#" class="clickToFadeIn">Fade In</a>
-		<a role="button" href="#" class="clickToFadeOut">Fade Out</a>
-		<a role="button" href="#" class="toggleFade">Toggle</a>
+		<a role="button" href class="clickToFadeIn">Fade In</a>
+		<a role="button" href class="clickToFadeOut">Fade Out</a>
+		<a role="button" href class="toggleFade">Toggle</a>
 	</div>
 
+<script>
+(function(global, $, undefined){
+	'use strict';
+
+	/**
+	 * --------------------------------
+	 * 문서 객체 jQuery 인스턴스화 참조
+	 * --------------------------------
+	 */
+	var $container = $('.container'),
+		$bigBox    = $('.bigBox', $container),
+		$status    = $('.status', $container);
+
+	/**
+	 * --------------------------------
+	 * 이벤트 바인딩
+	 * 이벤트 위임
+	 * --------------------------------
+	 */
+	$container.on('click', 'a', function(e) {
+		e.preventDefault(); // 기본동작 차단
+		e.stopPropagation(); // 전파 금지
+
+		if( $.cache(e.target).is('.clickToFadeIn') ) {
+			$bigBox.fadeIn(2000, function(){
+				// 애니메이션이 종료되면... 실행
+				$status.addClass('green');
+			});
+		}
+		if( $.cache(e.target).is('.clickToFadeOut') ) {
+			$bigBox.fadeOut(2000, function(){
+				$status.removeClass('green');
+			});
+		}
+		if( $.cache(e.target).is('.toggleFade') ) {
+			$bigBox.fadeToggle(2000, function(){
+				$status.toggleClass('green');
+			});
+		}
+
+	});
+
+})(window, window.jQuery);
+</script>
 </body>
 </html>
