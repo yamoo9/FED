@@ -19,7 +19,7 @@
 17. [08.13 - jQuery & Plugin](DOC/08.13.md)
 18. [08.14 - jQuery & Plugin](DOC/08.14.md)
 19. [08.17 - jQuery & Plugin](DOC/08.17.md)
-20. 08.18 - **jQuery & Plugin(포트폴리오: jQuery 플러그인)**
+20. [08.18 - **jQuery & Plugin(포트폴리오: jQuery 플러그인)**](DOC/08.18.md)
 21. 08.20 - WAI(<strike>30H</strike>, 16H)
 22. 08.21 - WAI
 23. 08.24 - `Node.js`&`NPM`/`Ruby`&`Gem` + `Gulp.js`&`Bower`

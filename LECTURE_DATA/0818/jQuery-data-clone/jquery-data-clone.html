@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>jQuery - Data &amp; Clone</title>
+	<style>
+
+		body {
+			margin: 0;
+			padding: 3em;
+		}
+
+		.UniqueID {
+			padding: 0.4em 0.94em;
+			background: #A6513B;
+			color: #FBBEB3;
+			border-radius: 4px;
+			text-decoration: none;
+		}
+
+		.UniqueID-result {
+			width: 70px;
+			margin-top: 20px;
+			border: 3px solid #B64926;
+			color: #A6604D;
+			padding: 0.6em 1em;
+		}
+	</style>
+	<script src="../../Libs/jquery-2.1.4.js"></script>
+</head>
+<body>
+
+	<a href role="button" class="UniqueID">get UniqueID</a>
+
+<script>
+	(function(global, $, undefined){
+		'use strict';
+
+		// REFERENCE
+		var $uniqueId = $('.UniqueID');
+
+		// SET
+		$uniqueId
+			.data({
+				// 고유 ID 생성하여 .data('id')에 참조
+				'id'           : new Date().getTime().toString(36),
+				'origin_class' : $uniqueId.attr('class'),
+				'one'          : true
+			})
+			.on('click', function(e) {
+				e.preventDefault();
+				var $this = $(this);
+				if ($this.data('one')) {
+					$('<div>', {
+						'class': 'UniqueID-result'
+					})
+						.text( $this.data('id') ).insertAfter($uniqueId);
+				}
+				$this.data('one', false);
+				$this.css({
+					'color': '#9F9F9F',
+					'background': '#D4D4D4'
+				});
+			});
+
+		// GET
+		// .data(key)
+		// .data()
+		console.log( $uniqueId.data() );
+
+	})(window, window.jQuery);
+</script>
+</body>
+</html>
