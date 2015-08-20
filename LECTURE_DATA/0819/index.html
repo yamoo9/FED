@@ -9,12 +9,44 @@
 	<meta charset="UTF-8">
 	<title>jQuery Plugin</title>
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+	.box {
+		width: 100px;
+		height: 100px;
+		margin: 10px;
+	}
+	</style>
+	<!-- jQuery -->
 	<script src="../Libs/jquery-2.1.4.js"></script>
 	<script src="../Libs/jquery.utils.js"></script>
 	<script src="../Libs/jquery.radioClass.js"></script>
 </head>
-<body>
+<body class="this-is-body">
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
 
 <script src="js/main.js"></script>
+<script>
+
+(function(global, $){
+	$.fn.customBG = function(color) {
+		if($.type(color) === 'string') {
+			this.css('background', color || '#eee');
+		} else {
+			var that = this;
+			$.each(that, function(index, el) {
+				that.eq(index).css('background', color[index]);
+			});
+		}
+	};
+})(window, window.jQuery);
+
+
+var colorList = ['#FFB03B', '#34C0FF', '#FC414B'];
+
+$('.box').customBG(colorList);
+</script>
 </body>
 </html>
