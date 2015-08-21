@@ -8,6 +8,26 @@
 		[role="button"] {
 			cursor: pointer;
 		}
+
+		.a11y-hidden {
+			overflow: hidden;
+			position: absolute;
+			clip:     rect(0, 0, 0, 0); /* IE 6,7 */
+			clip:     rect(0 0 0 0);
+			width:    1px;
+			height:   1px;
+			/*margin:   -1px;*/
+			border:   0;
+			padding:  0;
+		}
+		.a11y-hidden.focusable:focus {
+			overflow: visible;
+			position: static;
+			clip:     auto;
+			width:    auto;
+			height:   auto;
+			margin:   0;
+		}
 	</style>
 </head>
 <body>
@@ -16,12 +36,19 @@
 		<img src="http://ejungle.co.kr/img/common/btn_overlapping.gif" alt="ID 중복확인">
 	</a> -->
 
+	<a
+		class="a11y-hidden focusable"
+		href="">hi</a>
+
 	<!-- WAI-ARIA 역할 변경 -->
 	<img
+		class="a11y-hidden focusable"
 		id="checkIdBtn"
 		tabindex="0"
 		role="button"
 		src="http://ejungle.co.kr/img/common/btn_overlapping.gif" alt="ID 중복확인">
+
+	<p>야무 한글 로렘입숨 로렘입숨이란? 디자인을 위한 더미 텍스트!. 가슴을, 청춘 심장 하고 눈부신 쿵쿵대는.</p>
 
 	<script>
 		var btn = document.querySelector('#checkIdBtn');

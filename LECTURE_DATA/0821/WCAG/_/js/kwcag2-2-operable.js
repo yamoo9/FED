@@ -104,24 +104,7 @@ if(!('trim' in String.prototype)) {
 (function(global, $){
 	'use strict';
 
-	var $layer_btn         = $('#layer-dim .layer_content_btn'),
-		$layer_content_dim = $('.layer_dim, .layer_content');
 
-	// 팝업 레이어를 여는 코드
-	$layer_btn.on('click', function(e) {
-		e.preventDefault();
-		$layer_content_dim.addClass('show');
-		var $target = $layer_content_dim.filter('.layer_content');
-		$target
-			.attr('tabindex', -1)
-			.focus();
-	});
-
-	// 팝업 레이어를 닫는 코드
-	$layer_content_dim.eq(0).on('click', '.close, .dont-show', function(e) {
-		$layer_content_dim.removeClass('show');
-		$layer_btn.focus();
-	});
 
 })(window, window.jQuery);
 
