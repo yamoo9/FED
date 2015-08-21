@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>KWCAG v2 - 운용의 용이성: 키보드 접근성</title>
+	<style>
+		[role="button"] {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- <a role="button" href onclick="window.open('http://ejungle.co.kr/'); return false;">
+		<img src="http://ejungle.co.kr/img/common/btn_overlapping.gif" alt="ID 중복확인">
+	</a> -->
+
+	<!-- WAI-ARIA 역할 변경 -->
+	<img
+		id="checkIdBtn"
+		tabindex="0"
+		role="button"
+		src="http://ejungle.co.kr/img/common/btn_overlapping.gif" alt="ID 중복확인">
+
+	<script>
+		var btn = document.querySelector('#checkIdBtn');
+
+		// DOM Level 2 진보 이벤트 모델 사용
+		btn.addEventListener('click', showPop);
+
+		// 비 포커스 요소에 키보드 접근성 설정
+		btn.addEventListener('keydown', showPop);
+		btn.addEventListener('keypress', showPop);
+
+		function showPop(event) {
+			var event_type = event.type; // 'click', 'keydown'
+
+			switch(event_type) {
+				case 'click':
+					console.log('clicked');
+				break;
+				case 'keydown':
+				case 'keypress':
+					var key = event.keyCode || event.which;
+					console.log(
+						event.type +':' + (
+							key === 13 ?
+								' Enter' :
+								key === 32 ?
+									' Space' :
+									'Not Enter or Space'
+						)
+					);
+			}
+
+
+		}
+	</script>
+</body>
+</html>
