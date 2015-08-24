@@ -1,0 +1,14 @@
+{
+	"name": "yamoo9-check-type",
+	"version": "0.0.1",
+	"description": "자바스크립트의 데이터 유형을 체크하여 해당 값을 문자열로 반환하는 모듈입니다.",
+	"main": "index.js",
+	"keywords": [
+		"Javascript",
+		"check",
+		"data",
+		"type"
+	],
+	"author": "yamoo9 <yamoo9@naver.com> (http://yamoo9.net/)",
+	"license": "ISC"
+}

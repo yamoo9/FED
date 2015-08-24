@@ -1,0 +1,12 @@
+{
+  "name": "yamoo9-combinejs",
+  "version": "0.0.1",
+  "description": "combineJS 모듈은 Javascript 파일을 병합(압축)합니다.",
+  "main": "index.js",
+  "author": "yamoo9 <yamoo9@naver.com> (http://yamoo9.net/)",
+  "license": "ISC",
+  "dependencies": {
+    "minify": "^1.4.19",
+    "yamoo9-check-type": "0.0.1"
+  }
+}
