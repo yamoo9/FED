@@ -14,5 +14,6 @@ combineJS(
 		'js/app.js',
 	],
 	// [쓰기] 병합되어 완성된 파일
-	'js/output/bundle.js'
+	'js/output/bundle.js',
+	true
 );
