@@ -3,7 +3,7 @@ var combineJS = require('combineJS');
 
 
 // 전달인자가 문자열일 경우 처리
-combineJS('js/dom-helper.js, js/util.js, js/app.js', './js/output/bundle.js');
+// combineJS('js/dom-helper.js, js/util.js, js/app.js', './js/output/bundle.js');
 
 // 전달인자가 리스트(배열)일 경우 처리
 combineJS(
