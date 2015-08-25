@@ -31,7 +31,12 @@ require([
 	// 'detectizr',
 	// 'jquery.utils',
 	'jquery.darkNight'
-]);
+], function() {
+	$().darkNight({
+		'first': 'Please!!',
+		// 'last': 'Don\'t Sleep ㅠㅡㅠ'
+	});
+});
 
 
 
