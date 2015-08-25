@@ -2,7 +2,6 @@
   "dependencies": {
     "jquery": "^2.1.4",
     "jquery-boom": "^1.0.1",
-    "modernizr": "^3.0.0-pre",
     "yamoo9-unique-id": "0.0.1"
   }
 }

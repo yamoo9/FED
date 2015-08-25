@@ -5,10 +5,15 @@
  * Browserify로 웹에서 사용가능하도록 변경
  * --------------------------------
  */
-var uniqueID  = require('yamoo9-unique-id'),
-	$         = require('jquery');
+var uniqueID       = require('yamoo9-unique-id'),
+	$              = require('jquery'),
+	showMessageBox = require('./yamoo9/showMessageBox');
 
+// 플러그인 호출
 require('jquery-boom/boom');
+
+// 외부에서 접근 가능한 변수 설정
+// global.jQuery = global.$ = $;
 
 
 /**
@@ -16,18 +21,37 @@ require('jquery-boom/boom');
  * jQuery Code
  * --------------------------------
  */
+
 $('body')
 	.css({
-		'background': 'red',
-		'color': 'snow'
+		'background' : 'red',
+		'color'      : 'snow',
 	})
 	.attr({
-		'class': 'using-jquery'
-	})
-	.append('<p>'+ uniqueID() +'</p>');
+		'class': 'using-jquery',
+		'id'   : 'body-id-' + uniqueID(),
+	});
 
-console.log(!!$.fn.boom);
-},{"jquery":3,"jquery-boom/boom":2,"yamoo9-unique-id":4}],2:[function(require,module,exports){
+// console.log(!!$.fn.boom);
+},{"./yamoo9/showMessageBox":2,"jquery":4,"jquery-boom/boom":3,"yamoo9-unique-id":5}],2:[function(require,module,exports){
+var module_name = 'showMessageBox';
+
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD 환경
+		define(module_name, [], factory);
+	}
+	else if (typeof exports === 'object') {
+		// Node/CommonJS 환경
+		module.exports = factory;
+	} else {
+		// 웹 브라우저 전역객체
+		window[module_name] = factory;
+	}
+})(function (msg) {
+	console.log('show message box');
+});
+},{}],3:[function(require,module,exports){
 // CommonJS, AMD, 웹 브라우저 글로벌 객체로 jQuery 플러그인 생성하는 방법.
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
@@ -41,158 +65,157 @@ console.log(!!$.fn.boom);
         factory(jQuery);
     }
 }(function ($) {
-
     $.fn.boom = function (options) {
 
-    $(this).each(function () {
+            $(this).each(function () {
 
-        var lastPercent,
-            settings = $.extend({
-                landingZone: 0.10
-            }, options);
-
-
-        //calculate and place things in the proper place
-        var place = function () {
-            var scrollTop       = $(window).scrollTop(),
-                top             = $(this).offset().top,
-                height          = $(this).height(),
-                windowHeight    = $(window).height(),
-                landingHeight   = settings.landingZone * windowHeight,
-                distance        = 0,
-                landingTop      = (windowHeight - landingHeight) / 2,
-                landingBottom   = windowHeight - landingTop,
-                y               = top - scrollTop,
-                y2              = y + height,
-                percent,
-                position        = 'above';
-
-            if(y > landingBottom) {
-                distance = y - landingBottom;
-                percent = distance / (windowHeight - landingBottom);
-                position = 'bottom';
-            } else if (y2 < landingTop) {
-                distance = landingTop - y2;
-                percent  = distance / landingTop;
-                position = 'top';
-            } else {
-                percent = 0;
-                position = 'inside';
-            }
-
-            //clamp percent
-            percent = Math.min(1, Math.max(0, percent));
-            if (percent != lastPercent) {
-                placeImages(percent);
-                lastPercent = percent;
-            }
-
-        }.bind(this);
-
-        function setScale (element, scale) {
-
-            var transformString = ("scale(" + scale + ")");
-
-            // now attach that variable to each prefixed style
-            element.style.webkitTransform = transformString;
-            element.style.MozTransform = transformString;
-            element.style.msTransform = transformString;
-            element.style.OTransform = transformString;
-            element.style.transform = transformString;
-        }
+                var lastPercent,
+                    settings = $.extend({
+                        landingZone: 0.10
+                    }, options);
 
 
-        var placeImages = function (percent) {
+                //calculate and place things in the proper place
+                var place = function () {
+                    var scrollTop       = $(window).scrollTop(),
+                        top             = $(this).offset().top,
+                        height          = $(this).height(),
+                        windowHeight    = $(window).height(),
+                        landingHeight   = settings.landingZone * windowHeight,
+                        distance        = 0,
+                        landingTop      = (windowHeight - landingHeight) / 2,
+                        landingBottom   = windowHeight - landingTop,
+                        y               = top - scrollTop,
+                        y2              = y + height,
+                        percent,
+                        position        = 'above';
 
-
-            $(this).find('img').each(function (idx) {
-
-                var startingPos = $(this).data('starting-pos'),
-                    endingPos   = $(this).data('ending-pos'),
-                    css         = {};
-
-
-                if (endingPos.left) {
-                    css.left = endingPos.left * percent + startingPos.left;
-                }
-
-                if (endingPos.top) {
-                    css.top = endingPos.top * percent + startingPos.top;
-                }
-
-                if (endingPos.scale) {
-                    setScale($(this)[0], (endingPos.scale - 1) * percent + 1)
-                }
-
-                $(this).css(css);
-
-            });
-
-
-        }.bind(this);
-
-        var images = [];
-
-        var preloadImages = function (preload, cb) {
-
-            var promises = [];
-            for (var i = 0; i < preload.length; i++) {
-                (function (url, promise) {
-                    var img = new Image();
-                    img.onload = function () {
-                        promise.resolve();
-                    };
-                    img.onerror = function () {
-                        promise.resolve();
+                    if(y > landingBottom) {
+                        distance = y - landingBottom;
+                        percent = distance / (windowHeight - landingBottom);
+                        position = 'bottom';
+                    } else if (y2 < landingTop) {
+                        distance = landingTop - y2;
+                        percent  = distance / landingTop;
+                        position = 'top';
+                    } else {
+                        percent = 0;
+                        position = 'inside';
                     }
-                    img.src = url;
-                })(preload[i], promises[i] = $.Deferred());
-            }
-            $.when.apply($, promises).done(function () {
-                cb();
+
+                    //clamp percent
+                    percent = Math.min(1, Math.max(0, percent));
+                    if (percent != lastPercent) {
+                        placeImages(percent);
+                        lastPercent = percent;
+                    }
+
+                }.bind(this);
+
+                function setScale (element, scale) {
+
+                    var transformString = ("scale(" + scale + ")");
+
+                    // now attach that variable to each prefixed style
+                    element.style.webkitTransform = transformString;
+                    element.style.MozTransform = transformString;
+                    element.style.msTransform = transformString;
+                    element.style.OTransform = transformString;
+                    element.style.transform = transformString;
+                }
+
+
+                var placeImages = function (percent) {
+
+
+                    $(this).find('img').each(function (idx) {
+
+                        var startingPos = $(this).data('starting-pos'),
+                            endingPos   = $(this).data('ending-pos'),
+                            css         = {};
+
+
+                        if (endingPos.left) {
+                            css.left = endingPos.left * percent + startingPos.left;
+                        }
+
+                        if (endingPos.top) {
+                            css.top = endingPos.top * percent + startingPos.top;
+                        }
+
+                        if (endingPos.scale) {
+                            setScale($(this)[0], (endingPos.scale - 1) * percent + 1)
+                        }
+
+                        $(this).css(css);
+
+                    });
+
+
+                }.bind(this);
+
+                var images = [];
+
+                var preloadImages = function (preload, cb) {
+
+                    var promises = [];
+                    for (var i = 0; i < preload.length; i++) {
+                        (function (url, promise) {
+                            var img = new Image();
+                            img.onload = function () {
+                                promise.resolve();
+                            };
+                            img.onerror = function () {
+                                promise.resolve();
+                            }
+                            img.src = url;
+                        })(preload[i], promises[i] = $.Deferred());
+                    }
+                    $.when.apply($, promises).done(function () {
+                        cb();
+                    });
+
+                };
+
+                $(this).find('img').each(function () {
+
+                    var src = $(this).attr('src');
+                    images.push(src);
+
+                });
+
+                preloadImages(images, function () {
+
+                    //store starting position of all inner images
+                    $(this).find('img').each(function (idx) {
+
+                        var pos = $(this).position(),
+                            start = JSON.parse($(this).attr('data-start'));
+
+                        $(this).data('starting-pos', pos).data('ending-pos', start);
+
+                    });
+
+
+
+                    $(window).scroll(function(e) {
+                        place();
+                    }.bind(this));
+
+                    place();
+
+                }.bind(this));
+
+
+
+
             });
+
+            return this;
 
         };
-
-        $(this).find('img').each(function () {
-
-            var src = $(this).attr('src');
-            images.push(src);
-
-        });
-
-        preloadImages(images, function () {
-
-            //store starting position of all inner images
-            $(this).find('img').each(function (idx) {
-
-                var pos = $(this).position(),
-                    start = JSON.parse($(this).attr('data-start'));
-
-                $(this).data('starting-pos', pos).data('ending-pos', start);
-
-            });
-
-
-
-            $(window).scroll(function(e) {
-                place();
-            }.bind(this));
-
-            place();
-
-        }.bind(this));
-
-
-
-
-    });
-
-    return this;
-
-};
 }));
-},{"jquery":3}],3:[function(require,module,exports){
+},{"jquery":4}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9404,7 +9427,7 @@ return jQuery;
 
 }));
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 function uniqueID() {
 	return new Date().getTime().toString(36);
 }
