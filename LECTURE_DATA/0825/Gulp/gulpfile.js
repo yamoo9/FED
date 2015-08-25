@@ -1,31 +1,41 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+	jade = require('gulp-jade'),
+	sass = require('gulp-sass');
 
 /**
  * --------------------------------
- * Gulp Command
- * --------------------------------
- * .task()
- * .src()
- * .dest()
- * .watch()
- * .start()
+ * 환경설정
  * --------------------------------
  */
+var config = {
+	'jade': { 'pretty': true },
+	'sass': { 'outputStyle': 'compact' }
+};
 
- // Gulp 업무(Task) 등록
- // gulp.task('업무이름', 업무를 처리할 함수);
- gulp.task('default', ['eat:food', 'play-game']);
+/**
+ * --------------------------------
+ * Gulp 업무
+ * --------------------------------
+ */
+// 기본 업무
+gulp.task('default', ['jade', 'sass', 'watch']);
 
-// gulp.task('default', function() {
-// 	console.log('Gulp "Default" Task is Start!!!!');
-// 	gulp.start('eat:food');
-// 	gulp.start('play-game');
-// });
+// 관찰 업무
+gulp.task('watch', function() {
+	gulp.watch(['src/index.jade'], ['jade']);
+	gulp.watch(['src/sass/style.scss'], ['sass']);
+})
 
-gulp.task('eat:food', function() {
-	console.log('eating FOOD! :-)');
+// Jade → HTML
+gulp.task('jade', function() {
+	gulp.src('src/index.jade')
+		.pipe( jade( config.jade ) )
+		.pipe( gulp.dest('dist') );
 });
 
-gulp.task('play-game', function() {
-	console.log('play the Game! :-)');
+// Sass → Css
+gulp.task('sass', function() {
+	gulp.src('src/sass/style.scss')
+		.pipe( sass( config.sass ).on('error', sass.logError) )
+		.pipe( gulp.dest('dist/css') );
 });

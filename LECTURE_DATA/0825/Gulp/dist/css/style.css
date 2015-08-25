@@ -1,0 +1,11 @@
+body { margin: 0; font-size: 0.875rem; letter-spacing: -0.01em; }
+
+h1 { color: #FC4A54; font-size: 32px; }
+
+h1:hover { color: #aa030c; }
+
+h1 a { text-decoration: none; }
+
+h1 a:hover { color: #fee1e2; }
+
+#page nav ul { margin-left: 0; margin-right: 0; padding-left: 0; list-style: none; }
