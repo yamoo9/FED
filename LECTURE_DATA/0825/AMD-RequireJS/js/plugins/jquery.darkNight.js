@@ -19,9 +19,6 @@ function() {
 
 		$.fn.darkNight = function(options) {
 
-			// this -> jQuery 인스턴스 객체
-			// console.log(this.jquery);
-
 			// darkNight 스타일 추가
 			$('<link>', {
 				'id'   : 'dark-night',
@@ -32,8 +29,6 @@ function() {
 
 			// 사용자 정의 옵션 오버라이딩
 			letters = $.extend({}, letters, options);
-
-			console.log(letters);
 
 			// darkNight 템플릿
 			var dark_night_tempate = [

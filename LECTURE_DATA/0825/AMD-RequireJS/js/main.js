@@ -32,10 +32,9 @@ require([
 	// 'jquery.utils',
 	'jquery.darkNight'
 ], function() {
-	$().darkNight({
-		'first': 'Please!!',
-		// 'last': 'Don\'t Sleep ㅠㅡㅠ'
-	});
+
+	$().darkNight();
+
 });
 
 
