@@ -96,3 +96,6 @@ node_modules
 
 # sftp configuration file
 sftp-config.json
+LECTURE_DATA/0826/gulp-jade-sass/
+
+LECTURE_DATA/0825/gulp-jade-sass/
