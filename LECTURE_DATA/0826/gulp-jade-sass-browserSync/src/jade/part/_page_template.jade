@@ -1,0 +1,38 @@
+//- 환경 설정
+block settings
+	include config/_settings
+
+//- 문서 헤드 영역
+include pages/_document_head
+
+	block meta_seo
+		include pages/head/_meta_seo
+
+	block meta_viewport
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+
+	block stylesheets
+		link(rel="stylesheet", href="css/style.css")
+
+	block _scripts_head
+		include pages/scripts/_scripts_head
+
+	body(
+		class=[isMain == true ? 'main-page' : ''],
+		class=body_classlist
+	)
+
+		block header
+			include pages/body/_header
+
+		block gnb
+			include pages/body/_gnb
+
+		block main
+
+		block footer
+			include pages/body/_footer
+
+		block _scripts_footer
+			include pages/scripts/_scripts_footer
+

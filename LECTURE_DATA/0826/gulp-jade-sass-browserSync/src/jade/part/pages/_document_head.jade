@@ -1,0 +1,11 @@
+doctype html
+
+//- IE 조건부 주석문을 Jade에서 사용하는 방법
+!= '<!--[if !IE]><!--> <html lang="ko-KR" class="no-js"> <!--<![endif]-->'
+!= '<!--[if IE 8]> <html lang="ko-KR" class="no-js lt-ie10 lt-ie9 ie8"> <![endif]-->'
+!= '<!--[if IE 9]> <html lang="ko-KR" class="no-js lt-ie9 ie9"> <![endif]-->'
+	head
+		meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+		meta(charset="UTF-8")
+		//- 문서 타이틀
+		title= page_title

@@ -1,0 +1,47 @@
+//-----------------------------------------
+	* 변수
+	* ---------------------------------------
+
+//- 페이지 타이틀
+- var page_title     = null
+
+//- 현재 페이지 이름
+- var isMain         = null
+- var current_page   = '/'
+
+//- 메타 정보
+- var meta_description = ''
+- var meta_keywords    = ''
+- var meta_author      = 'yamoo9'
+
+//- 라이브러리 사용 유무 설정 변수
+- var using_jquery  = false
+- var using_angular = false
+
+//- Jade 배열 -> 클래스 속성만 가능!!!
+- var body_classlist = []
+- var greeting       = 'Good Days! ^▽^'
+- var server_module  = 'BrowserSync'
+
+//- 현재 페이지 이름 변수
+- var navigation_items = [{'href': '/', 'content': 'Home'}, {'href': 'about.html', 'content': 'About'}, {'href': 'works.html', 'content': 'Works'}, {'href': 'contact.html', 'content': 'Contact'}]
+
+
+
+
+//-----------------------------------------
+	* 믹스인
+	* ---------------------------------------
+
+//- Navigaiton 믹스인
+mixin navigation(navigation_contents)
+	ul(role="presentation")
+		each item in navigation_contents
+			li(class=(current_page == item.href ? 'active' : ''))
+				+navLink(item)
+				if item.child
+					+navigation(item.child)
+
+//- navLink 믹스인
+mixin navLink(item)
+	a(href=item.href)= item.content
