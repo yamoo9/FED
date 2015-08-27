@@ -22,10 +22,10 @@
 20. [08.18 - **jQuery & Plugin(포트폴리오: jQuery 플러그인)**](DOC/08.18.md)
 21. [08.20 - WAI(<strike>30H</strike>, 16H)](DOC/08.20.md)
 22. [08.21 - WAI](DOC/08.21.md)
-23. 08.24 - `Node.js`&`NPM`/`Ruby`&`Gem` + `Gulp.js`&`Bower`
-24. 08.25 - Jade(<strike>10H</strike>, 8H)
-25. 08.26 - Sass & Susy(<strike>30H</strike>, 32H)
-26. 08.27 - Sass & Susy
+23. [08.24 - `Node.js`&`NPM`/`Ruby`&`Gem` + `Gulp.js`&`Bower`](DOC/08.24.md)
+24. [08.25 - Jade(<strike>10H</strike>, 8H)](DOC/08.25.md)
+25. [08.26 - Sass & Susy(<strike>30H</strike>, 32H)](DOC/08.26.md)
+26. [08.27 - Sass & Susy](DOC/08.27.md)
 27. 08.28 - Sass & Susy
 28. 08.31 - **Sass & Susy(포트폴리오: RWD 레이아웃)**
 29. 09.01 - CoffeeScript(<strike>20H</strike>, 16H)

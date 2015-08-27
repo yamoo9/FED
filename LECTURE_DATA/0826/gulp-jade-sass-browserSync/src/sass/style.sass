@@ -1,0 +1,58 @@
+/*! style.css © yamoo9.net, 2015 */
+
+//
+ * --------------------------------
+ * 모듈 호출
+ * --------------------------------
+@import yamoo9/yamoo9
+
+//
+ * --------------------------------
+ * 스타일 코드
+ * --------------------------------
+body
+	// 모듈 상속
+	@extend %reset-body
+	width:  800px
+	margin: 0 auto
+	font:   0.875rem 'Helvetica Neue', Verdana
+	line-height: 1.5
+	color:  #1F1B1B
+
+header
+	h1 img
+		@extend %reset-a-img
+
+#gnb
+	ul
+		@extend %reset-list
+
+#main
+	table
+		@extend %reset-table
+
+	th, td
+		padding: 0.4em 0.8em
+
+main
+	.post
+		img
+			@extend %reset-a-img
+		table
+			@extend %reset-table
+
+#inherit
+	ul
+		@extend %reset-list
+
+// footer
+// 	a img
+// 		@extend %reset-a-img
+
+// 	nav
+// 		ul
+// 			@extend %reset-list
+
+// 	table
+// 		@extend %reset-table
+
