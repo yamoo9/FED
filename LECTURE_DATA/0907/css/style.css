@@ -1,223 +1,83 @@
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+#page .main, #page .aside {
+  *zoom: 1;
+}
+#page .main:before, #page .aside:before, #page .main:after, #page .aside:after {
+  content: "";
+  display: table;
+}
+#page .main:after, #page .aside:after {
+  clear: both;
 }
 
 body {
   margin: 0;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
+#page {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, transparent 10%, rgba(52, 192, 255, 0.2) 10%, rgba(129, 216, 255, 0.2) 90%, transparent 90%), linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-size: 100px, 100% 21px;
+  background-origin: content-box, border-box;
+  background-clip: content-box, border-box;
+  background-position: left top;
+  min-height: 100vh;
+}
+#page:after {
+  content: " ";
   display: block;
+  clear: both;
 }
-
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  vertical-align: baseline;
+#page .main {
+  width: 680px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #7045CF;
+  background-color: hsla(258,58%,54%,0.6);
+  height: 504px;
+  height: 36rem;
 }
-
-audio:not([controls]) {
-  display: none;
-  height: 0;
+#page .main [class^=inner-] {
+  height: 252px;
+  height: 18rem;
 }
-
-[hidden],
-template {
-  display: none;
+#page .main [class^=inner-][class$=box1] {
+  width: 12.90323%;
+  float: left;
+  margin-right: 1.6129%;
+  background-color: #B64926;
+  background-color: hsla(14,65%,43%,0.6);
 }
-
-a {
-  background-color: transparent;
+#page .main [class^=inner-][class$=box2] {
+  width: 27.41935%;
+  float: left;
+  margin-right: 1.6129%;
+  background-color: #86AB1D;
+  background-color: hsla(75,70%,39%,0.6);
 }
-
-a:active, a:hover {
-  outline: 0;
+#page .main [class^=inner-][class$=box3] {
+  width: 27.41935%;
+  float: left;
+  margin-right: 1.6129%;
+  background-color: #1D929B;
+  background-color: hsla(184,68%,36%,0.6);
 }
-
-abbr[title] {
-  border-bottom: 1px dotted;
+#page .main [class^=inner-][class$=box4] {
+  width: 27.41935%;
+  float: right;
+  margin-right: 0;
+  background-color: #D08006;
+  background-color: hsla(36,94%,41%,0.6);
 }
-
-b,
-strong {
-  font-weight: bold;
+#page .aside {
+  width: 380px;
+  float: right;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #E99F3F;
+  background-color: hsla(33,79%,58%,0.6);
+  height: 357px;
+  height: 25.5rem;
 }
-
-dfn {
-  font-style: italic;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-mark {
-  background: #ff0;
-  color: #000;
-}
-
-small {
-  font-size: 80%;
-}
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-img {
-  border: 0;
-}
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
-figure {
-  margin: 1em 40px;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-}
-
-pre {
-  overflow: auto;
-}
-
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
-button {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-
-button[disabled],
-html input[disabled] {
-  cursor: default;
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-input {
-  line-height: normal;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-input[type="search"] {
-  -webkit-appearance: textfield;
-  box-sizing: content-box;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
-}
-
-legend {
-  border: 0;
-  padding: 0;
-}
-
-textarea {
-  overflow: auto;
-}
-
-optgroup {
-  font-weight: bold;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-td,
-th {
-  padding: 0;
-}
-
-/**
- * Ghost Pseudo
- * http://css-tricks.com/centering-in-the-unknown/
- *
- * Vertical align methods. Line height, Transform, Ghost pseudo, Auto margins, Negative margins
- * https://gist.github.com/ZellSnippets/6567695
- */

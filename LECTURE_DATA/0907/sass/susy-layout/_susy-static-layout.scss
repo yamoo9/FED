@@ -1,0 +1,23 @@
+// 데스크톱 디자인 (고정)
+// Desktop Static Website Design
+
+$base-font-size: 14px;
+$base-line-height: $base-font-size * 1.5;
+$v-gap: $base-line-height;
+
+$susy: (
+	container: 1200px,
+	// container-position: left,
+
+	columns: 12,
+	gutters: 20px/80px,
+	gutter-position: split,
+
+	// 고정 폭 디자인의 핵심!!!
+	math: static,
+	column-width: 80px,
+
+	debug: (
+		color: rgba(#34C0FF, 0.2)
+	)
+);

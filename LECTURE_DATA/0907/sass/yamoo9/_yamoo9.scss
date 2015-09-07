@@ -5,7 +5,7 @@
 // IE 6, 7 브라우저를 지원하는 Normalize를 사용하려면 아래 설정 값을 true로 변경합니다.
 // $legacy_browser_support: true;
 
-@import "normalize/normalize";
+// @import "normalize/normalize";
 
 // ========================================================================
 // [UTILS] | HELPERS가 의존하는 믹스인/함수
@@ -63,7 +63,7 @@ $base-font-size: 16px;
 // color()
 
 // rgba() 값이 아닌, hsla() 값을 설정하려면 true로 설정합니다.
-// $using-hsla: true;
+$using-hsla: true;
 // HEX 코드 설정 값에 따라 생성되는 기본 알파 값을 변경할 경우 아래 설정 값을 변경합니다. (0-1)
 $base-alpha: 1;
 
