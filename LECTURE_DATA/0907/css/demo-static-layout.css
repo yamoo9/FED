@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+}
+
+#page {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
+  background-size: 100px;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-position: left top;
+  min-height: 100vh;
+}
+#page:after {
+  content: " ";
+  display: block;
+  clear: both;
+}

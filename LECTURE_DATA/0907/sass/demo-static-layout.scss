@@ -1,0 +1,22 @@
+@import "susy";
+
+$susy: (
+	container: 1200px,
+	columns: 12,
+	gutters: 20px/80px,
+	column-width: 80px,
+	gutter-position: inside,
+	math: static,
+	debug: (
+		image: show
+	)
+);
+
+body {
+	margin: 0;
+}
+
+#page {
+	@include container();
+	min-height: 100vh;
+}

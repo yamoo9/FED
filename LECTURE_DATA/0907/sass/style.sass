@@ -19,29 +19,53 @@ body
 	.main
 		+span(7)
 		+bg-color(#7045CF, 0.6)
-		+px-rem(height, $v-gap * 24)
+		height: $v-gap * 24
 
-		[class^=inner-]
-			+px-rem(height, $v-gap * 12)
+		> [class^=inner-]
+			height: $v-gap * 17
 
-			+with-layout(7 1/8 fluid after)
+			@extend %center-box-block
+
+			.inner-center
+				@extend %center-box-content
+				+color(#fff)
+				line-height: 1
+
+				*
+					+margin(top 0 bottom 0)
+
+			// &::after
+			// 	content: attr(class)
+			// 	+color(#fff)
+
+			// &::before
+			// 	content: attr(class)
+			// 	display: block
+			// 	height: inherit
+			// 	line-height: $v-gap * 12
+			// 	+color(#fff, 0.8)
+			// 	text-align: center
+
+			+with-layout(7 1/8 fluid inside isolate)
 				&[class$=box1]
-					+span(1)
+					+span(1 at 7)
 					+bg-color( #B64926, 0.6 )
 				&[class$=box2]
-					+span(2)
+					+span(2 at 5)
 					+bg-color( #86AB1D, 0.6 )
 				&[class$=box3]
-					+span(2)
+					// @extend %hidden
+					+span(3 at 2)
 					+bg-color( #1D929B, 0.6 )
 				&[class$=box4]
-					+span(last 2)
+					// @extend %hidden
+					+span(1 at 1)
 					// +last
 					// margin-right: 0
 					+bg-color( #D08006, 0.6 )
 
 	.aside
-		+span(last 4)
-		// +push(1)
+		+span(4)
+		+push(1)
 		+bg-color(#E99F3F, 0.6)
-		+px-rem(height, $v-gap * 17)
+		height: $v-gap * 17
