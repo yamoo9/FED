@@ -1,22 +1,52 @@
 @import "susy";
+@import "yamoo9/yamoo9";
 
+// Susy2 글로벌 설정
 $susy: (
-	container: 1200px,
-	columns: 12,
+
+	container: 1000px,
+
+	columns: 10,
+
 	gutters: 20px/80px,
+	gutter-position: inside, // 거터 방향: 양쪽(split), 패딩 설정(inside)
+
+	// 고정 폭 디자인의 핵심!!!
 	column-width: 80px,
-	gutter-position: inside,
 	math: static,
-	debug: (
-		image: show
-	)
+
+	// debug: (
+	// 	image: show
+	// )
+
 );
 
 body {
 	margin: 0;
 }
 
-#page {
-	@include container();
-	min-height: 100vh;
+#page header {
+	@include bg-color(#25A04D, 0.4);
+	min-height: 20vh;
 }
+
+#page main {
+	[class^=content] {
+		@include with-layout(3 1/12 fluid split) {
+			@include span(1);
+			@include bg-color(#333, 0.2);
+			@include margin(bottom 10px);
+			min-height: 200px;
+
+			&[class$="-4"] {
+				@include span(2);
+			}
+		}
+	}
+}
+
+.wrapper {
+	@include container(show);
+	min-height: 10vh;
+}
+

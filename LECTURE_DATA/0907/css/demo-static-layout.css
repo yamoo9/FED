@@ -2,8 +2,31 @@ body {
   margin: 0;
 }
 
-#page {
-  width: 1200px;
+#page header {
+  background-color: #25A04D;
+  background-color: hsla(139,62%,38%,0.4);
+  min-height: 20vh;
+}
+
+#page main [class^=content] {
+  width: 30.76923%;
+  float: left;
+  margin-left: 1.28205%;
+  margin-right: 1.28205%;
+  background-color: #333;
+  background-color: hsla(0,0%,20%,0.2);
+  margin-bottom: 10px;
+  min-height: 200px;
+}
+#page main [class^=content][class$="-4"] {
+  width: 64.10256%;
+  float: left;
+  margin-left: 1.28205%;
+  margin-right: 1.28205%;
+}
+
+.wrapper {
+  width: 1000px;
   margin-left: auto;
   margin-right: auto;
   background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
@@ -11,9 +34,9 @@ body {
   background-origin: content-box;
   background-clip: content-box;
   background-position: left top;
-  min-height: 100vh;
+  min-height: 10vh;
 }
-#page:after {
+.wrapper:after {
   content: " ";
   display: block;
   clear: both;
