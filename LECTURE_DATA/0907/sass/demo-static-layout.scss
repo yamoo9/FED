@@ -1,6 +1,8 @@
 @import "susy";
 @import "yamoo9/yamoo9";
 
+$base-line-height: 21px;
+
 // Susy2 글로벌 설정
 $susy: (
 
@@ -9,15 +11,16 @@ $susy: (
 	columns: 10,
 
 	gutters: 20px/80px,
-	gutter-position: inside, // 거터 방향: 양쪽(split), 패딩 설정(inside)
+	gutter-position: split, // 거터 방향: 양쪽(split), 패딩 설정(inside)
 
 	// 고정 폭 디자인의 핵심!!!
 	column-width: 80px,
 	math: static,
 
-	// debug: (
-	// 	image: show
-	// )
+	debug: (
+		// image: show,
+		color: rgba(#E11D30, 0.1)
+	)
 
 );
 
@@ -26,27 +29,56 @@ body {
 }
 
 #page header {
-	@include bg-color(#25A04D, 0.4);
-	min-height: 20vh;
+	// @include container(100%);
+	// @include bg-color(#25A04D, 0.4);
+	min-height: $base-line-height * 9;
+
+	[class^=header-content] {
+		@include span(1 of 2 1/18 fluid split);
+		@include bg-color(#333, 0.2);
+		@include margin(bottom gutter(2));
+		min-height: $base-line-height * 9;
+	}
+
+	.wrapper {
+		@include relative();
+	}
+
+	.header-content-3,
+	.header-content-4 {
+		width: 200px;
+	}
+
+	.header-content-3 {
+		@include absolute(top 0 left -210px);
+	}
+	.header-content-4 {
+		@include absolute(top 0 right -210px);
+	}
 }
 
-#page main {
+#page {
 	[class^=content] {
 		@include with-layout(3 1/12 fluid split) {
 			@include span(1);
 			@include bg-color(#333, 0.2);
-			@include margin(bottom 10px);
-			min-height: 200px;
+			@include margin(bottom gutter(2));
+			min-height: $base-line-height * 12;
 
 			&[class$="-4"] {
 				@include span(2);
 			}
-		}
+
+			&[class$="-6"] {
+				@include span(full);
+			}
+
+		} // with-layout
 	}
 }
 
 .wrapper {
-	@include container(show);
-	min-height: 10vh;
+	@include container();
+	min-height: $base-line-height * 6;
 }
 

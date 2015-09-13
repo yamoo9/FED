@@ -3,23 +3,54 @@ body {
 }
 
 #page header {
-  background-color: #25A04D;
-  background-color: hsla(139,62%,38%,0.4);
-  min-height: 20vh;
+  min-height: 189px;
+}
+#page header [class^=header-content] {
+  width: 47.36842%;
+  float: left;
+  margin-left: 1.31579%;
+  margin-right: 1.31579%;
+  background-color: #333;
+  background-color: hsla(0,0%,20%,0.2);
+  margin-bottom: 10px;
+  min-height: 189px;
+}
+#page header .wrapper {
+  position: relative;
+}
+#page header .header-content-3,
+#page header .header-content-4 {
+  width: 200px;
+}
+#page header .header-content-3 {
+  position: absolute;
+  top: 0;
+  left: -210px;
+}
+#page header .header-content-4 {
+  position: absolute;
+  top: 0;
+  right: -210px;
 }
 
-#page main [class^=content] {
+#page [class^=content] {
   width: 30.76923%;
   float: left;
   margin-left: 1.28205%;
   margin-right: 1.28205%;
   background-color: #333;
   background-color: hsla(0,0%,20%,0.2);
-  margin-bottom: 10px;
-  min-height: 200px;
+  margin-bottom: 1.92308%;
+  min-height: 252px;
 }
-#page main [class^=content][class$="-4"] {
+#page [class^=content][class$="-4"] {
   width: 64.10256%;
+  float: left;
+  margin-left: 1.28205%;
+  margin-right: 1.28205%;
+}
+#page [class^=content][class$="-6"] {
+  width: 97.4359%;
   float: left;
   margin-left: 1.28205%;
   margin-right: 1.28205%;
@@ -29,12 +60,7 @@ body {
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to right, rgba(102, 102, 255, 0.25), rgba(179, 179, 255, 0.25));
-  background-size: 100px;
-  background-origin: content-box;
-  background-clip: content-box;
-  background-position: left top;
-  min-height: 10vh;
+  min-height: 126px;
 }
 .wrapper:after {
   content: " ";

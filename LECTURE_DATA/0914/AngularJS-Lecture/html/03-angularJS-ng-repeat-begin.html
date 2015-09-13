@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko-KR" data-ng-app>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>AngularJS - 03 - Directive - ng-repeat</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/app.css">
+	<script src="../js/libs/angular.js"></script>
+	<script src="../js/libs/jquery.js"></script>
+</head>
+<body>
+
+	<div id="app">
+
+		<!-- 문자 데이터 + 표현식 -->
+		<h1 lang="en" data-ng-init="home='AngularJS Home';">
+			<a href="https://angularjs.org/" target="_blank">
+				<img src="https://angularjs.org/img/AngularJS-large.png" alt="{{home}}">
+			</a>
+		</h1>
+
+		<!-- 배열 데이터 + 표현식 -->
+		<h2 data-ng-init="directive=['https://docs.angularjs.org/api/ng/directive', 'Directive'];">
+			<a rel="external" href="{{directive[0]}}" target="_blank">{{directive[1]}}</a>
+		</h2>
+
+		<!-- 객체 데이터 + 표현식 -->
+		<ul
+			data-ng-init="
+				ng_directives = {
+					'app':{
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngApp',
+						'content': 'ng-app'
+					},
+					'init': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngInit',
+						'content': 'ng-init'
+					},
+					'repeat': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngRepeat',
+						'content': 'ng-repeat'
+					},
+					'bind': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngBind',
+						'content': 'ng-bind'
+					},
+					'class': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngClass',
+						'content': 'ng-class'
+					}
+				};
+		">
+			<li class="even">
+				<a rel="external" href="{{ng_directives.app.href}}" target="_blank">
+					<code>{{ng_directives.app.content}}</code>
+				</a>
+			</li>
+			<li class="odd">
+				<a rel="external" href="{{ng_directives.init.href}}" target="_blank">
+					<code>{{ng_directives.init.content}}</code>
+				</a>
+			</li>
+			<li class="even">
+				<a rel="external" href="{{ng_directives.repeat.href}}" target="_blank">
+					<code>{{ng_directives.repeat.content}}</code>
+				</a>
+			</li>
+			<li class="odd">
+				<a rel="external" href="{{ng_directives.bind.href}}" target="_blank">
+					<code>{{ng_directives.bind.content}}</code>
+				</a>
+			</li>
+			<li class="even">
+				<a rel="external" href="{{ng_directives.class.href}}" target="_blank">
+					<code>{{ng_directives.class.content}}</code>
+				</a>
+			</li>
+		</ul>
+
+	</div>
+
+</body>
+</html>

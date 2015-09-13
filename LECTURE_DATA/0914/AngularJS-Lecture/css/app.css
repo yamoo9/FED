@@ -1,0 +1,60 @@
+html {
+	-webkit-font-smoothing: antialiased;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+body {
+	margin: 0;
+	font: 0.875rem/1.5 Helvetica, Verdana;
+}
+
+h1 { font-size: 3.5rem; line-height: 3.94rem;}
+h2 { font-size: 2.63rem; line-height: 3.94rem;}
+h3 { font-size: 1.75rem; line-height: 2.63rem;}
+h4 { font-size: 1.31rem; line-height: 2.63rem;}
+h5 { font-size: 1.05rem; line-height: 1.3125rem;}
+h6 { font-size: 0.875rem; line-height: 1.3125rem;}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { margin-bottom: 0.875rem; }
+
+#app {
+	max-width: 980px;
+	margin-top: 1.75rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#app * {
+	margin-top: 0;
+	margin-bottom: 0;
+	box-sizing: border-box;
+}
+
+#app a {
+	text-decoration: none;
+	color: #dd1b16;
+}
+
+[rel=external]::after {
+	content: ' ＃';
+}
+
+#app ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0.875rem;
+	list-style: none;
+}
+
+.odd {
+	background: #FFFFDE;
+}
+
+.even {
+	background: #FFE5E4;
+}

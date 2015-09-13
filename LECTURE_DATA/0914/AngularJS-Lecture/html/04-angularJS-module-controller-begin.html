@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko-KR" data-ng-app>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>AngularJS - 04 - Module &amp; Controller</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/app.css">
+	<script src="../js/libs/angular.js"></script>
+	<script src="../js/libs/jquery.js"></script>
+</head>
+<body>
+
+	<div id="app">
+
+		<h1 lang="en" data-ng-init="home='AngularJS Home';">
+			<a href="https://angularjs.org/" target="_blank">
+				<img src="https://angularjs.org/img/AngularJS-large.png" alt="{{home}}">
+			</a>
+		</h1>
+
+		<h2 data-ng-init="directive=['https://docs.angularjs.org/api/ng/directive', 'Directive'];">
+			<a rel="external" href="{{directive[0]}}" target="_blank">{{directive[1]}}</a>
+		</h2>
+
+		<ul
+			data-ng-init="
+				ng_directives = {
+					'app':{
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngApp',
+						'content': 'ng-app'
+					},
+					'init': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngInit',
+						'content': 'ng-init'
+					},
+					'repeat': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngRepeat',
+						'content': 'ng-repeat'
+					},
+					'bind': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngBind',
+						'content': 'ng-bind'
+					},
+					'class': {
+						'href': 'https://docs.angularjs.org/api/ng/directive/ngClass',
+						'content': 'ng-class'
+					}
+				};
+		">
+			<li
+				data-ng-repeat="directive in ng_directives"
+				data-ng-class="{odd: $odd, even: $even};"
+			>
+				<a rel="external" href="{{directive.href}}" target="_blank">
+					<span>{{$index+1}}</span>
+					<code data-ng-bind="directive.content"></code>
+				</a>
+			</li>
+		</ul>
+
+	</div>
+
+<script src="../js/app-04-begin.js"></script>
+</body>
+</html>
